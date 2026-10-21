@@ -1,69 +1,103 @@
-import Image from "next/image";
+"use client";
+
+import React, { useEffect } from "react";
+import Header from "@/components/layout/Header";
+import Hero from "@/components/home/Hero";
+import IntroStatement from "@/components/home/IntroStatement";
+import ServicePillars from "@/components/home/ServicePillars";
+import ClientShowcase3D from "@/components/home/ClientShowcase3D";
+import QuoteBanners from "@/components/home/QuoteBanners";
+import FeaturedPortfolio from "@/components/home/FeaturedPortfolio";
+import ProcessSection from "@/components/home/ProcessSection";
+import InquirySection from "@/components/home/InquirySection";
+import Footer from "@/components/layout/Footer";
+import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
+import MobileCtaBar from "@/components/layout/MobileCtaBar";
 
 export default function Home() {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    const scrollToTarget = (targetId: string, behavior: ScrollBehavior = "instant") => {
+      const el = document.getElementById(targetId);
+      if (el) {
+        const offset = 80;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = el.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior
+        });
+        return true;
+      }
+      return false;
+    };
+
+    const hash = window.location.hash ? window.location.hash.replace("#", "") : "";
+    const querySection = new URLSearchParams(window.location.search).get("section");
+    const targetSection = querySection || sessionStorage.getItem("zeyo_scroll_target") || hash;
+
+    if (targetSection) {
+      sessionStorage.removeItem("zeyo_scroll_target");
+      let attempts = 0;
+      const tryScroll = () => {
+        attempts++;
+        const scrolled = scrollToTarget(targetSection, attempts === 1 ? "instant" : "smooth");
+        if (!scrolled && attempts < 35) {
+          setTimeout(tryScroll, 60);
+        }
+      };
+      // Initial attempt immediately, then retries
+      tryScroll();
+    } else {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+
+    const handleHashChange = () => {
+      const hashId = window.location.hash ? window.location.hash.replace("#", "") : "";
+      if (hashId) {
+        scrollToTarget(hashId, "smooth");
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="relative min-h-screen bg-[#e9e7e2] selection:bg-[#C9A24B] selection:text-[#071426]">
+      {/* Sticky Luxury Header */}
+      <Header />
+
+      {/* Main Content Sections */}
+      <main id="main-content">
+        <Hero />
+        <IntroStatement />
+        <ServicePillars />
+        <ClientShowcase3D />
+        <QuoteBanners />
+        <FeaturedPortfolio />
+        <ProcessSection />
+        <InquirySection />
       </main>
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Floating Call to Actions */}
+      <FloatingWhatsApp />
+      <MobileCtaBar />
     </div>
   );
 }

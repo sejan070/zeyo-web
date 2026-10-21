@@ -1,0 +1,448 @@
+"use client";
+
+import React, { useState } from "react";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
+import MobileCtaBar from "@/components/layout/MobileCtaBar";
+import { portfolioItems } from "@/data/portfolio";
+import { useLanguage } from "@/context/LanguageContext";
+import { Eye, MapPin, Play, Film, Calendar, ArrowRight, Sparkles, X, CheckCircle2 } from "lucide-react";
+import Lightbox from "@/components/portfolio/Lightbox";
+import LazyVideo from "@/components/ui/LazyVideo";
+import Link from "next/link";
+
+interface PortfolioVideo {
+  id: string;
+  src: string;
+  poster?: string;
+  titleEn: string;
+  titleBn: string;
+  tagEn: string;
+  tagBn: string;
+  venueEn: string;
+  venueBn: string;
+}
+
+const portfolioVideos: PortfolioVideo[] = [
+  {
+    id: "v-birthday-special",
+    src: "/videos/birthday-reel.mp4",
+    poster: "/videos/birthday-thumb.jpg",
+    titleEn: "Exclusive Birthday Celebration & Backdrop",
+    titleBn: "এক্সক্লুসিভ বার্থডে সেলিব্রেশন ও ব্যাকড্রপ ডেকোর",
+    tagEn: "Birthday Celebration",
+    tagBn: "বার্থডে সেলিব্রেশন",
+    venueEn: "Private Lounge, Rajshahi",
+    venueBn: "প্রাইভেট লাউঞ্জ, রাজশাহী"
+  },
+  {
+    id: "v1",
+    src: "/videos/dreamy-white-decor.mp4",
+    poster: "/videos/dreamy-white-thumb.jpg",
+    titleEn: "Dreamy White Themed Floral Stage",
+    titleBn: "ড্রিমী হোয়াইট ফ্লোরাল ওয়েডিং স্টেজ",
+    tagEn: "Wedding Decor",
+    tagBn: "ওয়েডিং ডেকোর",
+    venueEn: "Rajshahi Club",
+    venueBn: "রাজশাহী ক্লাব"
+  },
+  {
+    id: "v2",
+    src: "/videos/pink-wedding-theme.mp4",
+    poster: "/videos/pink-wedding-thumb.jpg",
+    titleEn: "Fairy-Tale Pink Romance Theme",
+    titleBn: "রূপকথা পিংক থিম ওয়েডিং স্টেজ",
+    tagEn: "Theme Wedding",
+    tagBn: "থিম ওয়েডিং",
+    venueEn: "Parjatan Motel, Rajshahi",
+    venueBn: "পর্যটন মোটেল, রাজশাহী"
+  },
+  {
+    id: "v3",
+    src: "/videos/zeyo-stage-craft.mp4",
+    poster: "/videos/zeyo-stage-craft-thumb.jpg",
+    titleEn: "Bespoke Event Architecture & Decor",
+    titleBn: "এক্সক্লুসিভ স্টেজ প্রোডাকশন ও সেটআপ",
+    tagEn: "Stage Craft",
+    tagBn: "স্টেজ আর্কিটেকচার",
+    venueEn: "Grand Riverview Hall",
+    venueBn: "গ্র্যান্ড রিভারভিউ হল"
+  }
+];
+
+// Curated Project Spotlights (Case Studies)
+const projectSpotlights = [
+  {
+    id: "spotlight-1",
+    titleEn: "The Royal Ivory & Gold Wedding Reception",
+    titleBn: "রাজকীয় আইভরি ও গোল্ড ওয়েডিং রিসেপশন",
+    categoryEn: "Grand Wedding",
+    categoryBn: "গ্র্যান্ড ওয়েডিং",
+    venueEn: "Rajshahi Club Main Lawn",
+    venueBn: "রাজশাহী ক্লাব মেইন লন",
+    clientEn: "Dr. Farhana & Engr. Tanvir",
+    clientBn: "ডাঃ ফারহানা ও ইঞ্জিঃ তানভীর",
+    guestCount: "650+ Guests",
+    palette: ["#FFFFFF", "#C9A24B", "#071426"],
+    descEn:
+      "A 50-foot custom curved stage framed by imported Ecuadorian white roses, cascading crystal chandeliers, and warm amber uplighting.",
+    descBn:
+      "আমদানিকৃত সাদা গোলাপ, রাজকীয় খোদাই করা আর্মচেয়ার, ক্রিস্টাল শ্যান্ডেলিয়ার ও অ্যাম্বিয়েন্ট ওয়ার্ম আলোর সমন্বয়ে ৫০ ফুটের গ্র্যান্ড স্টেজ।",
+    mainImage: "/client-media/user-refs/holud-traditional-stage.jpg",
+    gridImages: [
+      "/client-media/user-refs/haldi-umbrella-canopy.jpg",
+      "/client-media/user-refs/birthday-neon-gold.jpg"
+    ]
+  },
+  {
+    id: "spotlight-2",
+    titleEn: "Lush Haldi Umbrella Canopy & Floral Diwan",
+    titleBn: "ঐতিহ্যবাহী হলুদ আমব্রেলা ক্যানোপি ও ফ্লোরাল দেওয়ান",
+    categoryEn: "Gaye Holud",
+    categoryBn: "গায়ে হলুদ",
+    venueEn: "Hotel Nice International, Rajshahi",
+    venueBn: "হোটেল নাইস ইন্টারন্যাশনাল, রাজশাহী",
+    clientEn: "Samira & Rakibul",
+    clientBn: "সামিরা ও রাকিবুল",
+    guestCount: "350 Guests",
+    palette: ["#FFD700", "#FF8C00", "#2E8B57"],
+    descEn:
+      "Handcrafted marigold garlands, traditional embroidered umbrella canopies, and authentic brass urn centerpieces.",
+    descBn:
+      "হাতে গাঁথা গাঁদা ফুলের মালা, সূচিকর্মের আমব্রেলা ক্যানোপি ও পিতলের ট্র্যাডিশনাল প্রদীপের আলোয় তৈরি রূপকথার হলুদ সন্ধ্যা।",
+    mainImage: "/client-media/user-refs/haldi-umbrella-canopy.jpg",
+    gridImages: [
+      "/client-media/user-refs/holud-traditional-stage.jpg",
+      "/client-media/banner.jpg"
+    ]
+  }
+];
+
+export default function PortfolioPage() {
+  const { locale, t } = useLanguage();
+  const isBn = locale === "bn";
+
+  const [activeFilter, setActiveFilter] = useState<string>("all");
+  const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<PortfolioVideo | null>(null);
+
+  const filteredItems = portfolioItems.filter((item) => {
+    if (activeFilter === "all") return true;
+    return item.category === activeFilter;
+  });
+
+  const handlePrev = () => {
+    if (selectedItemIndex === null) return;
+    setSelectedItemIndex(
+      selectedItemIndex === 0 ? filteredItems.length - 1 : selectedItemIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    if (selectedItemIndex === null) return;
+    setSelectedItemIndex(
+      selectedItemIndex === filteredItems.length - 1 ? 0 : selectedItemIndex + 1
+    );
+  };
+
+  return (
+    <div className="relative min-h-screen bg-[#e9e7e2] text-[#2b2927] selection:bg-[#C9A24B] selection:text-[#071426]">
+      {/* Sticky Luxury Header */}
+      <Header />
+
+      {/* Main Content */}
+      <main className="pt-24 sm:pt-28">
+        {/* Editorial Hero Banner */}
+        <section className="relative py-16 sm:py-24 bg-[#071426] text-white overflow-hidden border-b border-[#C9A24B]/30">
+          <div className="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#C9A24B_1px,transparent_1px)] [background-size:24px_24px]" />
+
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-sans-luxury font-bold tracking-[0.25em] uppercase bg-[#C9A24B]/20 text-[#F3DE9A] border border-[#C9A24B]/40 shadow-md mb-4">
+              {isBn ? "সিগনেচার পোর্টফোলিও • জেয়ো" : "CURATED ARCHIVE • ZEYO"}
+            </span>
+
+            <h1 className="font-serif-luxury text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-4 leading-tight">
+              {isBn ? (
+                <>
+                  বাস্তবায়িত স্বপ্নের <span className="gold-gradient-text italic font-bold">স্থপতি কালেকশন</span>
+                </>
+              ) : (
+                <>
+                  A Symphony of Stage Craft & <span className="gold-gradient-text italic font-bold">Celebrations</span>
+                </>
+              )}
+            </h1>
+
+            <p className="text-sm sm:text-base text-[#d8d3cb] font-sans-luxury font-medium max-w-2xl mx-auto leading-relaxed">
+              {isBn
+                ? "রাজশাহীতে আমাদের বাস্তব ইভেন্ট প্রোডাকশনের জীবন্ত ভিডিও রিলস, নির্বাচিত ফটো আর্কাইভ এবং বিস্তারিত প্রজেক্ট স্পটলাইট।"
+                : "Explore our verified event architecture across Rajshahi through live production video reels and curated photo galleries."}
+            </p>
+          </div>
+        </section>
+
+        {/* 1. Live Video Reels Section */}
+        <section className="py-20 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-8 pb-3 border-b border-[#2b2927]/15">
+            <div>
+              <span className="text-[10px] font-sans-luxury font-bold uppercase tracking-[0.2em] text-[#C9A24B] block mb-1">
+                {isBn ? "লাইভ ভিডিও প্রমাণ" : "AUTHENTIC PROOF OF CRAFT"}
+              </span>
+              <h2 className="font-serif-luxury text-2xl sm:text-4xl text-[#2b2927] font-bold">
+                {isBn ? "লাইভ ইভেন্ট ভিডিও রিলস" : "Featured Live Production Reels"}
+              </h2>
+            </div>
+            <span className="text-xs text-[#595550] font-sans-luxury font-medium hidden sm:inline-block">
+              {isBn ? "ক্লিক করে সাউন্ড সহ সম্পূর্ণ ভিডিও দেখুন" : "Click any card to play in high definition with audio"}
+            </span>
+          </div>
+
+          {/* 4 Video Reels (Playing Simultaneously & Smoothly) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            {portfolioVideos.map((video) => (
+              <div
+                key={video.id}
+                onClick={() => setSelectedVideo(video)}
+                className="group relative cursor-pointer overflow-hidden rounded-[20px] bg-[#1a1918] border border-black/15 shadow-[0_10px_28px_rgba(43,41,39,0.12)] hover:shadow-[0_20px_45px_rgba(43,41,39,0.28)] hover:-translate-y-1.5 hover:scale-[1.015] transition-all duration-300 aspect-[9/14] sm:aspect-[9/15] will-change-transform transform-gpu"
+              >
+                <LazyVideo
+                  src={video.src}
+                  poster={video.poster}
+                  isActive={true}
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/30 group-hover:from-black/95 transition-colors pointer-events-none" />
+
+                <div className="absolute top-3.5 left-3.5 z-10 flex items-center gap-2">
+                  <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-sans-luxury font-bold bg-[#071426]/90 text-white shadow-md border border-[#C9A24B]/40 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24B] animate-ping" />
+                    <span>{isBn ? video.tagBn : video.tagEn}</span>
+                  </span>
+                </div>
+
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none">
+                  <div className="w-14 h-14 rounded-full bg-[#C9A24B] shadow-2xl flex items-center justify-center text-[#071426] transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                    <Play className="w-6 h-6 fill-[#071426] ml-0.5" />
+                  </div>
+                </div>
+
+                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                  <h4 className="font-serif-luxury text-lg sm:text-xl text-white font-bold leading-snug drop-shadow-md mb-1.5">
+                    {isBn ? video.titleBn : video.titleEn}
+                  </h4>
+                  <div className="flex items-center gap-1.5 text-xs text-[#F3DE9A] font-sans-luxury font-bold drop-shadow">
+                    <MapPin className="w-3.5 h-3.5 text-[#C9A24B]" />
+                    <span>{isBn ? video.venueBn : video.venueEn}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 2. Photo Gallery Archive with Category Filters */}
+        <section className="py-16 sm:py-24 bg-white/60 border-t border-[#2b2927]/10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <span className="text-[10px] font-sans-luxury font-bold uppercase tracking-[0.2em] text-[#C9A24B] block mb-1">
+                {isBn ? "সিগনেচার ফটো আর্কাইভ" : "SIGNATURE PHOTOGRAPHY"}
+              </span>
+              <h2 className="font-serif-luxury text-3xl sm:text-5xl text-[#2b2927] font-bold">
+                {isBn ? "ইভেন্ট ফটো কালেকশন" : "Signature Event Moments"}
+              </h2>
+            </div>
+
+            {/* Filter Chips */}
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
+              {[
+                { id: "all", label: isBn ? "সকল ফটো" : "All Photos" },
+                { id: "wedding", label: isBn ? "ওয়েডিং ও হলুদ" : "Weddings & Holud" },
+                { id: "birthday", label: isBn ? "বার্থডে ডেকোর" : "Birthdays" },
+                { id: "stage", label: isBn ? "স্টেজ আর্কিটেকচার" : "Stage Craft" },
+                { id: "murals", label: isBn ? "ওয়াল মিউরাল" : "Murals & Themes" }
+              ].map((tab) => {
+                const isActive = activeFilter === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    onClick={() => setActiveFilter(tab.id)}
+                    className={`px-5 sm:px-6 py-2.5 rounded-full text-xs uppercase tracking-[0.16em] transition-all duration-300 font-sans-luxury cursor-pointer select-none font-bold ${
+                      isActive
+                        ? "bg-[#2b2927] text-white border border-[#2b2927] shadow-[0_8px_22px_rgba(43,41,39,0.35)] scale-105"
+                        : "bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] hover:bg-none hover:bg-[#2b2927] text-[#071426] hover:text-white border border-[#E0C172] hover:border-[#2b2927] shadow-[0_4px_15px_rgba(201,162,75,0.35)] hover:shadow-[0_8px_22px_rgba(43,41,39,0.3)] hover:scale-105"
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Photo Gallery Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {filteredItems.map((item, index) => (
+                <div
+                  key={item.id}
+                  onClick={() => setSelectedItemIndex(index)}
+                  className="group relative cursor-pointer overflow-hidden rounded-[20px] bg-white/80 border border-white/90 shadow-[0_10px_30px_rgba(43,41,39,0.08)] hover:shadow-[0_25px_50px_rgba(43,41,39,0.2)] hover:-translate-y-2 hover:scale-[1.02] transition-all duration-500 aspect-[4/5]"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    loading="lazy"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5" />
+
+                  <div className="absolute top-3.5 left-3.5 z-10">
+                    <span className="text-[10px] uppercase tracking-widest font-sans-luxury font-bold bg-white/90 text-[#2b2927] px-3 py-1 rounded-full border border-white/60 shadow-md">
+                      {isBn ? item.categoryLabelBn : item.categoryLabel}
+                    </span>
+                  </div>
+
+                  <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
+                    <h3 className="font-serif-luxury text-xl text-white font-bold leading-snug drop-shadow-md">
+                      {isBn ? item.titleBn : item.title}
+                    </h3>
+                    <div className="flex items-center gap-1.5 text-xs text-[#F3DE9A] mt-1.5 font-sans-luxury font-bold drop-shadow">
+                      <MapPin className="w-3.5 h-3.5 text-[#C9A24B]" />
+                      <span>{isBn ? item.venueBn : item.venue}</span>
+                    </div>
+
+                    <div className="mt-3.5 inline-flex items-center gap-1.5 text-[11px] text-[#C9A24B] font-bold uppercase tracking-wider bg-black/40 px-3 py-1 rounded-full border border-[#C9A24B]/40">
+                      <Eye className="w-3.5 h-3.5" />
+                      <span>View Fullscreen</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 3. Featured Project Spotlights (Case Studies) */}
+        <section className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-[#2b2927]/10">
+          <div className="max-w-3xl mb-14">
+            <span className="text-[10px] font-sans-luxury font-bold uppercase tracking-[0.2em] text-[#C9A24B] block mb-1">
+              {isBn ? "প্রজেক্ট স্পটলাইট" : "CASE STUDIES & SPOTLIGHTS"}
+            </span>
+            <h2 className="font-serif-luxury text-3xl sm:text-5xl text-[#2b2927] font-bold">
+              {isBn ? "সম্পন্ন কাজের পেছনের গল্প" : "Stories of Flawless Execution"}
+            </h2>
+          </div>
+
+          <div className="space-y-16">
+            {projectSpotlights.map((proj, pIdx) => (
+              <div
+                key={proj.id}
+                className="bg-white rounded-[24px] border border-[#2b2927]/10 p-6 sm:p-10 shadow-[0_12px_40px_rgba(43,41,39,0.06)]"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div className="lg:col-span-6">
+                    <span className="text-xs uppercase tracking-widest font-sans-luxury font-bold text-[#C9A24B] block mb-2">
+                      {isBn ? proj.categoryBn : proj.categoryEn} • {proj.guestCount}
+                    </span>
+                    <h3 className="font-serif-luxury text-2xl sm:text-4xl text-[#2b2927] font-bold mb-3">
+                      {isBn ? proj.titleBn : proj.titleEn}
+                    </h3>
+                    <div className="flex items-center gap-2 text-xs text-[#595550] font-sans-luxury font-medium mb-4">
+                      <MapPin className="w-4 h-4 text-[#C9A24B]" />
+                      <span>{isBn ? proj.venueBn : proj.venueEn}</span>
+                      <span>•</span>
+                      <span>{isBn ? proj.clientBn : proj.clientEn}</span>
+                    </div>
+                    <p className="text-sm sm:text-base text-[#3e3b38] font-sans-luxury font-medium leading-relaxed mb-6">
+                      {isBn ? proj.descBn : proj.descEn}
+                    </p>
+
+                    <div className="pt-4 border-t border-[#2b2927]/10 flex items-center gap-4">
+                      <Link
+                        href="/contact"
+                        className="inline-flex items-center gap-2 text-xs uppercase font-sans-luxury font-bold text-[#071426] hover:text-[#C9A24B] tracking-wider transition-colors"
+                      >
+                        <span>{isBn ? "অনুরূপ আয়োজনের আলোচনা করুন" : "Discuss a Similar Setup"}</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-6 grid grid-cols-2 gap-3 sm:gap-4">
+                    <div className="col-span-2 rounded-xl overflow-hidden aspect-[16/10]">
+                      <img src={proj.mainImage} alt={proj.titleEn} className="w-full h-full object-cover" />
+                    </div>
+                    {proj.gridImages.map((img, i) => (
+                      <div key={i} className="rounded-xl overflow-hidden aspect-square">
+                        <img src={img} alt="Detail" className="w-full h-full object-cover" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Video Fullscreen Modal */}
+        {selectedVideo && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+            <div className="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/20">
+              <button
+                type="button"
+                onClick={() => setSelectedVideo(null)}
+                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="aspect-[16/9] w-full bg-black flex items-center justify-center">
+                <video
+                  src={selectedVideo.src}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-contain"
+                />
+              </div>
+
+              <div className="p-4 sm:p-6 bg-[#071426] text-white flex items-center justify-between">
+                <div>
+                  <h4 className="font-serif-luxury text-xl sm:text-2xl font-bold">
+                    {isBn ? selectedVideo.titleBn : selectedVideo.titleEn}
+                  </h4>
+                  <div className="flex items-center gap-2 text-xs text-[#F3DE9A] mt-1">
+                    <MapPin className="w-3.5 h-3.5 text-[#C9A24B]" />
+                    <span>{isBn ? selectedVideo.venueBn : selectedVideo.venueEn}</span>
+                  </div>
+                </div>
+
+                <Link
+                  href="/contact"
+                  className="px-5 py-2.5 rounded-full bg-[#C9A24B] hover:bg-[#DFBD6A] text-[#071426] text-xs font-sans-luxury font-bold uppercase tracking-wider transition-all"
+                >
+                  {isBn ? "বুকিং শুরু করুন" : "Book This Vibe"}
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Lightbox for Photos */}
+        <Lightbox
+          item={selectedItemIndex !== null ? filteredItems[selectedItemIndex] : null}
+          onClose={() => setSelectedItemIndex(null)}
+          onPrev={handlePrev}
+          onNext={handleNext}
+        />
+      </main>
+
+      {/* Footer & Floating Elements */}
+      <Footer />
+      <FloatingWhatsApp />
+      <MobileCtaBar />
+    </div>
+  );
+}

@@ -1,26 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #0B1F3A;
+  --navy-dark: #071426;
+  --navy-deep: #040D1A;
+  --navy-light: #162E52;
+  --sarah-bg: #e9e7e2;
+  --sarah-charcoal: #2b2927;
+  --sarah-muted: #595550;
+  --cream: #e9e7e2;
+  --cream-light: #f3f1ec;
+  --cream-dark: #dedad4;
+  --gold: #C9A24B;
+  --gold-light: #E0C172;
+  --gold-deep: #967425;
+  --ink: #2b2927;
+  --ink-muted: #595550;
+  --ink-light: #7a756f;
+  --white: #FFFFFF;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  font-family: 'Montserrat', 'Hind Siliguri', sans-serif;
+  background-color: var(--sarah-bg);
+  color: var(--sarah-charcoal);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  background-color: var(--sarah-bg);
+  color: var(--sarah-charcoal);
+}
+
+/* Luxury Serif Typography (Exact Cormorant Garamond) */
+.font-serif-luxury {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-sans-luxury {
+  font-family: 'Montserrat', 'Hind Siliguri', sans-serif;
+}
+
+.font-bengali {
+  font-family: 'Hind Siliguri', 'Manrope', sans-serif;
+}
+
+/* Glassmorphism & Luxury Sheens */
+.glass-navy {
+  background: rgba(7, 20, 38, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(201, 162, 75, 0.2);
+}
+
+.glass-cream {
+  background: rgba(246, 239, 230, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(201, 162, 75, 0.2);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #F3DE9A 0%, #C9A24B 50%, #967425 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border-glow {
+  box-shadow: 0 0 25px rgba(201, 162, 75, 0.18);
+}
+
+/* Subtle luxury grain effect */
+.luxury-border {
+  border: 1px solid rgba(201, 162, 75, 0.25);
+}
+
+.luxury-border-strong {
+  border: 1px solid rgba(201, 162, 75, 0.55);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #071426;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C9A24B;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E0C172;
+}
+
+/* Selection */
+::selection {
+  background: #C9A24B;
+  color: #071426;
+}
+
+/* Luxury Shimmer Sweep Animation for Monogram Logo */
+@keyframes luxuryShimmer {
+  0% {
+    transform: translateX(-150%) skewX(-25deg);
+  }
+  100% {
+    transform: translateX(150%) skewX(-25deg);
+  }
+}
+
+.animate-shimmer-sweep {
+  animation: luxuryShimmer 1.3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes logoPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(201, 162, 75, 0.35), inset 0 0 15px rgba(201, 162, 75, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(201, 162, 75, 0.75), inset 0 0 25px rgba(201, 162, 75, 0.4);
+  }
+}
+
+.animate-logo-glow {
+  animation: logoPulseGlow 1.8s ease-in-out infinite;
+}
+
+/* Staggered Cascade Entrance Animation for Navbar Links */
+@keyframes navEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-nav-item {
+  animation: navEntrance 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

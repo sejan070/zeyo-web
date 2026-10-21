@@ -39,3 +39,19 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large raw media and unused archives
+/Videos/
+*.zip
+public/videos/sparklers-1080.mp4
+public/videos/candidate-stage1.mp4
+public/videos/chandelier-1080.mp4
+public/videos/mixkit-decor1.mp4
+public/videos/mixkit-decor2.mp4
+public/videos/royal-stage-decor.mp4
+public/videos/birthday.mp4
+public/videos/pinterest-decor-video.mp4
+public/videos/zeyo-client-video.mp4
+public/videos/grand-pavilion-stage.mp4
+public/videos/mixkit_thumbs/
+
