@@ -101,7 +101,7 @@ export default function InquirySection() {
   }, []);
 
   return (
-    <section id="inquiry" className="py-24 sm:py-32 bg-[#e9e7e2] relative border-t border-[#2b2927]/10">
+    <section id="inquiry" className="pt-16 pb-28 sm:py-32 bg-[#e9e7e2] relative border-t border-[#2b2927]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -115,36 +115,21 @@ export default function InquirySection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Left Column: Direct Contact & Office Info */}
-          <div className="lg:col-span-5 rounded-[26px] bg-gradient-to-br from-[#ffffff] via-[#fbf7f0] to-[#f4ebe1] border-2 border-[#e0ceb7]/70 p-8 sm:p-10 shadow-[0_15px_45px_rgba(43,41,39,0.08)] hover:shadow-[0_25px_60px_rgba(201,162,75,0.25)] hover:-translate-y-1.5 transition-all duration-500 relative overflow-hidden">
+          <div className="lg:col-span-5 rounded-[26px] bg-gradient-to-br from-[#ffffff] via-[#fbf7f0] to-[#f4ebe1] border-2 border-[#e0ceb7]/70 p-6 sm:p-8 lg:p-9 shadow-[0_15px_45px_rgba(43,41,39,0.08)] hover:shadow-[0_25px_60px_rgba(201,162,75,0.25)] hover:-translate-y-1.5 transition-all duration-500 relative overflow-hidden">
             {/* Top Specular Shine */}
             <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#C9A24B]/40 to-transparent pointer-events-none" />
-            <h3 className="font-serif-luxury text-2xl sm:text-3xl text-[#2b2927] font-bold mb-4">
+            <h3 className="font-serif-luxury text-2xl sm:text-3xl text-[#2b2927] font-bold mb-3">
               {locale === "bn" ? "জেয়ো স্টুডিও ও অফিস" : "Zeyo Studio & Headquarters"}
             </h3>
 
-            <p className="text-xs sm:text-sm text-[#595550] font-sans-luxury font-bold leading-relaxed mb-8">
+            <p className="text-xs sm:text-sm text-[#595550] font-sans-luxury font-bold leading-relaxed mb-6">
               {locale === "bn"
                 ? "আমাদের টিম সরাসরি ক্লায়েন্টদের সাথে বসে কাস্টমাইজড ইভেন্ট আর্কিটেকচার ও থিম ডেকোরেশন প্ল্যান প্রস্তুত করে। যেকোনো তথ্য জানতে ফোন করুন বা অফিসে আসুন।"
                 : "Meet with our creative planners to review 3D stage mockups, imported floral palettes, and bespoke theme packages in Rajshahi."}
             </p>
 
-            <div className="space-y-6 text-sm">
-              {/* Address */}
-              <div className="flex items-start gap-3.5">
-                <div className="w-10 h-10 rounded-full border border-[#2b2927]/15 bg-white shadow-sm flex items-center justify-center shrink-0">
-                  <MapPin className="w-4 h-4 text-[#C9A24B]" />
-                </div>
-                <div>
-                  <span className="text-[11px] uppercase tracking-wider text-[#C9A24B] font-sans-luxury font-bold block mb-0.5">
-                    {locale === "bn" ? "অফিস ঠিকানা" : "Office Address"}
-                  </span>
-                  <span className="text-xs sm:text-sm leading-relaxed text-[#2b2927] font-sans-luxury font-bold">
-                    {locale === "bn" ? companyInfo.addressBn : companyInfo.address}
-                  </span>
-                </div>
-              </div>
-
-              {/* Phone / WhatsApp */}
+            <div className="space-y-4 text-sm">
+              {/* 1. Direct Phone & WhatsApp (TOP) */}
               <div className="flex items-start gap-3.5">
                 <div className="w-10 h-10 rounded-full border border-[#2b2927]/15 bg-white shadow-sm flex items-center justify-center shrink-0">
                   <Phone className="w-4 h-4 text-[#C9A24B]" />
@@ -162,7 +147,7 @@ export default function InquirySection() {
                 </div>
               </div>
 
-              {/* Email */}
+              {/* 2. Official Email (SECOND) */}
               <div className="flex items-start gap-3.5">
                 <div className="w-10 h-10 rounded-full border border-[#2b2927]/15 bg-white shadow-sm flex items-center justify-center shrink-0">
                   <Mail className="w-4 h-4 text-[#C9A24B]" />
@@ -179,11 +164,52 @@ export default function InquirySection() {
                   </a>
                 </div>
               </div>
+
+              {/* 3. Office Address (THIRD) */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-full border border-[#2b2927]/15 bg-white shadow-sm flex items-center justify-center shrink-0">
+                  <MapPin className="w-4 h-4 text-[#C9A24B]" />
+                </div>
+                <div>
+                  <span className="text-[11px] uppercase tracking-wider text-[#C9A24B] font-sans-luxury font-bold block mb-0.5">
+                    {locale === "bn" ? "অফিস ঠিকানা" : "Office Address"}
+                  </span>
+                  <span className="text-xs sm:text-sm leading-relaxed text-[#2b2927] font-sans-luxury font-bold">
+                    {locale === "bn" ? companyInfo.addressBn : companyInfo.address}
+                  </span>
+                </div>
+              </div>
             </div>
 
-            {/* Quick WhatsApp Action Box */}
-            <div className="mt-10 p-5 rounded-2xl bg-white/70 border border-white/90 shadow-sm">
-              <p className="text-xs text-[#595550] mb-3 font-sans-luxury font-bold">
+            {/* 4. Google Maps Embed Preview Box (Matching Contact Page) */}
+            <div className="mt-6 rounded-2xl overflow-hidden border border-[#2b2927]/15 shadow-md aspect-[16/9] sm:aspect-[2/1] bg-[#071426] relative group">
+              <iframe
+                src={companyInfo.googleMapsEmbedUrl}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Zeyo Atelier Location Map"
+                className="w-full h-full object-cover filter contrast-[1.05] brightness-[0.98]"
+              />
+              <div className="absolute bottom-2.5 right-2.5 z-10">
+                <a
+                  href={companyInfo.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-1.5 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-[#071426]/95 hover:bg-[#C9A24B] text-[#F3DE9A] hover:text-[#071426] border border-[#C9A24B]/50 transition-all shadow-lg flex items-center gap-1.5 backdrop-blur-md cursor-pointer hover:scale-105 active:scale-95"
+                >
+                  <MapPin className="w-3 h-3 text-[#C9A24B] group-hover:text-[#071426]" />
+                  <span>{locale === "bn" ? "গুগল ম্যাপে দেখুন" : "Open in Google Maps"}</span>
+                </a>
+              </div>
+            </div>
+
+            {/* 5. Quick WhatsApp Action Box */}
+            <div className="mt-5 p-4 sm:p-5 rounded-2xl bg-white/70 border border-white/90 shadow-sm">
+              <p className="text-xs text-[#595550] mb-2.5 font-sans-luxury font-bold">
                 {locale === "bn"
                   ? "দ্রুত জবাব চান? সরাসরি আমাদের হোয়াটসঅ্যাপে মেসেজ পাঠান।"
                   : "Need an immediate answer? Speak directly with our head coordinator."}
@@ -194,7 +220,7 @@ export default function InquirySection() {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 rounded-full bg-[#198754] hover:bg-[#157347] text-white flex items-center justify-center gap-2 text-xs uppercase tracking-wider font-sans-luxury font-bold transition-all shadow-md hover:-translate-y-0.5 active:translate-y-0"
+                className="w-full py-3 rounded-full bg-[#198754] hover:bg-[#157347] text-white flex items-center justify-center gap-2 text-xs uppercase tracking-wider font-sans-luxury font-bold transition-all shadow-md hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>Chat on WhatsApp</span>
@@ -203,7 +229,7 @@ export default function InquirySection() {
           </div>
 
           {/* Right Column: Inquiry Form / Success Screen */}
-          <div className="lg:col-span-7 rounded-[26px] bg-gradient-to-br from-[#ffffff] via-[#fcf9f2] to-[#f6ecde] border-2 border-[#e0ceb7]/70 p-8 sm:p-10 shadow-[0_15px_45px_rgba(43,41,39,0.08)] hover:shadow-[0_25px_60px_rgba(201,162,75,0.25)] hover:-translate-y-1.5 transition-all duration-500 relative overflow-hidden">
+          <div className="lg:col-span-7 rounded-[26px] bg-gradient-to-br from-[#ffffff] via-[#fcf9f2] to-[#f6ecde] border-2 border-[#e0ceb7]/70 p-5 sm:p-8 lg:p-10 shadow-[0_15px_45px_rgba(43,41,39,0.08)] hover:shadow-[0_25px_60px_rgba(201,162,75,0.25)] hover:-translate-y-1.5 transition-all duration-500 relative overflow-hidden">
             {/* Top Specular Shine */}
             <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#C9A24B]/40 to-transparent pointer-events-none" />
             {isSubmitted ? (
@@ -414,7 +440,7 @@ export default function InquirySection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 rounded-full bg-[#2b2927] text-white hover:bg-black font-sans-luxury font-bold text-xs sm:text-sm uppercase tracking-[0.2em] shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-3.5 sm:py-4 px-4 rounded-full bg-[#2b2927] text-white hover:bg-black font-sans-luxury font-bold text-xs sm:text-sm uppercase tracking-[0.12em] sm:tracking-[0.2em] shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   {isSubmitting ? (
                     <span>Processing...</span>

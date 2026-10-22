@@ -156,26 +156,29 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl overflow-hidden border border-[#2b2927]/15 shadow-md aspect-video sm:aspect-[4/3] bg-[#071426] flex flex-col items-center justify-center text-center p-6 text-white relative">
-                  <div className="w-16 h-16 rounded-full bg-[#C9A24B]/20 border border-[#C9A24B]/50 flex items-center justify-center text-[#F3DE9A] mb-3">
-                    <MapPin className="w-8 h-8" />
+                <div className="rounded-2xl overflow-hidden border border-[#2b2927]/15 shadow-xl aspect-video sm:aspect-[4/3] bg-[#071426] relative group">
+                  <iframe
+                    src={companyInfo.googleMapsEmbedUrl}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Zeyo Atelier Location Map"
+                    className="w-full h-full object-cover filter contrast-[1.05] brightness-[0.98]"
+                  />
+                  <div className="absolute bottom-3 right-3 z-10">
+                    <a
+                      href={companyInfo.googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#071426]/95 hover:bg-[#C9A24B] text-[#F3DE9A] hover:text-[#071426] border border-[#C9A24B]/50 transition-all shadow-xl flex items-center gap-1.5 backdrop-blur-md cursor-pointer hover:scale-105 active:scale-95"
+                    >
+                      <MapPin className="w-3.5 h-3.5 text-[#C9A24B] group-hover:text-[#071426]" />
+                      <span>{isBn ? "গুগল ম্যাপে খুলুন" : "Open in Google Maps"}</span>
+                    </a>
                   </div>
-                  <h4 className="font-serif-luxury text-xl font-bold mb-1">
-                    Alokar Mor, Rajshahi
-                  </h4>
-                  <p className="text-xs text-[#d8d3cb] font-sans-luxury font-medium max-w-xs mb-4">
-                    {isBn
-                      ? "রাজশাহী শহরের কেন্দ্রস্থলে সুবিধাজনক যাতায়াত ব্যবস্থা।"
-                      : "Conveniently located in central Rajshahi for effortless consultation visits."}
-                  </p>
-                  <a
-                    href="https://maps.google.com/?q=Alokar+Mor+Rajshahi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#C9A24B] text-[#071426] hover:bg-[#DFBD6A] transition-colors shadow-md"
-                  >
-                    {isBn ? "গুগল ম্যাপে দেখুন" : "Open in Google Maps"}
-                  </a>
                 </div>
               </div>
             </div>

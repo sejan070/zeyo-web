@@ -47,7 +47,7 @@ export default function Header() {
     const isHoveringOther = hoveredNav !== null && !isHovered;
     const isActive = hoveredNav === null && activeSection === id;
 
-    let visual = "transition-all duration-300 ease-out origin-center cursor-pointer";
+    let visual = "transition-all duration-300 ease-out cursor-pointer";
 
     if (isOpen || isHovered || isActive) {
       visual +=
@@ -61,7 +61,7 @@ export default function Header() {
         " bg-white/[0.12] border border-white/20 text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_2px_8px_rgba(0,0,0,0.2)] scale-100 opacity-100 z-10 hover:text-white hover:bg-white/[0.18] hover:border-[#C9A24B]/40";
     }
 
-    return `px-3.5 py-1.5 xl:px-4 xl:py-2 rounded-full font-sans-luxury text-[11px] xl:text-[11.5px] 2xl:text-[12px] font-bold tracking-wider backdrop-blur-md flex items-center gap-1.5 ${visual}`;
+    return `h-9 min-w-[88px] xl:min-w-[96px] 2xl:min-w-[102px] px-3.5 xl:px-4 rounded-full font-sans-luxury text-[11px] xl:text-[11.5px] 2xl:text-[12px] font-bold tracking-[0.12em] uppercase backdrop-blur-md flex items-center justify-center text-center whitespace-nowrap gap-1.5 ${visual}`;
   };
 
   useEffect(() => {
@@ -277,9 +277,14 @@ export default function Header() {
                   <Link
                     href="/"
                     onClick={handleNavHome}
-                    className="font-serif-luxury text-2xl sm:text-[26px] font-bold tracking-[0.18em] uppercase text-white hover:text-[#F3DE9A] transition-colors leading-none cursor-pointer"
+                    className="inline-flex items-center hover:opacity-90 transition-opacity cursor-pointer shrink-0"
+                    aria-label="Zeyo Home"
                   >
-                    Zeyo
+                    <img
+                      src="/client-media/zeyo-wordmark-clean.png"
+                      alt="zeyo"
+                      className="h-5 sm:h-6 md:h-6.5 w-auto object-contain drop-shadow-[0_1px_5px_rgba(0,0,0,0.6)]"
+                    />
                   </Link>
 
                   {/* Social Icons right beside Zeyo, hovering directly over the space above 'CELEBRATE.' */}
@@ -338,227 +343,225 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Desktop Navigation Links with Interactive Mega-Menus */}
-            <nav
-              className="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4 text-[11px] xl:text-[11.5px] 2xl:text-[12px] tracking-[0.14em] uppercase text-white/90 font-bold shrink-0"
-              onMouseLeave={() => setHoveredNav(null)}
-            >
-              {/* 0. Home Pill Button */}
-              <div
-                className="relative"
-                onMouseEnter={() => setHoveredNav("home")}
+            {/* Desktop Navigation Group + Phone Icon + Plan Your Event (All in one unified flex group with exact equal gaps) */}
+            <div className="hidden lg:flex items-center gap-2 xl:gap-2.5 2xl:gap-3 shrink-0">
+              <nav
+                className="flex items-center gap-2 xl:gap-2.5 2xl:gap-3 shrink-0"
+                onMouseLeave={() => setHoveredNav(null)}
               >
-                <Link
-                  href="/"
-                  onClick={handleNavHome}
-                  className={getNavPillClasses("home")}
+                {/* 0. Home Pill Button */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => setHoveredNav("home")}
                 >
-                  <span>{t.nav.home}</span>
-                </Link>
-              </div>
+                  <Link
+                    href="/"
+                    onClick={handleNavHome}
+                    className={getNavPillClasses("home")}
+                  >
+                    <span>{t.nav.home}</span>
+                  </Link>
+                </div>
 
-              {/* 1. Services with Dropdown Menu */}
-              <div
-                className="relative"
-                onMouseEnter={() => {
-                  setHoveredNav("services");
-                  handleServicesEnter();
-                }}
-                onMouseLeave={() => {
-                  handleServicesLeave();
-                }}
-              >
-                <Link
-                  href="/services"
-                  onClick={handleNavServices}
-                  className={getNavPillClasses("services", servicesOpen)}
+                {/* 1. Services with Dropdown Menu */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => {
+                    setHoveredNav("services");
+                    handleServicesEnter();
+                  }}
+                  onMouseLeave={() => {
+                    handleServicesLeave();
+                  }}
                 >
-                  <span>{t.nav.services}</span>
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      servicesOpen ? "rotate-180 text-[#C9A24B]" : "text-white/70"
-                    }`}
-                  />
-                </Link>
+                  <Link
+                    href="/services"
+                    onClick={handleNavServices}
+                    className={getNavPillClasses("services", servicesOpen)}
+                  >
+                    <span>{t.nav.services}</span>
+                    <ChevronDown
+                      className={`w-3 h-3 transition-transform duration-200 shrink-0 ${
+                        servicesOpen ? "rotate-180 text-[#C9A24B]" : "text-white/70"
+                      }`}
+                    />
+                  </Link>
 
-                {/* Services Dropdown Panel (Light Theme Transparent Glassified) */}
-                {servicesOpen && (
-                  <div className="absolute top-full left-0 mt-2.5 w-[335px] bg-[#FAF6F0]/92 backdrop-blur-3xl border border-white/90 rounded-2xl shadow-[0_24px_50px_rgba(7,20,38,0.22),0_4px_16px_rgba(201,162,75,0.15),inset_0_1px_1px_rgba(255,255,255,0.9)] p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                    <div className="flex items-center justify-between px-2 pb-2.5 mb-2 border-b border-[#2b2927]/12">
-                      <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24B] shadow-[0_0_8px_#C9A24B]" />
-                        <span className="font-sans-luxury text-[11px] font-black tracking-[0.2em] uppercase text-[#071426]">
-                          Services
-                        </span>
+                  {/* Services Dropdown Panel (Light Theme Transparent Glassified) */}
+                  {servicesOpen && (
+                    <div className="absolute top-full left-0 mt-2.5 w-[335px] bg-[#FAF6F0]/92 backdrop-blur-3xl border border-white/90 rounded-2xl shadow-[0_24px_50px_rgba(7,20,38,0.22),0_4px_16px_rgba(201,162,75,0.15),inset_0_1px_1px_rgba(255,255,255,0.9)] p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                      <div className="flex items-center justify-between px-2 pb-2.5 mb-2 border-b border-[#2b2927]/12">
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24B] shadow-[0_0_8px_#C9A24B]" />
+                          <span className="font-sans-luxury text-[11px] font-black tracking-[0.2em] uppercase text-[#071426]">
+                            Services
+                          </span>
+                        </div>
+                        <Link
+                          href="/services"
+                          onClick={() => setServicesOpen(false)}
+                          className="font-serif-luxury italic text-[12px] text-[#967425] hover:text-[#071426] transition-colors font-bold"
+                        >
+                          All Services →
+                        </Link>
                       </div>
-                      <Link
-                        href="/services"
-                        onClick={() => setServicesOpen(false)}
-                        className="font-serif-luxury italic text-[12px] text-[#967425] hover:text-[#071426] transition-colors font-bold"
-                      >
-                        All Services →
-                      </Link>
-                    </div>
 
-                    <div className="space-y-1.5">
-                      {serviceSubcategories.map((sub) => {
-                        const IconComponent = sub.icon;
-                        return (
-                          <button
-                            key={sub.filter}
-                            type="button"
-                            onClick={() => handleSelectService(sub.filter)}
-                            className="w-full group/item flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white/80 hover:bg-white border border-[#2b2927]/10 hover:border-[#C9A24B] shadow-[0_2px_8px_rgba(43,41,39,0.04)] hover:shadow-[0_6px_20px_rgba(201,162,75,0.2)] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer text-left"
-                          >
-                            <div className="flex items-center gap-3 min-w-0">
-                              <div className="w-8.5 h-8.5 rounded-xl bg-gradient-to-br from-[#071426] to-[#162E52] border border-[#C9A24B]/30 flex items-center justify-center text-[#F3DE9A] group-hover/item:from-[#C9A24B] group-hover/item:to-[#DFBD6A] group-hover/item:text-[#071426] group-hover/item:shadow-[0_0_12px_rgba(201,162,75,0.5)] transition-all duration-200 shrink-0">
-                                <IconComponent className="w-4 h-4" />
+                      <div className="space-y-1.5">
+                        {serviceSubcategories.map((sub) => {
+                          const IconComponent = sub.icon;
+                          return (
+                            <button
+                              key={sub.filter}
+                              type="button"
+                              onClick={() => handleSelectService(sub.filter)}
+                              className="w-full group/item flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white/80 hover:bg-white border border-[#2b2927]/10 hover:border-[#C9A24B] shadow-[0_2px_8px_rgba(43,41,39,0.04)] hover:shadow-[0_6px_20px_rgba(201,162,75,0.2)] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer text-left"
+                            >
+                              <div className="flex items-center gap-3 min-w-0">
+                                <div className="w-8.5 h-8.5 rounded-xl bg-gradient-to-br from-[#071426] to-[#162E52] border border-[#C9A24B]/30 flex items-center justify-center text-[#F3DE9A] group-hover/item:from-[#C9A24B] group-hover/item:to-[#DFBD6A] group-hover/item:text-[#071426] group-hover/item:shadow-[0_0_12px_rgba(201,162,75,0.5)] transition-all duration-200 shrink-0">
+                                  <IconComponent className="w-4 h-4" />
+                                </div>
+                                <span className="font-serif-luxury text-[16px] font-bold text-[#071426] group-hover/item:text-[#967425] transition-colors truncate">
+                                  {sub.title}
+                                </span>
                               </div>
-                              <span className="font-serif-luxury text-[16px] font-bold text-[#071426] group-hover/item:text-[#967425] transition-colors truncate">
-                                {sub.title}
-                              </span>
-                            </div>
-                            <ArrowRight className="w-4 h-4 text-[#967425] group-hover/item:text-[#071426] group-hover/item:translate-x-1 transition-all shrink-0 ml-2" />
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* 2. Packages with Dropdown Menu */}
-              <div
-                className="relative"
-                onMouseEnter={() => {
-                  setHoveredNav("packages");
-                  handlePackagesEnter();
-                }}
-                onMouseLeave={() => {
-                  handlePackagesLeave();
-                }}
-              >
-                <Link
-                  href="/packages"
-                  onClick={handleNavPackages}
-                  className={getNavPillClasses("packages", packagesOpen)}
-                >
-                  <span>{t.nav.packages}</span>
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      packagesOpen ? "rotate-180 text-[#C9A24B]" : "text-white/80"
-                    }`}
-                  />
-                </Link>
-
-                {/* Packages Dropdown Panel (Light Theme Transparent Glassified with Bright Gold Badges) */}
-                {packagesOpen && (
-                  <div className="absolute top-full left-0 mt-2.5 w-[355px] bg-[#FAF6F0]/92 backdrop-blur-3xl border border-white/90 rounded-2xl shadow-[0_24px_50px_rgba(7,20,38,0.22),0_4px_16px_rgba(201,162,75,0.15),inset_0_1px_1px_rgba(255,255,255,0.9)] p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                    <div className="flex items-center justify-between px-2 pb-2.5 mb-2 border-b border-[#2b2927]/12">
-                      <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24B] shadow-[0_0_8px_#C9A24B]" />
-                        <span className="font-sans-luxury text-[11px] font-black tracking-[0.2em] uppercase text-[#071426]">
-                          Event Tiers
-                        </span>
+                              <ArrowRight className="w-4 h-4 text-[#967425] group-hover/item:text-[#071426] group-hover/item:translate-x-1 transition-all shrink-0 ml-2" />
+                            </button>
+                          );
+                        })}
                       </div>
-                      <Link
-                        href="/packages"
-                        onClick={() => setPackagesOpen(false)}
-                        className="font-serif-luxury italic text-[12px] text-[#967425] hover:text-[#071426] transition-colors font-bold cursor-pointer"
-                      >
-                        Pricing Details →
-                      </Link>
                     </div>
+                  )}
+                </div>
 
-                    <div className="space-y-1.5">
-                      {packageTiers.map((pkg) => {
-                        const IconComponent = pkg.icon;
-                        return (
-                          <button
-                            key={pkg.id}
-                            type="button"
-                            onClick={() => handleSelectPackage(pkg.tier)}
-                            className="w-full group/pkg flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white/80 hover:bg-white border border-[#2b2927]/10 hover:border-[#C9A24B] shadow-[0_2px_8px_rgba(43,41,39,0.04)] hover:shadow-[0_6px_20px_rgba(201,162,75,0.2)] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer text-left"
-                          >
-                            <div className="flex items-center gap-3 min-w-0">
-                              <div className="w-8.5 h-8.5 rounded-xl bg-gradient-to-br from-[#071426] to-[#162E52] border border-[#C9A24B]/30 flex items-center justify-center text-[#F3DE9A] group-hover/pkg:from-[#C9A24B] group-hover/pkg:to-[#DFBD6A] group-hover/pkg:text-[#071426] group-hover/pkg:shadow-[0_0_12px_rgba(201,162,75,0.5)] transition-all duration-200 shrink-0">
-                                <IconComponent className="w-4 h-4" />
+                {/* 2. Packages with Dropdown Menu */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => {
+                    setHoveredNav("packages");
+                    handlePackagesEnter();
+                  }}
+                  onMouseLeave={() => {
+                    handlePackagesLeave();
+                  }}
+                >
+                  <Link
+                    href="/packages"
+                    onClick={handleNavPackages}
+                    className={getNavPillClasses("packages", packagesOpen)}
+                  >
+                    <span>{t.nav.packages}</span>
+                    <ChevronDown
+                      className={`w-3 h-3 transition-transform duration-200 shrink-0 ${
+                        packagesOpen ? "rotate-180 text-[#C9A24B]" : "text-white/80"
+                      }`}
+                    />
+                  </Link>
+
+                  {/* Packages Dropdown Panel (Light Theme Transparent Glassified with Bright Gold Badges) */}
+                  {packagesOpen && (
+                    <div className="absolute top-full left-0 mt-2.5 w-[355px] bg-[#FAF6F0]/92 backdrop-blur-3xl border border-white/90 rounded-2xl shadow-[0_24px_50px_rgba(7,20,38,0.22),0_4px_16px_rgba(201,162,75,0.15),inset_0_1px_1px_rgba(255,255,255,0.9)] p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                      <div className="flex items-center justify-between px-2 pb-2.5 mb-2 border-b border-[#2b2927]/12">
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24B] shadow-[0_0_8px_#C9A24B]" />
+                          <span className="font-sans-luxury text-[11px] font-black tracking-[0.2em] uppercase text-[#071426]">
+                            Event Tiers
+                          </span>
+                        </div>
+                        <Link
+                          href="/packages"
+                          onClick={() => setPackagesOpen(false)}
+                          className="font-serif-luxury italic text-[12px] text-[#967425] hover:text-[#071426] transition-colors font-bold cursor-pointer"
+                        >
+                          Pricing Details →
+                        </Link>
+                      </div>
+
+                      <div className="space-y-1.5">
+                        {packageTiers.map((pkg) => {
+                          const IconComponent = pkg.icon;
+                          return (
+                            <button
+                              key={pkg.id}
+                              type="button"
+                              onClick={() => handleSelectPackage(pkg.tier)}
+                              className="w-full group/pkg flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white/80 hover:bg-white border border-[#2b2927]/10 hover:border-[#C9A24B] shadow-[0_2px_8px_rgba(43,41,39,0.04)] hover:shadow-[0_6px_20px_rgba(201,162,75,0.2)] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer text-left"
+                            >
+                              <div className="flex items-center gap-3 min-w-0">
+                                <div className="w-8.5 h-8.5 rounded-xl bg-gradient-to-br from-[#071426] to-[#162E52] border border-[#C9A24B]/30 flex items-center justify-center text-[#F3DE9A] group-hover/pkg:from-[#C9A24B] group-hover/pkg:to-[#DFBD6A] group-hover/pkg:text-[#071426] group-hover/pkg:shadow-[0_0_12px_rgba(201,162,75,0.5)] transition-all duration-200 shrink-0">
+                                  <IconComponent className="w-4 h-4" />
+                                </div>
+                                <span className="font-serif-luxury text-[16px] font-bold text-[#071426] group-hover/pkg:text-[#967425] transition-colors truncate">
+                                  {pkg.title}
+                                </span>
                               </div>
-                              <span className="font-serif-luxury text-[16px] font-bold text-[#071426] group-hover/pkg:text-[#967425] transition-colors truncate">
-                                {pkg.title}
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2 shrink-0 ml-2">
-                              {/* Bright, high-contrast, eye-catching golden badge */}
-                              <span className="px-2.5 py-0.5 rounded-full text-[10.5px] font-sans-luxury font-black uppercase tracking-wider bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] text-[#071426] shadow-[0_2px_8px_rgba(201,162,75,0.35)] border border-[#C9A24B]/40 shrink-0">
-                                {pkg.badge}
-                              </span>
-                              <ArrowRight className="w-4 h-4 text-[#967425] group-hover/pkg:text-[#071426] group-hover/pkg:translate-x-1 transition-all" />
-                            </div>
-                          </button>
-                        );
-                      })}
+                              <div className="flex items-center gap-2 shrink-0 ml-2">
+                                <span className="px-2.5 py-0.5 rounded-full text-[10.5px] font-sans-luxury font-black uppercase tracking-wider bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] text-[#071426] shadow-[0_2px_8px_rgba(201,162,75,0.35)] border border-[#C9A24B]/40 shrink-0">
+                                  {pkg.badge}
+                                </span>
+                                <ArrowRight className="w-4 h-4 text-[#967425] group-hover/pkg:text-[#071426] group-hover/pkg:translate-x-1 transition-all" />
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
+                  )}
+                </div>
 
-              {/* 3. Portfolio */}
-              <div
-                className="relative"
-                onMouseEnter={() => setHoveredNav("portfolio")}
-              >
-                <Link
-                  href="/portfolio"
-                  onClick={handleNavPortfolio}
-                  className={getNavPillClasses("portfolio")}
+                {/* 3. Portfolio */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => setHoveredNav("portfolio")}
                 >
-                  <span>{t.nav.portfolio}</span>
-                </Link>
-              </div>
+                  <Link
+                    href="/portfolio"
+                    onClick={handleNavPortfolio}
+                    className={getNavPillClasses("portfolio")}
+                  >
+                    <span>{t.nav.portfolio}</span>
+                  </Link>
+                </div>
 
-              {/* 4. Process */}
-              <div
-                className="relative"
-                onMouseEnter={() => setHoveredNav("process")}
-              >
-                <Link
-                  href="/process"
-                  onClick={handleNavProcess}
-                  className={getNavPillClasses("process")}
+                {/* 4. Process */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => setHoveredNav("process")}
                 >
-                  <span>{t.nav.process}</span>
-                </Link>
-              </div>
+                  <Link
+                    href="/process"
+                    onClick={handleNavProcess}
+                    className={getNavPillClasses("process")}
+                  >
+                    <span>{t.nav.process}</span>
+                  </Link>
+                </div>
 
-              {/* 5. Contact */}
-              <div
-                className="relative"
-                onMouseEnter={() => setHoveredNav("contact")}
-              >
-                <Link
-                  href="/contact"
-                  onClick={handleNavContact}
-                  className={getNavPillClasses("contact")}
+                {/* 5. Contact */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => setHoveredNav("contact")}
                 >
-                  <span>{t.nav.contact}</span>
-                </Link>
-              </div>
-            </nav>
+                  <Link
+                    href="/contact"
+                    onClick={handleNavContact}
+                    className={getNavPillClasses("contact")}
+                  >
+                    <span>{t.nav.contact}</span>
+                  </Link>
+                </div>
+              </nav>
 
-            {/* Right Controls: Direct Phone Icon, Enlarged Official WhatsApp Logo & Centered Pill CTA */}
-            <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
-              {/* 1. Direct Phone Call Icon without circle border */}
+              {/* Phone Call Icon (Matching h-9 w-9 rounded-full glass circle, centered with exact same gap) */}
               <div className="relative">
                 <a
                   href={`tel:${companyInfo.phoneRaw}`}
                   onMouseEnter={() => setShowPhoneTooltip(true)}
                   onMouseLeave={() => setShowPhoneTooltip(false)}
-                  className="p-1 text-[#F3DE9A] hover:text-[#C9A24B] flex items-center justify-center transition-all duration-300 hover:scale-115 active:scale-95 cursor-pointer"
+                  className="h-9 w-9 rounded-full bg-white/[0.12] hover:bg-white/[0.24] border border-white/20 hover:border-[#C9A24B] text-[#F3DE9A] hover:text-[#C9A24B] flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_2px_8px_rgba(0,0,0,0.2)] hover:shadow-[0_0_15px_rgba(201,162,75,0.5)] cursor-pointer shrink-0"
                   aria-label="Call Zeyo Direct"
                   title={`Call: ${companyInfo.phone}`}
                 >
-                  <PhoneCall className="w-4.5 h-4.5 sm:w-5 sm:h-5 transition-transform duration-300 hover:rotate-12 drop-shadow-[0_2px_8px_rgba(201,162,75,0.4)]" />
+                  <PhoneCall className="w-4 h-4 transition-transform duration-300 hover:rotate-12 drop-shadow-[0_2px_8px_rgba(201,162,75,0.4)]" />
                 </a>
 
                 {/* Floating Tooltip displaying number */}
@@ -569,37 +572,38 @@ export default function Header() {
                 )}
               </div>
 
-              {/* 2. Official WhatsApp Authentic Logo */}
-              <a
-                href={`https://wa.me/8801743543346?text=${encodeURIComponent(
-                  "Hello Zeyo, I would like to inquire about event management & decoration in Rajshahi."
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center hover:scale-110 active:scale-95 transition-transform duration-300 cursor-pointer p-0.5"
-                aria-label="Chat on WhatsApp"
-                title="Chat with Zeyo on WhatsApp"
-              >
-                <svg className="w-6.5 h-6.5 sm:w-7 sm:h-7 drop-shadow-[0_2px_10px_rgba(37,211,102,0.45)]" viewBox="0 0 32 32">
-                  <path fill="#25D366" d="M16 2C8.268 2 2 8.268 2 16c0 2.736.785 5.289 2.144 7.451L2.3 30.15l6.896-1.808C11.233 29.49 13.551 30 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2z"/>
-                  <path fill="#FFFFFF" d="M22.586 19.387c-.36-.18-2.133-1.053-2.464-1.173-.331-.12-.572-.18-.813.18-.24.36-.933 1.173-1.144 1.414-.211.24-.421.27-.781.09-.36-.18-1.523-.561-2.901-1.791-1.073-.957-1.797-2.14-2.008-2.5-.211-.36-.022-.555.158-.734.162-.162.36-.421.54-.631.18-.211.24-.36.36-.601.12-.24.06-.451-.03-.631-.09-.18-.813-1.958-1.114-2.682-.293-.706-.59-.61-.813-.621-.211-.01-.451-.012-.692-.012-.24 0-.631.09-.962.451-.331.36-1.263 1.233-1.263 3.01s1.293 3.493 1.473 3.734c.18.24 2.544 3.886 6.164 5.449.861.372 1.533.594 2.057.761.865.275 1.652.236 2.274.143.694-.104 2.133-.872 2.433-1.714.301-.842.301-1.564.211-1.714-.09-.15-.331-.24-.691-.42z"/>
-                </svg>
-              </a>
-
-              {/* 3. Luxury Plan Your Event Pill Button */}
+              {/* Luxury Plan Your Event Pill Button (Matching h-9 height, consistent typography and exact same gap) */}
               <Link
                 href="/contact"
                 onClick={handleNavContact}
-                className="hidden sm:inline-flex items-center justify-center whitespace-nowrap px-3.5 xl:px-4.5 py-2 h-8.5 sm:h-9 rounded-full border border-[#E0C172] text-[#071426] bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] hover:brightness-110 font-bold text-[11px] tracking-[0.14em] uppercase shadow-[0_4px_16px_rgba(201,162,75,0.4)] hover:shadow-[0_6px_22px_rgba(201,162,75,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 leading-none text-center shrink-0 cursor-pointer"
+                className="inline-flex items-center justify-center whitespace-nowrap px-4 xl:px-5 h-9 rounded-full border border-[#E0C172] text-[#071426] bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] hover:brightness-110 font-bold font-sans-luxury text-[11px] xl:text-[11.5px] 2xl:text-[12px] tracking-[0.12em] uppercase shadow-[0_4px_16px_rgba(201,162,75,0.4)] hover:shadow-[0_6px_22px_rgba(201,162,75,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 leading-none text-center shrink-0 cursor-pointer"
               >
                 <span>{t.nav.planEvent}</span>
               </Link>
+            </div>
 
-              {/* Mobile Menu Hamburger Toggle (Visible on Mobile, Tablet < 1024px) */}
+            {/* Mobile Controls (Visible on mobile & tablet < 1024px) */}
+            <div className="flex lg:hidden items-center gap-2 sm:gap-2.5 shrink-0">
+              <a
+                href={`tel:${companyInfo.phoneRaw}`}
+                className="h-9 w-9 rounded-full bg-white/[0.12] border border-white/20 text-[#F3DE9A] flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
+                aria-label="Call Zeyo Direct"
+              >
+                <PhoneCall className="w-4 h-4" />
+              </a>
+
+              <Link
+                href="/contact"
+                onClick={handleNavContact}
+                className="inline-flex items-center justify-center px-3.5 h-9 rounded-full border border-[#E0C172] text-[#071426] bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] font-bold font-sans-luxury text-[10.5px] tracking-wider uppercase shadow-md"
+              >
+                <span>Plan</span>
+              </Link>
+
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(true)}
-                className="lg:hidden p-1.5 sm:p-2 text-white/90 hover:text-[#C9A24B] transition-colors cursor-pointer shrink-0"
+                className="p-1.5 text-white/90 hover:text-[#C9A24B] transition-colors cursor-pointer shrink-0"
                 aria-label="Open Navigation Menu"
               >
                 <Menu className="w-6 h-6" />

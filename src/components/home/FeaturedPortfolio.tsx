@@ -216,9 +216,9 @@ export default function FeaturedPortfolio() {
             })}
           </div>
 
-          {/* Photo Gallery Grid - 3D Glassmorphic Interactive Cards */}
+          {/* Photo Gallery Grid - Display only 4 signature event images */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {filteredItems.map((item, index) => (
+            {filteredItems.slice(0, 4).map((item, index) => (
               <div
                 key={item.id}
                 onClick={() => setSelectedItemIndex(index)}
@@ -261,12 +261,12 @@ export default function FeaturedPortfolio() {
           </div>
 
           {/* Dedicated Portfolio Archive CTA Button */}
-          <div className="text-center pt-12">
+          <div className="text-center pt-10">
             <Link
               href="/portfolio"
               className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#071426] hover:bg-[#162E52] text-[#F3DE9A] border border-[#C9A24B]/40 hover:border-[#C9A24B] shadow-xl text-xs font-sans-luxury font-bold uppercase tracking-widest transition-all duration-300 hover:scale-105 cursor-pointer"
             >
-              <span>{locale === "bn" ? "সম্পূর্ণ পোর্টফোলিও আর্কাইভ ও কেস স্টাডি দেখুন" : "Explore Full Portfolio Archive & Case Studies"}</span>
+              <span>{locale === "bn" ? "সম্পূর্ণ পোর্টফোলিও আর্কাইভ দেখুন" : "Explore Full Portfolio Archive"}</span>
               <ArrowRight className="w-4 h-4 text-[#C9A24B]" />
             </Link>
           </div>

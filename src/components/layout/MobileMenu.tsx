@@ -19,7 +19,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const { t, setPortfolioFilter, setPackageFilter } = useLanguage();
-  const [servicesExpanded, setServicesExpanded] = useState(true);
+  const [servicesExpanded, setServicesExpanded] = useState(false);
   const [packagesExpanded, setPackagesExpanded] = useState(false);
 
   if (!isOpen) return null;
@@ -96,11 +96,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div>
-                <span className="font-serif-luxury text-2xl tracking-[0.15em] uppercase text-[#2b2927] font-bold">
-                  Zeyo
-                </span>
-                <p className="text-[9px] text-[#C9A24B] tracking-widest uppercase font-sans-luxury font-bold">
+              <div className="flex flex-col justify-center">
+                <img
+                  src="/client-media/zeyo-wordmark-dark.png"
+                  alt="zeyo"
+                  className="h-6 w-auto object-contain"
+                />
+                <p className="text-[9px] text-[#C9A24B] tracking-widest uppercase font-sans-luxury font-bold mt-0.5">
                   {companyInfo.tagline}
                 </p>
               </div>

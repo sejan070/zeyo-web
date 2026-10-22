@@ -15,6 +15,8 @@ export const companyInfo = {
   instagramUrl: "https://instagram.com/zeyo_099",
   facebookUrl: "https://facebook.com/zeyo.com.bd",
   websiteUrl: "https://zeyo.com.bd",
+  googleMapsUrl: "https://maps.app.goo.gl/wFVfnStv5TCn5YTQ9",
+  googleMapsEmbedUrl: "https://maps.google.com/maps?q=24.3708199,88.6030706&hl=en&z=17&output=embed",
   officeHours: "10:00 AM – 8:00 PM (Daily)",
   officeHoursBn: "সকাল ১০:০০ - রাত ৮:০০ (প্রতিদিন)",
   hiringRole: {

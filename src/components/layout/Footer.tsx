@@ -37,11 +37,13 @@ export default function Footer() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div>
-                <span className="font-serif-luxury text-3xl font-bold tracking-[0.2em] uppercase text-[#2b2927] group-hover:text-[#967425] transition-colors">
-                  Zeyo
-                </span>
-                <p className="text-[10px] text-[#C9A24B] tracking-[0.25em] uppercase font-sans-luxury font-bold -mt-1">
+              <div className="flex flex-col justify-center">
+                <img
+                  src="/client-media/zeyo-wordmark-dark.png"
+                  alt="zeyo"
+                  className="h-7 sm:h-8 w-auto object-contain"
+                />
+                <p className="text-[10px] text-[#C9A24B] tracking-[0.25em] uppercase font-sans-luxury font-bold mt-1">
                   {locale === "bn" ? companyInfo.taglineBn : companyInfo.tagline}
                 </p>
               </div>
@@ -101,7 +103,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/careers" className="hover:text-[#C9A24B] transition-colors flex items-center gap-1.5 font-black text-[#1b4332]">
+                <Link href="/careers" className="hover:text-[#C9A24B] transition-colors flex items-center gap-1.5 font-black text-[#071426]">
                   <span>{t.nav.careers}</span>
                   <span className="px-1.5 py-0.2 rounded-full text-[9px] bg-[#C9A24B] text-[#071426] font-bold">HIRING</span>
                 </Link>

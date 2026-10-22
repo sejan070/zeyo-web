@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -30,7 +30,7 @@ html {
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   background-color: var(--sarah-bg);
   color: var(--sarah-charcoal);
 }
@@ -45,7 +45,8 @@ body {
 }
 
 .font-bengali {
-  font-family: 'Hind Siliguri', 'Manrope', sans-serif;
+  font-family: 'Anek Bangla', 'Hind Siliguri', sans-serif;
+  font-weight: 700;
 }
 
 /* Glassmorphism & Luxury Sheens */

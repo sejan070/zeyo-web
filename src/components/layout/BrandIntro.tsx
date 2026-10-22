@@ -10,11 +10,14 @@ export default function BrandIntro() {
   const { locale } = useLanguage();
   const isHomePage = pathname === "/";
 
-  // Check if intro was already shown in this tab session
+  // Check if intro was already shown in this tab session (or forced via ?intro=1)
   const [isVisible, setIsVisible] = useState<boolean>(() => {
     if (!isHomePage) return false;
     if (typeof window !== "undefined") {
       try {
+        if (window.location.search.includes("intro=1")) {
+          return true;
+        }
         if (sessionStorage.getItem("zeyo_intro_seen") === "true") {
           return false;
         }
@@ -32,12 +35,14 @@ export default function BrandIntro() {
     }
 
     try {
-      if (sessionStorage.getItem("zeyo_intro_seen") === "true") {
+      const forceIntro = typeof window !== "undefined" && window.location.search.includes("intro=1");
+      if (!forceIntro && sessionStorage.getItem("zeyo_intro_seen") === "true") {
         setIsVisible(false);
         return;
       }
-      // Mark as seen immediately so any reload never gets stuck
-      sessionStorage.setItem("zeyo_intro_seen", "true");
+      if (!forceIntro) {
+        sessionStorage.setItem("zeyo_intro_seen", "true");
+      }
     } catch {}
 
     const timer1 = setTimeout(() => {
@@ -45,11 +50,11 @@ export default function BrandIntro() {
       if (typeof window !== "undefined") {
         window.dispatchEvent(new CustomEvent("zeyo-brand-intro-complete"));
       }
-    }, 700);
+    }, 1500);
 
     const timer2 = setTimeout(() => {
       setIsVisible(false);
-    }, 1100);
+    }, 2100);
 
     return () => {
       clearTimeout(timer1);
@@ -76,9 +81,9 @@ export default function BrandIntro() {
     <div
       onClick={handleDismiss}
       style={{
-        animation: "brandIntroAutoDismiss 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards"
+        animation: "brandIntroAutoDismiss 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards"
       }}
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-gradient-to-b from-[#071426] via-[#050E1B] to-[#030811] transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform transform-gpu ${
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#081329] transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform transform-gpu ${
         isSlidingUp
           ? "-translate-y-full opacity-90 pointer-events-none"
           : "translate-y-0 opacity-100 cursor-pointer"
@@ -91,57 +96,33 @@ export default function BrandIntro() {
         }
       `}} />
 
-      {/* Luxury ambient warm gold and royal navy glow behind logo */}
-      <div className="absolute w-[520px] h-[520px] bg-[#C9A24B]/20 rounded-full blur-[130px] pointer-events-none animate-pulse" />
-      <div className="absolute w-[360px] h-[360px] bg-[#0E284D]/50 rounded-full blur-[90px] pointer-events-none" />
-
-      {/* Subtle luxury gold radial background motif */}
-      <div className="absolute inset-0 bg-[radial-gradient(#C9A24B_1px,transparent_1px)] [background-size:40px_40px] opacity-[0.06] pointer-events-none" />
-
-      {/* Centerpiece Monogram & Brand reveal */}
+      {/* Centerpiece Emblem & Brand Wordmark */}
       <div className="relative z-10 flex flex-col items-center text-center px-6">
-        {/* Enlarged Emblem with Gold Shimmer Sweep & Pulsing Glow */}
-        <div className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full border-2 border-[#C9A24B] flex items-center justify-center bg-[#071426] shadow-[0_0_35px_rgba(201,162,75,0.4)] mb-6 transition-transform duration-500 hover:scale-105">
-          {/* Inner Emblem Image */}
-          <div className="relative w-full h-full rounded-full overflow-hidden">
-            <img
-              src="/client-media/zeyo-logo-emblem.jpg"
-              alt="Zeyo Logo"
-              className="w-full h-full object-cover"
-            />
-
-            {/* Continuous Luxury Gold Shimmer Sweep across the "Z" Monogram */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-full">
-              <div className="w-[200%] h-full bg-gradient-to-r from-transparent via-white/50 to-transparent animate-shimmer-sweep" />
-            </div>
-          </div>
-
-          {/* Rotating outer ring accent */}
-          <div className="absolute inset-[-6px] rounded-full border-t-2 border-r border-[#C9A24B] animate-spin [animation-duration:3.5s] pointer-events-none" />
-          <div className="absolute inset-[-12px] rounded-full border-b border-[#C9A24B]/40 animate-spin [animation-duration:6s] [animation-direction:reverse] pointer-events-none" />
+        {/* Clean Logo Emblem without glowing halos or spinning rings */}
+        <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full border border-[#C9A24B]/35 flex items-center justify-center bg-[#081329] mb-5 overflow-hidden shadow-lg">
+          <img
+            src="/client-media/zeyo-logo-emblem.jpg"
+            alt="Zeyo Logo Emblem"
+            className="w-full h-full object-cover"
+          />
         </div>
 
-        {/* Brand Wordmark - Gold & White metallic luxury gradient */}
-        <h1 className="font-serif-luxury text-4xl sm:text-5xl md:text-6xl font-bold tracking-[0.3em] uppercase bg-gradient-to-r from-white via-[#F5E6BE] to-[#C9A24B] bg-clip-text text-transparent mb-2 drop-shadow-[0_2px_14px_rgba(201,162,75,0.35)]">
-          Zeyo
-        </h1>
+        {/* Official Brand Wordmark - exact lowercase 'zeyo' with brushed silver metal finish */}
+        <div className="my-1 flex items-center justify-center">
+          <img
+            src="/client-media/zeyo-wordmark-clean.png"
+            alt="zeyo"
+            className="w-40 sm:w-48 md:w-56 h-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+          />
+        </div>
 
         {/* Tagline */}
-        <p className="text-[11px] sm:text-xs tracking-[0.38em] uppercase text-[#E0C172] font-sans-luxury font-bold drop-shadow-sm">
+        <p className="text-[10.5px] sm:text-xs tracking-[0.34em] uppercase text-[#E0C172] font-sans-luxury font-bold drop-shadow-sm mt-3">
           {locale === "bn" ? companyInfo.taglineBn : companyInfo.tagline}
         </p>
 
-        {/* Expanding Gold Accent Line */}
-        <div className="w-28 sm:w-36 h-[1.5px] bg-gradient-to-r from-transparent via-[#C9A24B] to-transparent mt-6 animate-pulse" />
-
-        {/* Quick Click Anywhere / Skip text */}
-        <button
-          type="button"
-          onClick={handleDismiss}
-          className="mt-8 text-[11px] uppercase tracking-[0.25em] text-[#C9A24B] hover:text-white transition-colors cursor-pointer py-1 px-4 rounded-full border border-[#C9A24B]/30 hover:border-[#C9A24B]"
-        >
-          Enter Website →
-        </button>
+        {/* Clean subtle accent line */}
+        <div className="w-20 sm:w-28 h-[1px] bg-gradient-to-r from-transparent via-[#C9A24B]/50 to-transparent mt-4" />
       </div>
     </div>
   );

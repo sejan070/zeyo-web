@@ -71,59 +71,12 @@ const portfolioVideos: PortfolioVideo[] = [
   }
 ];
 
-// Curated Project Spotlights (Case Studies)
-const projectSpotlights = [
-  {
-    id: "spotlight-1",
-    titleEn: "The Royal Ivory & Gold Wedding Reception",
-    titleBn: "রাজকীয় আইভরি ও গোল্ড ওয়েডিং রিসেপশন",
-    categoryEn: "Grand Wedding",
-    categoryBn: "গ্র্যান্ড ওয়েডিং",
-    venueEn: "Rajshahi Club Main Lawn",
-    venueBn: "রাজশাহী ক্লাব মেইন লন",
-    clientEn: "Dr. Farhana & Engr. Tanvir",
-    clientBn: "ডাঃ ফারহানা ও ইঞ্জিঃ তানভীর",
-    guestCount: "650+ Guests",
-    palette: ["#FFFFFF", "#C9A24B", "#071426"],
-    descEn:
-      "A 50-foot custom curved stage framed by imported Ecuadorian white roses, cascading crystal chandeliers, and warm amber uplighting.",
-    descBn:
-      "আমদানিকৃত সাদা গোলাপ, রাজকীয় খোদাই করা আর্মচেয়ার, ক্রিস্টাল শ্যান্ডেলিয়ার ও অ্যাম্বিয়েন্ট ওয়ার্ম আলোর সমন্বয়ে ৫০ ফুটের গ্র্যান্ড স্টেজ।",
-    mainImage: "/client-media/user-refs/holud-traditional-stage.jpg",
-    gridImages: [
-      "/client-media/user-refs/haldi-umbrella-canopy.jpg",
-      "/client-media/user-refs/birthday-neon-gold.jpg"
-    ]
-  },
-  {
-    id: "spotlight-2",
-    titleEn: "Lush Haldi Umbrella Canopy & Floral Diwan",
-    titleBn: "ঐতিহ্যবাহী হলুদ আমব্রেলা ক্যানোপি ও ফ্লোরাল দেওয়ান",
-    categoryEn: "Gaye Holud",
-    categoryBn: "গায়ে হলুদ",
-    venueEn: "Hotel Nice International, Rajshahi",
-    venueBn: "হোটেল নাইস ইন্টারন্যাশনাল, রাজশাহী",
-    clientEn: "Samira & Rakibul",
-    clientBn: "সামিরা ও রাকিবুল",
-    guestCount: "350 Guests",
-    palette: ["#FFD700", "#FF8C00", "#2E8B57"],
-    descEn:
-      "Handcrafted marigold garlands, traditional embroidered umbrella canopies, and authentic brass urn centerpieces.",
-    descBn:
-      "হাতে গাঁথা গাঁদা ফুলের মালা, সূচিকর্মের আমব্রেলা ক্যানোপি ও পিতলের ট্র্যাডিশনাল প্রদীপের আলোয় তৈরি রূপকথার হলুদ সন্ধ্যা।",
-    mainImage: "/client-media/user-refs/haldi-umbrella-canopy.jpg",
-    gridImages: [
-      "/client-media/user-refs/holud-traditional-stage.jpg",
-      "/client-media/banner.jpg"
-    ]
-  }
-];
-
 export default function PortfolioPage() {
   const { locale, t } = useLanguage();
   const isBn = locale === "bn";
 
   const [activeFilter, setActiveFilter] = useState<string>("all");
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<PortfolioVideo | null>(null);
 
@@ -131,6 +84,15 @@ export default function PortfolioPage() {
     if (activeFilter === "all") return true;
     return item.category === activeFilter;
   });
+
+  const handleFilterChange = (filterId: string) => {
+    setActiveFilter(filterId);
+    setIsExpanded(false);
+  };
+
+  const INITIAL_COUNT = 8;
+  const displayedItems = isExpanded ? filteredItems : filteredItems.slice(0, INITIAL_COUNT);
+  const hasMore = filteredItems.length > INITIAL_COUNT;
 
   const handlePrev = () => {
     if (selectedItemIndex === null) return;
@@ -242,16 +204,21 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        {/* 2. Photo Gallery Archive with Category Filters */}
-        <section className="py-16 sm:py-24 bg-white/60 border-t border-[#2b2927]/10">
+        {/* 2. Unified Master Gallery: Our Events Galleries */}
+        <section id="gallery" className="py-16 sm:py-24 bg-white/70 border-t border-[#2b2927]/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-10">
-              <span className="text-[10px] font-sans-luxury font-bold uppercase tracking-[0.2em] text-[#C9A24B] block mb-1">
+              <span className="text-[10.5px] font-sans-luxury font-bold uppercase tracking-[0.25em] text-[#C9A24B] block mb-2">
                 {isBn ? "সিগনেচার ফটো আর্কাইভ" : "SIGNATURE PHOTOGRAPHY"}
               </span>
-              <h2 className="font-serif-luxury text-3xl sm:text-5xl text-[#2b2927] font-bold">
-                {isBn ? "ইভেন্ট ফটো কালেকশন" : "Signature Event Moments"}
+              <h2 className="font-serif-luxury text-3xl sm:text-5xl md:text-6xl text-[#2b2927] font-bold tracking-tight mb-3">
+                Our Events Galleries
               </h2>
+              <p className="text-xs sm:text-sm text-[#595550] font-sans-luxury font-bold max-w-xl mx-auto">
+                {isBn
+                  ? "রাজশাহীতে আমাদের বাস্তবায়িত ইভেন্ট, ওয়েডিং, মেহেন্দি, বার্থডে ও স্টেজ প্রোডাকশনের সম্পূর্ণ ফটো কালেকশন।"
+                  : "Signature Event Moments across Rajshahi & North Bengal — verified real venue photographs."}
+              </p>
             </div>
 
             {/* Filter Chips */}
@@ -260,6 +227,7 @@ export default function PortfolioPage() {
                 { id: "all", label: isBn ? "সকল ফটো" : "All Photos" },
                 { id: "wedding", label: isBn ? "ওয়েডিং ও হলুদ" : "Weddings & Holud" },
                 { id: "birthday", label: isBn ? "বার্থডে ডেকোর" : "Birthdays" },
+                { id: "corporate", label: isBn ? "কর্পোরেট গালা" : "Corporate & Gala" },
                 { id: "stage", label: isBn ? "স্টেজ আর্কিটেকচার" : "Stage Craft" },
                 { id: "murals", label: isBn ? "ওয়াল মিউরাল" : "Murals & Themes" }
               ].map((tab) => {
@@ -268,11 +236,11 @@ export default function PortfolioPage() {
                   <button
                     key={tab.id}
                     type="button"
-                    onClick={() => setActiveFilter(tab.id)}
+                    onClick={() => handleFilterChange(tab.id)}
                     className={`px-5 sm:px-6 py-2.5 rounded-full text-xs uppercase tracking-[0.16em] transition-all duration-300 font-sans-luxury cursor-pointer select-none font-bold ${
                       isActive
-                        ? "bg-[#2b2927] text-white border border-[#2b2927] shadow-[0_8px_22px_rgba(43,41,39,0.35)] scale-105"
-                        : "bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] hover:bg-none hover:bg-[#2b2927] text-[#071426] hover:text-white border border-[#E0C172] hover:border-[#2b2927] shadow-[0_4px_15px_rgba(201,162,75,0.35)] hover:shadow-[0_8px_22px_rgba(43,41,39,0.3)] hover:scale-105"
+                        ? "bg-[#071426] text-[#F3DE9A] border border-[#C9A24B]/50 shadow-[0_8px_22px_rgba(7,20,38,0.35)] scale-105"
+                        : "bg-white hover:bg-[#071426] text-[#2b2927] hover:text-[#F3DE9A] border border-[#2b2927]/15 hover:border-[#C9A24B]/40 shadow-sm hover:scale-105"
                     }`}
                   >
                     {tab.label}
@@ -281,108 +249,80 @@ export default function PortfolioPage() {
               })}
             </div>
 
-            {/* Photo Gallery Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {filteredItems.map((item, index) => (
-                <div
-                  key={item.id}
-                  onClick={() => setSelectedItemIndex(index)}
-                  className="group relative cursor-pointer overflow-hidden rounded-[20px] bg-white/80 border border-white/90 shadow-[0_10px_30px_rgba(43,41,39,0.08)] hover:shadow-[0_25px_50px_rgba(43,41,39,0.2)] hover:-translate-y-2 hover:scale-[1.02] transition-all duration-500 aspect-[4/5]"
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                    loading="lazy"
-                  />
+            {/* 3D Interactive Photo Gallery Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 [perspective:1200px]">
+              {displayedItems.map((item, index) => {
+                // Find index in filteredItems for correct lightbox navigation
+                const actualIndex = filteredItems.findIndex((it) => it.id === item.id);
+                return (
+                  <div
+                    key={item.id}
+                    onClick={() => setSelectedItemIndex(actualIndex)}
+                    className="group relative cursor-pointer overflow-hidden rounded-[22px] bg-[#071426] border border-[#C9A24B]/30 shadow-[0_10px_30px_rgba(43,41,39,0.12)] hover:shadow-[0_25px_50px_rgba(7,20,38,0.35)] hover:border-[#C9A24B] hover:-translate-y-2.5 transition-all duration-500 ease-out aspect-[4/5] will-change-transform transform-gpu hover:[transform:rotateX(4deg)_rotateY(-3deg)_translateY(-10px)]"
+                    style={{
+                      transformStyle: "preserve-3d"
+                    }}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                      loading="lazy"
+                    />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5" />
+                    {/* Ambient Luxury Dark Vignette Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10 opacity-70 group-hover:opacity-90 transition-opacity duration-300 pointer-events-none" />
 
-                  <div className="absolute top-3.5 left-3.5 z-10">
-                    <span className="text-[10px] uppercase tracking-widest font-sans-luxury font-bold bg-white/90 text-[#2b2927] px-3 py-1 rounded-full border border-white/60 shadow-md">
-                      {isBn ? item.categoryLabelBn : item.categoryLabel}
-                    </span>
-                  </div>
-
-                  <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
-                    <h3 className="font-serif-luxury text-xl text-white font-bold leading-snug drop-shadow-md">
-                      {isBn ? item.titleBn : item.title}
-                    </h3>
-                    <div className="flex items-center gap-1.5 text-xs text-[#F3DE9A] mt-1.5 font-sans-luxury font-bold drop-shadow">
-                      <MapPin className="w-3.5 h-3.5 text-[#C9A24B]" />
-                      <span>{isBn ? item.venueBn : item.venue}</span>
+                    {/* Category Badge on Top-Left */}
+                    <div className="absolute top-3.5 left-3.5 z-10">
+                      <span className="text-[10px] uppercase tracking-widest font-sans-luxury font-bold bg-[#071426]/90 text-[#F3DE9A] px-3 py-1 rounded-full border border-[#C9A24B]/40 shadow-md">
+                        {isBn ? item.categoryLabelBn : item.categoryLabel}
+                      </span>
                     </div>
 
-                    <div className="mt-3.5 inline-flex items-center gap-1.5 text-[11px] text-[#C9A24B] font-bold uppercase tracking-wider bg-black/40 px-3 py-1 rounded-full border border-[#C9A24B]/40">
-                      <Eye className="w-3.5 h-3.5" />
-                      <span>View Fullscreen</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 3. Featured Project Spotlights (Case Studies) */}
-        <section className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-[#2b2927]/10">
-          <div className="max-w-3xl mb-14">
-            <span className="text-[10px] font-sans-luxury font-bold uppercase tracking-[0.2em] text-[#C9A24B] block mb-1">
-              {isBn ? "প্রজেক্ট স্পটলাইট" : "CASE STUDIES & SPOTLIGHTS"}
-            </span>
-            <h2 className="font-serif-luxury text-3xl sm:text-5xl text-[#2b2927] font-bold">
-              {isBn ? "সম্পন্ন কাজের পেছনের গল্প" : "Stories of Flawless Execution"}
-            </h2>
-          </div>
-
-          <div className="space-y-16">
-            {projectSpotlights.map((proj, pIdx) => (
-              <div
-                key={proj.id}
-                className="bg-white rounded-[24px] border border-[#2b2927]/10 p-6 sm:p-10 shadow-[0_12px_40px_rgba(43,41,39,0.06)]"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                  <div className="lg:col-span-6">
-                    <span className="text-xs uppercase tracking-widest font-sans-luxury font-bold text-[#C9A24B] block mb-2">
-                      {isBn ? proj.categoryBn : proj.categoryEn} • {proj.guestCount}
-                    </span>
-                    <h3 className="font-serif-luxury text-2xl sm:text-4xl text-[#2b2927] font-bold mb-3">
-                      {isBn ? proj.titleBn : proj.titleEn}
-                    </h3>
-                    <div className="flex items-center gap-2 text-xs text-[#595550] font-sans-luxury font-medium mb-4">
-                      <MapPin className="w-4 h-4 text-[#C9A24B]" />
-                      <span>{isBn ? proj.venueBn : proj.venueEn}</span>
-                      <span>•</span>
-                      <span>{isBn ? proj.clientBn : proj.clientEn}</span>
-                    </div>
-                    <p className="text-sm sm:text-base text-[#3e3b38] font-sans-luxury font-medium leading-relaxed mb-6">
-                      {isBn ? proj.descBn : proj.descEn}
-                    </p>
-
-                    <div className="pt-4 border-t border-[#2b2927]/10 flex items-center gap-4">
-                      <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-2 text-xs uppercase font-sans-luxury font-bold text-[#071426] hover:text-[#C9A24B] tracking-wider transition-colors"
-                      >
-                        <span>{isBn ? "অনুরূপ আয়োজনের আলোচনা করুন" : "Discuss a Similar Setup"}</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="lg:col-span-6 grid grid-cols-2 gap-3 sm:gap-4">
-                    <div className="col-span-2 rounded-xl overflow-hidden aspect-[16/10]">
-                      <img src={proj.mainImage} alt={proj.titleEn} className="w-full h-full object-cover" />
-                    </div>
-                    {proj.gridImages.map((img, i) => (
-                      <div key={i} className="rounded-xl overflow-hidden aspect-square">
-                        <img src={img} alt="Detail" className="w-full h-full object-cover" />
+                    {/* 3D Depth Card Caption Details */}
+                    <div className="absolute bottom-0 left-0 right-0 p-5 z-10 transition-transform duration-300 transform group-hover:-translate-y-1">
+                      <h3 className="font-serif-luxury text-xl sm:text-2xl text-white font-bold leading-snug drop-shadow-md mb-1.5">
+                        {isBn ? item.titleBn : item.title}
+                      </h3>
+                      <div className="flex items-center gap-1.5 text-xs text-[#F3DE9A] font-sans-luxury font-bold drop-shadow">
+                        <MapPin className="w-3.5 h-3.5 text-[#C9A24B] shrink-0" />
+                        <span className="truncate">{isBn ? item.venueBn : item.venue}</span>
                       </div>
-                    ))}
+
+                      <div className="mt-3.5 inline-flex items-center gap-2 text-[11px] text-[#071426] font-bold uppercase tracking-wider bg-gradient-to-r from-[#F3DE9A] to-[#C9A24B] px-3.5 py-1.5 rounded-full shadow-md group-hover:scale-105 transition-transform duration-300">
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>View Fullscreen</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                );
+              })}
+            </div>
+
+            {/* Expand / Load More Button */}
+            {hasMore && (
+              <div className="mt-14 text-center">
+                <button
+                  type="button"
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#071426] hover:bg-[#162E52] text-[#F3DE9A] border border-[#C9A24B]/50 hover:border-[#C9A24B] shadow-xl text-xs font-sans-luxury font-bold uppercase tracking-widest transition-all duration-300 hover:scale-105 cursor-pointer"
+                >
+                  <span>
+                    {isExpanded
+                      ? (isBn ? "কম ছবি দেখুন (Show Less)" : "Show Less")
+                      : (isBn
+                          ? `সম্পূর্ণ গ্যালারি দেখুন (+${filteredItems.length - INITIAL_COUNT}টি ছবি)`
+                          : `Explore Full Gallery (+${filteredItems.length - INITIAL_COUNT} More Photos)`)}
+                  </span>
+                  <ArrowRight
+                    className={`w-4 h-4 text-[#C9A24B] transition-transform duration-300 ${
+                      isExpanded ? "-rotate-90" : "rotate-90"
+                    }`}
+                  />
+                </button>
               </div>
-            ))}
+            )}
           </div>
         </section>
 

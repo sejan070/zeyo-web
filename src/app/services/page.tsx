@@ -32,11 +32,69 @@ function ServicesContent() {
 
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
+  const handleScrollToService = (categoryId: string) => {
+    setActiveCategory(categoryId);
+
+    const targetId = categoryId === "all" ? "services-grid" : `service-${categoryId}`;
+    const el = document.getElementById(targetId);
+    if (el) {
+      const headerOffset = 145;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: "smooth"
+      });
+    }
+  };
+
   useEffect(() => {
-    if (categoryParam && ["all", "wedding", "birthday", "stage", "murals"].includes(categoryParam)) {
-      setActiveCategory(categoryParam);
+    if (categoryParam && ["all", "wedding", "birthday", "stage", "corporate", "murals"].includes(categoryParam)) {
+      const mappedId = categoryParam === "murals" ? "corporate" : categoryParam;
+      setActiveCategory(mappedId);
+      setTimeout(() => {
+        const targetId = mappedId === "all" ? "services-grid" : `service-${mappedId}`;
+        const el = document.getElementById(targetId);
+        if (el) {
+          const headerOffset = 145;
+          const elementPosition = el.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: Math.max(0, offsetPosition),
+            behavior: "smooth"
+          });
+        }
+      }, 150);
     }
   }, [categoryParam]);
+
+  // Scroll-spy to automatically highlight the current service tab in view
+  useEffect(() => {
+    const serviceIds = ["wedding", "birthday", "stage", "corporate"];
+    const handleScroll = () => {
+      const scrollPosition = window.pageYOffset + 220;
+      let matched = false;
+      for (const id of serviceIds) {
+        const el = document.getElementById(`service-${id}`);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveCategory(id);
+            matched = true;
+            break;
+          }
+        }
+      }
+      if (!matched && window.pageYOffset < 300) {
+        setActiveCategory("all");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const services = [
     {
@@ -129,7 +187,7 @@ function ServicesContent() {
       titleBn: "কর্পোরেট ইভেন্ট, কনফারেন্স ও হ্যান্ডপেইন্টেড ওয়াল মিউরাল",
       subtitleEn: "Executive stages, corporate branding backdrops, award nights, and signature mural art.",
       subtitleBn: "এক্সিকিউটিভ স্টেজ, কর্পোরেট ব্র্যান্ডিং ব্যাকড্রপ, অ্যাওয়ার্ড নাইট ও অনন্য ওয়াল পেইন্টিং।",
-      image: "/client-media/banner.jpg",
+      image: "/client-media/corporate-gala.jpg",
       deliverablesEn: [
         "Executive Podium, VIP Backdrop & Press Conference Media Walls",
         "Bespoke Hand-Painted Event Murals & Canvas Backdrops",
@@ -161,16 +219,16 @@ function ServicesContent() {
 
       {/* Main Content */}
       <main className="pt-24 sm:pt-28">
-        {/* Editorial Hero Banner */}
-        <section className="relative py-16 sm:py-24 bg-[#071426] text-white overflow-hidden border-b border-[#C9A24B]/30">
+        {/* Editorial Hero Banner (Shortened and ends after subtitle) */}
+        <section className="relative py-12 sm:py-16 bg-[#071426] text-white overflow-hidden border-b border-[#C9A24B]/30">
           <div className="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#C9A24B_1px,transparent_1px)] [background-size:24px_24px]" />
 
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-sans-luxury font-bold tracking-[0.25em] uppercase bg-[#C9A24B]/20 text-[#F3DE9A] border border-[#C9A24B]/40 shadow-md mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-sans-luxury font-bold tracking-[0.25em] uppercase bg-[#C9A24B]/20 text-[#F3DE9A] border border-[#C9A24B]/40 shadow-md mb-3">
               {isBn ? "আমাদের সেবাসমূহ • জেয়ো অ্যাটেলিয়ার" : "EXPERTISE & SERVICES • ZEYO"}
             </span>
 
-            <h1 className="font-serif-luxury text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-4 leading-tight">
+            <h1 className="font-serif-luxury text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-3.5 leading-tight">
               {isBn ? (
                 <>
                   স্বপ্নকে বাস্তব রূপ দেওয়ার <span className="gold-gradient-text italic font-bold">নিখুঁত কারিগরি</span>
@@ -187,43 +245,46 @@ function ServicesContent() {
                 ? "ওয়েডিং স্টেজ থেকে শুরু করে মাইলস্টোন বার্থডে ও কর্পোরেট প্রযোজনা—রাজশাহীতে যেকোনো উৎসবকে অনন্য আভিজাত্য দিতে জেয়ো প্রস্তুত।"
                 : "From royal wedding stages to milestone birthdays and executive corporate galas, we deliver architectural elegance across Rajshahi."}
             </p>
-
-            {/* Filter Chips */}
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-10">
-              {[
-                { id: "all", label: isBn ? "সকল সেবা" : "All Services" },
-                { id: "wedding", label: isBn ? "ওয়েডিং ও হলুদ" : "Weddings & Holud" },
-                { id: "birthday", label: isBn ? "বার্থডে ও থিম" : "Birthdays & Themes" },
-                { id: "stage", label: isBn ? "স্টেজ ও লাইটিং" : "Stage & Lighting" },
-                { id: "corporate", label: isBn ? "কর্পোরেট ও মিউরাল" : "Corporate & Murals" }
-              ].map((tab) => {
-                const isActive = activeCategory === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    onClick={() => setActiveCategory(tab.id)}
-                    className={`px-5 py-2 rounded-full text-xs uppercase tracking-wider font-sans-luxury font-bold transition-all duration-300 cursor-pointer ${
-                      isActive
-                        ? "bg-[#C9A24B] text-[#071426] shadow-[0_4px_16px_rgba(201,162,75,0.4)] scale-105"
-                        : "bg-white/10 hover:bg-white/20 text-white/80 border border-white/15 hover:text-white"
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                );
-              })}
-            </div>
           </div>
         </section>
 
+        {/* Category Filter Navigator Bar (Outside dark hero on light canvas, sticky & auto-scrolling) */}
+        <div className="sticky top-20 sm:top-24 z-30 bg-[#e9e7e2]/95 backdrop-blur-md py-4 sm:py-5 border-b border-[#2b2927]/10 shadow-xs">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            {[
+              { id: "all", label: isBn ? "সকল সেবা" : "All Services" },
+              { id: "wedding", label: isBn ? "ওয়েডিং ও হলুদ" : "Weddings & Holud" },
+              { id: "birthday", label: isBn ? "বার্থডে ও থিম" : "Birthdays & Themes" },
+              { id: "stage", label: isBn ? "স্টেজ ও লাইটিং" : "Stage & Lighting" },
+              { id: "corporate", label: isBn ? "কর্পোরেট ও মিউরাল" : "Corporate & Murals" }
+            ].map((tab) => {
+              const isActive = activeCategory === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => handleScrollToService(tab.id)}
+                  className={`px-5 sm:px-6 py-2.5 rounded-full text-xs uppercase tracking-wider font-sans-luxury font-bold transition-all duration-300 cursor-pointer shadow-xs ${
+                    isActive
+                      ? "bg-[#071426] text-[#F3DE9A] border border-[#C9A24B] shadow-[0_6px_20px_rgba(7,20,38,0.25)] scale-105"
+                      : "bg-white hover:bg-[#071426] text-[#2b2927] hover:text-[#F3DE9A] border border-[#2b2927]/15 hover:border-[#C9A24B] hover:scale-105"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Detailed Services Breakdown Cards */}
-        <section className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="services-grid" className="py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-36">
           <div className="space-y-16 sm:space-y-24">
-            {filteredServices.map((srv, idx) => (
+            {services.map((srv, idx) => (
               <div
                 key={srv.id}
-                className="bg-white/90 rounded-[24px] border border-[#2b2927]/10 shadow-[0_12px_40px_rgba(43,41,39,0.06)] overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(43,41,39,0.12)]"
+                id={`service-${srv.id}`}
+                className="scroll-mt-36 sm:scroll-mt-40 bg-white/90 rounded-[24px] border border-[#2b2927]/10 shadow-[0_12px_40px_rgba(43,41,39,0.06)] overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(43,41,39,0.12)]"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
                   {/* Visual Image Side */}
@@ -252,26 +313,28 @@ function ServicesContent() {
 
                   {/* Information Details Side */}
                   <div className={`lg:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-between ${idx % 2 === 1 ? "lg:order-1" : ""}`}>
-                    <div>
-                      <h2 className="font-serif-luxury text-2xl sm:text-4xl text-[#2b2927] font-bold mb-3 leading-snug">
-                        {isBn ? srv.titleBn : srv.titleEn}
-                      </h2>
+                    <div className="space-y-6">
+                      <div>
+                        <h2 className="font-serif-luxury text-2xl sm:text-3xl lg:text-[34px] text-[#2b2927] font-bold mb-3.5 leading-snug">
+                          {isBn ? srv.titleBn : srv.titleEn}
+                        </h2>
 
-                      <p className="text-sm sm:text-base text-[#595550] font-sans-luxury font-medium leading-relaxed mb-6">
-                        {isBn ? srv.subtitleBn : srv.subtitleEn}
-                      </p>
+                        <p className="text-sm sm:text-base lg:text-[16.5px] text-[#595550] font-sans-luxury font-medium leading-relaxed">
+                          {isBn ? srv.subtitleBn : srv.subtitleEn}
+                        </p>
+                      </div>
 
                       {/* What We Deliver List */}
-                      <div className="mb-6">
-                        <h4 className="text-xs uppercase tracking-widest text-[#2b2927] font-sans-luxury font-bold mb-3 flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-[#C9A24B]" />
+                      <div>
+                        <h4 className="text-xs sm:text-[13px] uppercase tracking-widest text-[#2b2927] font-sans-luxury font-bold mb-3.5 flex items-center gap-2">
+                          <CheckCircle2 className="w-4.5 h-4.5 text-[#C9A24B]" />
                           <span>{isBn ? "যা যা অন্তর্ভুক্ত থাকে:" : "WHAT WE DELIVER:"}</span>
                         </h4>
 
-                        <ul className="space-y-2">
+                        <ul className="space-y-3">
                           {(isBn ? srv.deliverablesBn : srv.deliverablesEn).map((item, dIdx) => (
-                            <li key={dIdx} className="text-xs sm:text-sm text-[#3e3b38] font-sans-luxury font-medium flex items-start gap-2.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24B] mt-1.5 shrink-0" />
+                            <li key={dIdx} className="text-xs sm:text-sm lg:text-[14.5px] text-[#2b2927] font-sans-luxury font-medium flex items-start gap-3 leading-relaxed">
+                              <span className="w-2 h-2 rounded-full bg-[#C9A24B] mt-1.5 shrink-0" />
                               <span>{item}</span>
                             </li>
                           ))}
@@ -279,21 +342,21 @@ function ServicesContent() {
                       </div>
 
                       {/* Ideal For Box */}
-                      <div className="p-3.5 rounded-xl bg-[#e9e7e2]/60 border border-[#2b2927]/10 mb-8">
-                        <span className="text-[11px] font-sans-luxury font-bold text-[#2b2927] uppercase tracking-wider block mb-0.5">
+                      <div className="p-4 sm:p-5 rounded-2xl bg-[#e9e7e2]/75 border border-[#2b2927]/12">
+                        <span className="text-xs font-sans-luxury font-bold text-[#2b2927] uppercase tracking-wider block mb-1">
                           {isBn ? "উপযুক্ত ভেন্যু ও আয়োজন:" : "SUITABLE FOR:"}
                         </span>
-                        <p className="text-xs text-[#595550] font-sans-luxury font-medium">
+                        <p className="text-xs sm:text-sm text-[#4a4744] font-sans-luxury font-medium leading-relaxed">
                           {isBn ? srv.idealForBn : srv.idealForEn}
                         </p>
                       </div>
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-[#2b2927]/10">
+                    <div className="flex flex-wrap items-center gap-3 pt-6 border-t border-[#2b2927]/10 mt-6">
                       <Link
                         href={`/contact?service=${srv.category}`}
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#071426] text-white hover:bg-[#C9A24B] hover:text-[#071426] text-xs font-sans-luxury font-bold uppercase tracking-wider transition-all duration-300 shadow-md"
+                        className="inline-flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-[#071426] text-white hover:bg-[#C9A24B] hover:text-[#071426] text-xs font-sans-luxury font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:scale-105"
                       >
                         <span>{isBn ? "বুকিং ইনকোয়ারি করুন" : "Inquire For This Service"}</span>
                         <ArrowRight className="w-4 h-4" />
@@ -303,7 +366,7 @@ function ServicesContent() {
                         href={`https://wa.me/${companyInfo.phoneRaw}?text=${encodeURIComponent(`Hi Zeyo, I am interested in your ${srv.titleEn} service.`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#25D366]/15 hover:bg-[#25D366] text-[#128C7E] hover:text-white border border-[#25D366]/40 text-xs font-sans-luxury font-bold uppercase tracking-wider transition-all duration-300"
+                        className="inline-flex items-center gap-2 px-5 sm:px-6 py-3.5 rounded-full bg-[#25D366]/15 hover:bg-[#25D366] text-[#128C7E] hover:text-white border border-[#25D366]/40 text-xs font-sans-luxury font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105"
                       >
                         <MessageCircle className="w-4 h-4" />
                         <span>{isBn ? "হোয়াটসঅ্যাপে আলাপ" : "Chat on WhatsApp"}</span>

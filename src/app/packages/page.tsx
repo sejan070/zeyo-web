@@ -146,7 +146,7 @@ function PackagesContent() {
         {/* Editorial Top Hero Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 text-center">
 
-          <h1 className="font-serif-luxury text-4xl sm:text-5xl md:text-6xl text-[#1b4332] font-bold tracking-tight leading-[1.15] mb-5 max-w-4xl mx-auto">
+          <h1 className="font-serif-luxury text-4xl sm:text-5xl md:text-6xl text-[#071426] font-bold tracking-tight leading-[1.15] mb-5 max-w-4xl mx-auto">
             {isBn ? (
               <>
                 নিখুঁত উৎসবের রাজকীয় আয়োজন, <br />
@@ -256,7 +256,7 @@ function PackagesContent() {
                       />
                       <line x1="7.5" y1="8" x2="15.5" y2="8" stroke="#F3DE9A" strokeWidth="1.5" strokeLinecap="round" />
                       <line x1="7.5" y1="11.5" x2="13.5" y2="11.5" stroke="#F3DE9A" strokeWidth="1.5" strokeLinecap="round" />
-                      <circle cx="14.5" cy="15.5" r="3" fill="#1b4332" stroke="#F3DE9A" strokeWidth="1.4" />
+                      <circle cx="14.5" cy="15.5" r="3" fill="#071426" stroke="#F3DE9A" strokeWidth="1.4" />
                       <path d="M13.3 15.5L14.2 16.4L15.8 14.6" stroke="#F3DE9A" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   );
@@ -267,13 +267,13 @@ function PackagesContent() {
               return (
                 <div
                   key={idx}
-                  className="p-3.5 sm:p-4 rounded-2xl bg-white/80 border border-[#2b2927]/10 shadow-[0_4px_16px_rgba(43,41,39,0.04)] flex items-center gap-3 transition-all duration-300 hover:border-[#1b4332]/25 hover:shadow-[0_8px_24px_rgba(27,67,50,0.08)]"
+                  className="p-3.5 sm:p-4 rounded-2xl bg-white/80 border border-[#2b2927]/10 shadow-[0_4px_16px_rgba(43,41,39,0.04)] flex items-center gap-3 transition-all duration-300 hover:border-[#071426]/25 hover:shadow-[0_8px_24px_rgba(7,20,38,0.08)]"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1b4332] to-[#071426] text-[#F3DE9A] flex items-center justify-center shrink-0 shadow-xs border border-[#F3DE9A]/15">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#071426] to-[#071426] text-[#F3DE9A] flex items-center justify-center shrink-0 shadow-xs border border-[#F3DE9A]/15">
                     <IconComp />
                   </div>
                   <div>
-                    <h2 className="font-serif-luxury text-sm font-bold text-[#1b4332] leading-tight">
+                    <h2 className="font-serif-luxury text-sm font-bold text-[#071426] leading-tight">
                       {item.title}
                     </h2>
                     <p className="text-[11px] text-[#595550] font-sans-luxury font-medium">
@@ -301,8 +301,8 @@ function PackagesContent() {
                   onClick={() => setActiveFilter(tab.id)}
                   className={`px-5 sm:px-6 py-2.5 rounded-full text-xs uppercase tracking-[0.16em] transition-all duration-300 border cursor-pointer select-none font-bold ${
                     isActive
-                      ? "bg-[#1b4332] text-white border-[#1b4332] shadow-[0_8px_22px_rgba(27,67,50,0.35)] scale-105"
-                      : "bg-white hover:bg-[#1b4332] text-[#2b2927] hover:text-white border-[#C9A24B]/50 hover:border-[#1b4332] shadow-[0_3px_12px_rgba(43,41,39,0.05)] hover:scale-105"
+                      ? "bg-[#071426] text-white border-[#071426] shadow-[0_8px_22px_rgba(7,20,38,0.35)] scale-105"
+                      : "bg-white hover:bg-[#071426] text-[#2b2927] hover:text-white border-[#C9A24B]/50 hover:border-[#071426] shadow-[0_3px_12px_rgba(43,41,39,0.05)] hover:scale-105"
                   }`}
                 >
                   {tab.label}
@@ -358,7 +358,7 @@ function PackagesContent() {
                     )}
 
                     {isSelected && (
-                      <span className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-[#1b4332] text-[#F3DE9A] text-[10px] uppercase tracking-wider font-bold shadow-sm">
+                      <span className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-[#071426] text-[#F3DE9A] text-[10px] uppercase tracking-wider font-bold shadow-sm">
                         <Check className="w-3 h-3 text-[#C9A24B] stroke-[3]" />
                         <span>{isBn ? "সিলেক্টেড" : "ACTIVE CHOICE"}</span>
                       </span>
@@ -369,7 +369,7 @@ function PackagesContent() {
                     {/* Title & Price */}
                     <div className="border-b border-[#2b2927]/10 pb-5">
                       <div className="flex items-baseline justify-between gap-2">
-                        <h3 className="font-serif-luxury text-2xl sm:text-[30px] font-bold tracking-wide uppercase text-[#1b4332] group-hover:text-[#7a590b] transition-colors">
+                        <h3 className="font-serif-luxury text-2xl sm:text-[30px] font-bold tracking-wide uppercase text-[#071426] group-hover:text-[#7a590b] transition-colors">
                           {isBn ? pkg.nameBn : pkg.name}
                         </h3>
                         <span className="text-[10px] uppercase tracking-wider text-[#967425] font-sans-luxury font-bold">
@@ -400,7 +400,7 @@ function PackagesContent() {
                     <button
                       type="button"
                       onClick={(e) => toggleExpand(pkg.id, e)}
-                      className="w-full mt-4 py-2 px-3 rounded-xl border border-[#C9A24B]/30 bg-white/70 hover:bg-[#1b4332] hover:text-[#F3DE9A] text-[#1b4332] text-xs font-sans-luxury font-bold tracking-wider uppercase transition-colors flex items-center justify-between cursor-pointer"
+                      className="w-full mt-4 py-2 px-3 rounded-xl border border-[#C9A24B]/30 bg-white/70 hover:bg-[#071426] hover:text-[#F3DE9A] text-[#071426] text-xs font-sans-luxury font-bold tracking-wider uppercase transition-colors flex items-center justify-between cursor-pointer"
                     >
                       <span>
                         {isExpanded
@@ -427,7 +427,7 @@ function PackagesContent() {
                               key={idx}
                               className="flex items-start gap-3 text-xs sm:text-[13px] leading-snug"
                             >
-                              <span className="w-4.5 h-4.5 rounded-full bg-white text-[#1b4332] border border-[#C9A24B]/40 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                              <span className="w-4.5 h-4.5 rounded-full bg-white text-[#071426] border border-[#C9A24B]/40 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
                                 <Check className="w-3 h-3 text-[#C9A24B] stroke-[3]" />
                               </span>
                               <span className="font-sans-luxury font-bold text-[#2b2927]">
@@ -445,7 +445,7 @@ function PackagesContent() {
                             className={`w-full py-3.5 px-5 rounded-full text-xs uppercase tracking-[0.16em] font-bold transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:scale-[1.02] active:scale-[0.98] ${
                               isSelected
                                 ? "bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] text-[#071426] border border-[#E0C172] shadow-[0_4px_18px_rgba(201,162,75,0.45)]"
-                                : "bg-[#1b4332] text-white hover:bg-[#C9A24B] hover:text-[#071426] border border-[#1b4332]"
+                                : "bg-[#071426] text-white hover:bg-[#C9A24B] hover:text-[#071426] border border-[#071426]"
                             }`}
                           >
                             <span>{isBn ? "এই প্যাকেজটি বুকিং / ইনকোয়ারি করুন" : "Select & Inquire This Tier"}</span>
@@ -455,7 +455,7 @@ function PackagesContent() {
                           <button
                             type="button"
                             onClick={(e) => handleDirectWhatsApp(pkg, e)}
-                            className="w-full py-2.5 px-4 rounded-full text-[11px] uppercase tracking-wider font-bold text-[#1b4332] hover:bg-white border border-[#C9A24B]/40 transition-all flex items-center justify-center gap-2 cursor-pointer bg-white/70"
+                            className="w-full py-2.5 px-4 rounded-full text-[11px] uppercase tracking-wider font-bold text-[#071426] hover:bg-white border border-[#C9A24B]/40 transition-all flex items-center justify-center gap-2 cursor-pointer bg-white/70"
                           >
                             <MessageCircle className="w-4 h-4 text-[#25D366]" />
                             <span>{isBn ? "হোয়াটসঅ্যাপে তাৎক্ষণিক কোটেশন" : "Quick Quote via WhatsApp"}</span>
@@ -470,90 +470,208 @@ function PackagesContent() {
           </div>
         </section>
 
-        {/* Feature Comparison Matrix Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-          <div className="rounded-[32px] bg-white border border-[#2b2927]/12 shadow-[0_20px_50px_rgba(43,41,39,0.06)] p-6 sm:p-10 overflow-hidden">
-            <div className="text-center max-w-2xl mx-auto mb-8">
-              <span className="text-[10px] font-sans-luxury font-black uppercase tracking-[0.25em] text-[#C9A24B] block mb-2">
+        {/* Feature Comparison Matrix Section (Revamped with Gold Gradient Card & Explicit Grid) */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+          <div className="relative rounded-[36px] bg-gradient-to-br from-[#fffdf7] via-[#faebc7] to-[#eed08f] border-2 border-[#C9A24B]/60 shadow-[0_25px_65px_rgba(201,162,75,0.28)] p-6 sm:p-10 lg:p-14 overflow-hidden">
+            {/* Top Specular Shine */}
+            <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-transparent via-[#C9A24B] to-transparent pointer-events-none" />
+
+            {/* Ambient Lighting Accents */}
+            <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#C9A24B]/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#C9A24B]/15 rounded-full blur-3xl pointer-events-none" />
+
+            {/* Matrix Header */}
+            <div className="text-center max-w-3xl mx-auto mb-10 relative z-10">
+              <span className="px-4 py-1.5 rounded-full text-[10.5px] font-sans-luxury font-black uppercase tracking-[0.25em] bg-[#071426] text-[#F3DE9A] border border-[#C9A24B]/40 shadow-sm inline-block mb-3">
                 COMPARATIVE OVERVIEW
               </span>
-              <h2 className="font-serif-luxury text-2xl sm:text-3xl text-[#1b4332] font-bold">
+              <h2 className="font-serif-luxury text-3xl sm:text-4xl md:text-5xl text-[#071426] font-bold tracking-tight mb-2">
                 {isBn ? "প্যাকেজগুলোর মূল ফিচারের তুলনামূলক বিশ্লেষণ" : "Comprehensive Tier Feature Matrix"}
               </h2>
-              <p className="text-xs sm:text-sm text-[#595550] font-sans-luxury mt-2">
+              <p className="text-xs sm:text-sm text-[#45413c] font-sans-luxury font-bold max-w-2xl mx-auto">
                 {isBn
                   ? "আপনার চাহিদানুযায়ী সঠিক প্যাকেজটি বেছে নিতে এক নজরে প্রধান ফিচারসমূহ পর্যালোচনা করুন।"
                   : "Compare key deliverables, audio-visual technology, and staging levels across all 6 tiers."}
               </p>
             </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs font-sans-luxury">
+            {/* Grid Table with Prominent Row & Column Borders */}
+            <div className="relative z-10 overflow-x-auto rounded-2xl border-2 border-[#C9A24B]/50 shadow-[0_12px_35px_rgba(7,20,38,0.12)] bg-white/75 backdrop-blur-sm">
+              <table className="w-full text-left border-collapse font-sans-luxury">
                 <thead>
-                  <tr className="border-b border-[#2b2927]/15 text-[#1b4332] uppercase tracking-wider font-bold">
-                    <th className="py-3 px-3">Deliverable</th>
-                    <th className="py-3 px-3">Basic (৳5K+)</th>
-                    <th className="py-3 px-3">Medium (৳20K+)</th>
-                    <th className="py-3 px-3">Premium (৳50K+)</th>
-                    <th className="py-3 px-3">Silver (৳1L+)</th>
-                    <th className="py-3 px-3">Gold (৳2L+)</th>
-                    <th className="py-3 px-3">Platinum (৳5L+)</th>
+                  <tr className="bg-[#071426] text-white border-b-2 border-[#C9A24B]">
+                    <th className="py-4 sm:py-5 px-4 sm:px-5 text-xs sm:text-sm font-black uppercase tracking-wider text-[#F3DE9A] border-r border-[#C9A24B]/30">
+                      Deliverable
+                    </th>
+                    <th className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-black uppercase tracking-wider border-r border-[#C9A24B]/30 text-white">
+                      Basic <span className="block text-[11px] text-[#F3DE9A] font-bold mt-0.5">(৳5K+)</span>
+                    </th>
+                    <th className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-black uppercase tracking-wider border-r border-[#C9A24B]/30 text-white">
+                      Medium <span className="block text-[11px] text-[#F3DE9A] font-bold mt-0.5">(৳20K+)</span>
+                    </th>
+                    <th className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-black uppercase tracking-wider border-r border-[#C9A24B]/30 text-white">
+                      Premium <span className="block text-[11px] text-[#F3DE9A] font-bold mt-0.5">(৳50K+)</span>
+                    </th>
+                    <th className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-black uppercase tracking-wider border-r border-[#C9A24B]/30 text-white">
+                      Silver <span className="block text-[11px] text-[#F3DE9A] font-bold mt-0.5">(৳1L+)</span>
+                    </th>
+                    <th className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-black uppercase tracking-wider border-r border-[#C9A24B]/30 text-white">
+                      Gold <span className="block text-[11px] text-[#F3DE9A] font-bold mt-0.5">(৳2L+)</span>
+                    </th>
+                    <th className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-black uppercase tracking-wider bg-[#102a52] text-[#F3DE9A]">
+                      Platinum <span className="block text-[11px] text-[#F3DE9A] font-bold mt-0.5">(৳5L+)</span>
+                    </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#2b2927]/10 text-[#2b2927] font-semibold">
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[#1b4332]">Event Planning & Flow</td>
-                    <td className="py-3 px-3">Standard</td>
-                    <td className="py-3 px-3">Standard</td>
-                    <td className="py-3 px-3">Full Master</td>
-                    <td className="py-3 px-3">Full Master</td>
-                    <td className="py-3 px-3">VIP Concierge</td>
-                    <td className="py-3 px-3 text-[#967425] font-bold">Royal Blueprint</td>
+                <tbody className="text-[#1A1A1A]">
+                  {/* Row 1 */}
+                  <tr className="odd:bg-white/80 even:bg-[#fff9ec]/70 hover:bg-[#faebc7]/60 transition-colors">
+                    <td className="py-4 sm:py-5 px-4 sm:px-5 font-bold text-sm sm:text-base text-[#071426] bg-[#071426]/5 border-r-2 border-b border-[#C9A24B]/40">
+                      Event Planning & Flow
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Standard
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Standard
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Full Master
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Full Master
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      VIP Concierge
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-black text-[#7a590b] bg-[#C9A24B]/15 border-b border-[#C9A24B]/35">
+                      Royal Blueprint
+                    </td>
                   </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[#1b4332]">Stage & Backdrop Theme</td>
-                    <td className="py-3 px-3">Basic Decor</td>
-                    <td className="py-3 px-3">Themed Stage</td>
-                    <td className="py-3 px-3">Custom Designed</td>
-                    <td className="py-3 px-3">Premium Thematic</td>
-                    <td className="py-3 px-3">Luxury Staging</td>
-                    <td className="py-3 px-3 text-[#967425] font-bold">Bespoke Architectural</td>
+
+                  {/* Row 2 */}
+                  <tr className="odd:bg-white/80 even:bg-[#fff9ec]/70 hover:bg-[#faebc7]/60 transition-colors">
+                    <td className="py-4 sm:py-5 px-4 sm:px-5 font-bold text-sm sm:text-base text-[#071426] bg-[#071426]/5 border-r-2 border-b border-[#C9A24B]/40">
+                      Stage & Backdrop Theme
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Basic Decor
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Themed Stage
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Custom Designed
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Premium Thematic
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Luxury Staging
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-black text-[#7a590b] bg-[#C9A24B]/15 border-b border-[#C9A24B]/35">
+                      Bespoke Architectural
+                    </td>
                   </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[#1b4332]">Sound System & DJ</td>
-                    <td className="py-3 px-3">Sound Only</td>
-                    <td className="py-3 px-3">Sound + DJ</td>
-                    <td className="py-3 px-3">Sound + DJ</td>
-                    <td className="py-3 px-3">Pro DJ Setup</td>
-                    <td className="py-3 px-3">Pro DJ Setup</td>
-                    <td className="py-3 px-3 text-[#967425] font-bold">Pro DJ + Live Option</td>
+
+                  {/* Row 3 */}
+                  <tr className="odd:bg-white/80 even:bg-[#fff9ec]/70 hover:bg-[#faebc7]/60 transition-colors">
+                    <td className="py-4 sm:py-5 px-4 sm:px-5 font-bold text-sm sm:text-base text-[#071426] bg-[#071426]/5 border-r-2 border-b border-[#C9A24B]/40">
+                      Sound System & DJ
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Sound Only
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Sound + DJ
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Sound + DJ
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Pro DJ Setup
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Pro DJ Setup
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-black text-[#7a590b] bg-[#C9A24B]/15 border-b border-[#C9A24B]/35">
+                      Pro DJ + Live Option
+                    </td>
                   </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[#1b4332]">Media (Photo/Video)</td>
-                    <td className="py-3 px-3">Photo (3hr)</td>
-                    <td className="py-3 px-3">Photo (3hr)</td>
-                    <td className="py-3 px-3">Photo + Video</td>
-                    <td className="py-3 px-3">Photo + Video</td>
-                    <td className="py-3 px-3">Photo + Video</td>
-                    <td className="py-3 px-3 text-[#967425] font-bold">Photo + Cinematic 4K</td>
+
+                  {/* Row 4 */}
+                  <tr className="odd:bg-white/80 even:bg-[#fff9ec]/70 hover:bg-[#faebc7]/60 transition-colors">
+                    <td className="py-4 sm:py-5 px-4 sm:px-5 font-bold text-sm sm:text-base text-[#071426] bg-[#071426]/5 border-r-2 border-b border-[#C9A24B]/40">
+                      Media (Photo/Video)
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Photo (3hr)
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Photo (3hr)
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Photo + Video
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Photo + Video
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      Photo + Video
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-black text-[#7a590b] bg-[#C9A24B]/15 border-b border-[#C9A24B]/35">
+                      Photo + Cinematic 4K
+                    </td>
                   </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[#1b4332]">LED Wall / Special Entry</td>
-                    <td className="py-3 px-3">—</td>
-                    <td className="py-3 px-3">—</td>
-                    <td className="py-3 px-3">—</td>
-                    <td className="py-3 px-3">LED Screen</td>
-                    <td className="py-3 px-3">LED + Special Entry</td>
-                    <td className="py-3 px-3 text-[#967425] font-bold">LED + Entry + Booths</td>
+
+                  {/* Row 5 */}
+                  <tr className="odd:bg-white/80 even:bg-[#fff9ec]/70 hover:bg-[#faebc7]/60 transition-colors">
+                    <td className="py-4 sm:py-5 px-4 sm:px-5 font-bold text-sm sm:text-base text-[#071426] bg-[#071426]/5 border-r-2 border-b border-[#C9A24B]/40">
+                      LED Wall / Special Entry
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      —
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      —
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      —
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      LED Screen
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-b border-[#C9A24B]/25">
+                      LED + Special Entry
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-black text-[#7a590b] bg-[#C9A24B]/15 border-b border-[#C9A24B]/35">
+                      LED + Entry + Booths
+                    </td>
                   </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[#1b4332]">On-Ground Support Team</td>
-                    <td className="py-3 px-3">Included</td>
-                    <td className="py-3 px-3">Included</td>
-                    <td className="py-3 px-3">Included</td>
-                    <td className="py-3 px-3">Dedicated Lead</td>
-                    <td className="py-3 px-3">Director + Crew</td>
-                    <td className="py-3 px-3 text-[#967425] font-bold">Executive Production Crew</td>
+
+                  {/* Row 6 */}
+                  <tr className="odd:bg-white/80 even:bg-[#fff9ec]/70 hover:bg-[#faebc7]/60 transition-colors">
+                    <td className="py-4 sm:py-5 px-4 sm:px-5 font-bold text-sm sm:text-base text-[#071426] bg-[#071426]/5 border-r-2 border-[#C9A24B]/40">
+                      On-Ground Support Team
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-[#C9A24B]/25">
+                      Included
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-[#C9A24B]/25">
+                      Included
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-[#C9A24B]/25">
+                      Included
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-[#C9A24B]/25">
+                      Dedicated Lead
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-bold text-[#1A1A1A] border-r border-[#C9A24B]/25">
+                      Director + Crew
+                    </td>
+                    <td className="py-4 sm:py-5 px-3 sm:px-4 text-xs sm:text-sm font-black text-[#7a590b] bg-[#C9A24B]/15">
+                      Executive Production Crew
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -581,7 +699,7 @@ function PackagesContent() {
             </div>
 
             {bookingSuccess && (
-              <div className="p-4 rounded-2xl bg-[#1b4332] border border-[#C9A24B] text-white text-xs text-center mb-6 animate-fade-in font-bold">
+              <div className="p-4 rounded-2xl bg-[#071426] border border-[#C9A24B] text-white text-xs text-center mb-6 animate-fade-in font-bold">
                 {isBn
                   ? "ধন্যবাদ! আপনার ইনকোয়ারিটি গ্রহণ করা হয়েছে এবং হোয়াটসঅ্যাপে পাঠানো হচ্ছে..."
                   : "Thank you! Your package inquiry has been dispatched to our WhatsApp team."}
@@ -691,7 +809,7 @@ function PackagesContent() {
               <span className="text-[10px] font-sans-luxury font-black uppercase tracking-[0.25em] text-[#8E6E26] block mb-1">
                 NEED A BESPOKE BLUEPRINT?
               </span>
-              <h3 className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#1b4332]">
+              <h3 className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#071426]">
                 {isBn ? "কাস্টম বা হাই-এন্ড রাজকীয় ওয়েডিং ডেকোরেশন চান?" : "Have a Custom Multi-Day Celebration Requirement?"}
               </h3>
               <p className="text-xs sm:text-sm text-[#595550] font-sans-luxury mt-1.5 max-w-xl">
@@ -707,7 +825,7 @@ function PackagesContent() {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 px-7 py-3.5 rounded-full bg-[#1b4332] hover:bg-[#133024] text-white font-sans-luxury font-bold text-xs uppercase tracking-widest transition-all shadow-md hover:shadow-xl flex items-center gap-2 cursor-pointer"
+              className="shrink-0 px-7 py-3.5 rounded-full bg-[#071426] hover:bg-[#050E1B] text-white font-sans-luxury font-bold text-xs uppercase tracking-widest transition-all shadow-md hover:shadow-xl flex items-center gap-2 cursor-pointer"
             >
               <MessageCircle className="w-4 h-4 text-[#25D366]" />
               <span>{isBn ? "কাস্টম কনসাল্টেশন বুক করুন" : "Consult Creative Director"}</span>

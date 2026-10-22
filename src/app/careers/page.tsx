@@ -203,7 +203,7 @@ export default function CareersPage() {
             {/* Left Content (7 Cols) */}
             <div className="lg:col-span-7 text-center lg:text-left">
 
-              <h1 className="font-serif-luxury text-4xl sm:text-5xl md:text-6xl text-[#1b4332] font-bold tracking-tight leading-[1.1] mb-6">
+              <h1 className="font-serif-luxury text-4xl sm:text-5xl md:text-6xl text-[#071426] font-bold tracking-tight leading-[1.1] mb-6">
                 {locale === "bn" ? (
                   <>
                     আমাদের রাজকীয় টিমে যোগ দিন, <br />
@@ -226,7 +226,7 @@ export default function CareersPage() {
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
                 <a
                   href="#openings"
-                  className="px-6 py-3 rounded-full bg-[#1b4332] hover:bg-[#133024] text-white font-sans-luxury font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5"
+                  className="px-6 py-3 rounded-full bg-[#071426] hover:bg-[#050E1B] text-white font-sans-luxury font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5"
                 >
                   {locale === "bn" ? "চলমান পদসমূহ দেখুন ↓" : "View Open Positions ↓"}
                 </a>
@@ -236,7 +236,7 @@ export default function CareersPage() {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-full bg-white hover:bg-[#FAF6F0] text-[#1b4332] border border-[#C9A24B] font-sans-luxury font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-sm hover:shadow-md flex items-center gap-2"
+                  className="px-6 py-3 rounded-full bg-white hover:bg-[#FAF6F0] text-[#071426] border border-[#C9A24B] font-sans-luxury font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-sm hover:shadow-md flex items-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4 text-[#25D366]" />
                   <span>{locale === "bn" ? "সরাসরি যোগাযোগ করুন" : "WhatsApp HR Direct"}</span>
@@ -272,7 +272,7 @@ export default function CareersPage() {
               <div className="w-12 h-12 rounded-2xl bg-[#C9A24B]/15 text-[#C9A24B] flex items-center justify-center mb-4">
                 <Palette className="w-6 h-6" />
               </div>
-              <h3 className="font-serif-luxury text-xl text-[#1b4332] font-bold mb-2">
+              <h3 className="font-serif-luxury text-xl text-[#071426] font-bold mb-2">
                 {locale === "bn" ? "ক্রিয়েটিভ স্বাধীনতা" : "Creative Freedom"}
               </h3>
               <p className="text-sm text-[#2b2927] font-sans-luxury font-medium leading-relaxed">
@@ -283,10 +283,10 @@ export default function CareersPage() {
             </div>
 
             <div className="p-6 rounded-[24px] bg-white border border-[#2b2927]/10 shadow-[0_10px_30px_rgba(43,41,39,0.05)] hover:-translate-y-1 transition-all duration-300">
-              <div className="w-12 h-12 rounded-2xl bg-[#2D6A4F]/15 text-[#2D6A4F] flex items-center justify-center mb-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#0E284D]/15 text-[#0E284D] flex items-center justify-center mb-4">
                 <Award className="w-6 h-6" />
               </div>
-              <h3 className="font-serif-luxury text-xl text-[#1b4332] font-bold mb-2">
+              <h3 className="font-serif-luxury text-xl text-[#071426] font-bold mb-2">
                 {locale === "bn" ? "হ্যান্ডস-অন লিডারশিপ" : "Hands-On Leadership"}
               </h3>
               <p className="text-sm text-[#2b2927] font-sans-luxury font-medium leading-relaxed">
@@ -300,7 +300,7 @@ export default function CareersPage() {
               <div className="w-12 h-12 rounded-2xl bg-[#C9A24B]/15 text-[#C9A24B] flex items-center justify-center mb-4">
                 <Heart className="w-6 h-6" />
               </div>
-              <h3 className="font-serif-luxury text-xl text-[#1b4332] font-bold mb-2">
+              <h3 className="font-serif-luxury text-xl text-[#071426] font-bold mb-2">
                 {locale === "bn" ? "আন্তরিক কর্মপরিবেশ" : "Warm Atelier Team"}
               </h3>
               <p className="text-sm text-[#2b2927] font-sans-luxury font-medium leading-relaxed">
@@ -311,10 +311,10 @@ export default function CareersPage() {
             </div>
 
             <div className="p-6 rounded-[24px] bg-white border border-[#2b2927]/10 shadow-[0_10px_30px_rgba(43,41,39,0.05)] hover:-translate-y-1 transition-all duration-300">
-              <div className="w-12 h-12 rounded-2xl bg-[#2D6A4F]/15 text-[#2D6A4F] flex items-center justify-center mb-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#0E284D]/15 text-[#0E284D] flex items-center justify-center mb-4">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h3 className="font-serif-luxury text-xl text-[#1b4332] font-bold mb-2">
+              <h3 className="font-serif-luxury text-xl text-[#071426] font-bold mb-2">
                 {locale === "bn" ? "আকর্ষণীয় সুযোগ-সুবিধা" : "Competitive Growth"}
               </h3>
               <p className="text-sm text-[#2b2927] font-sans-luxury font-medium leading-relaxed">
@@ -333,7 +333,7 @@ export default function CareersPage() {
               <span className="text-xs uppercase tracking-[0.2em] text-[#C9A24B] font-bold font-sans-luxury">
                 {locale === "bn" ? "চলমান নিয়োগ বিজ্ঞপ্তি" : "CURRENT OPEN POSITIONS"}
               </span>
-              <h2 className="font-serif-luxury text-3xl sm:text-4xl text-[#1b4332] font-bold mt-1">
+              <h2 className="font-serif-luxury text-3xl sm:text-4xl text-[#071426] font-bold mt-1">
                 {locale === "bn" ? "আপনার উপযুক্ত রোলটি বেছে নিন" : "Find Your Role at Zeyo"}
               </h2>
             </div>
@@ -367,12 +367,12 @@ export default function CareersPage() {
                         <span className="px-3.5 py-1 rounded-full text-xs font-sans-luxury font-bold bg-[#efebe4] text-[#2b2927]">
                           {locale === "bn" ? job.departmentBn : job.departmentEn}
                         </span>
-                        <span className="px-3.5 py-1 rounded-full text-xs font-sans-luxury font-bold bg-[#2D6A4F]/15 text-[#1b4332]">
+                        <span className="px-3.5 py-1 rounded-full text-xs font-sans-luxury font-bold bg-[#0E284D]/15 text-[#071426]">
                           {locale === "bn" ? job.typeBn : job.typeEn}
                         </span>
                       </div>
 
-                      <h3 className="font-serif-luxury text-2xl sm:text-3xl text-[#1b4332] font-bold">
+                      <h3 className="font-serif-luxury text-2xl sm:text-3xl text-[#071426] font-bold">
                         {locale === "bn" ? job.titleBn : job.titleEn}
                       </h3>
 
@@ -382,7 +382,7 @@ export default function CareersPage() {
                           {locale === "bn" ? job.locationBn : job.locationEn}
                         </span>
                         <span className="flex items-center gap-1.5">
-                          <Clock className="w-4 h-4 text-[#2D6A4F]" />
+                          <Clock className="w-4 h-4 text-[#0E284D]" />
                           {locale === "bn" ? job.experienceBn : job.experienceEn}
                         </span>
                       </div>
@@ -422,14 +422,14 @@ export default function CareersPage() {
                     <div className="px-6 sm:px-8 pb-8 pt-5 border-t border-[#2b2927]/10 bg-[#fbfaf8] animate-fade-in">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
-                          <h4 className="text-sm sm:text-base uppercase tracking-wider text-[#1b4332] font-sans-luxury font-black mb-4 flex items-center gap-2.5">
-                            <CheckCircle2 className="w-5 h-5 text-[#2D6A4F] shrink-0" />
+                          <h4 className="text-sm sm:text-base uppercase tracking-wider text-[#071426] font-sans-luxury font-black mb-4 flex items-center gap-2.5">
+                            <CheckCircle2 className="w-5 h-5 text-[#0E284D] shrink-0" />
                             <span>{locale === "bn" ? "মূল দায়িত্বসমূহ (Responsibilities)" : "Key Responsibilities"}</span>
                           </h4>
                           <ul className="space-y-3 text-sm sm:text-[14.5px] text-[#2b2927] font-sans-luxury font-semibold leading-relaxed">
                             {(locale === "bn" ? job.responsibilitiesBn : job.responsibilitiesEn).map((item, idx) => (
                               <li key={idx} className="flex items-start gap-3">
-                                <span className="w-2 h-2 rounded-full bg-[#2D6A4F] mt-2 shrink-0" />
+                                <span className="w-2 h-2 rounded-full bg-[#0E284D] mt-2 shrink-0" />
                                 <span>{item}</span>
                               </li>
                             ))}
@@ -437,14 +437,14 @@ export default function CareersPage() {
                         </div>
 
                         <div>
-                          <h4 className="text-sm sm:text-base uppercase tracking-wider text-[#1b4332] font-sans-luxury font-black mb-4 flex items-center gap-2.5">
-                            <CheckCircle2 className="w-5 h-5 text-[#2D6A4F] shrink-0" />
+                          <h4 className="text-sm sm:text-base uppercase tracking-wider text-[#071426] font-sans-luxury font-black mb-4 flex items-center gap-2.5">
+                            <CheckCircle2 className="w-5 h-5 text-[#0E284D] shrink-0" />
                             <span>{locale === "bn" ? "প্রয়োজনীয় যোগ্যতা (Requirements)" : "Qualifications & Skills"}</span>
                           </h4>
                           <ul className="space-y-3 text-sm sm:text-[14.5px] text-[#2b2927] font-sans-luxury font-semibold leading-relaxed">
                             {(locale === "bn" ? job.requirementsBn : job.requirementsEn).map((item, idx) => (
                               <li key={idx} className="flex items-start gap-3">
-                                <span className="w-2 h-2 rounded-full bg-[#2D6A4F] mt-2 shrink-0" />
+                                <span className="w-2 h-2 rounded-full bg-[#0E284D] mt-2 shrink-0" />
                                 <span>{item}</span>
                               </li>
                             ))}
@@ -459,7 +459,7 @@ export default function CareersPage() {
                             : "Or email your CV directly to: "}
                           <a
                             href={`mailto:${companyInfo.email}?subject=Application for ${job.titleEn}`}
-                            className="font-bold text-[#1b4332] hover:text-[#C9A24B] underline ml-1"
+                            className="font-bold text-[#071426] hover:text-[#C9A24B] underline ml-1"
                           >
                             {companyInfo.email}
                           </a>
@@ -467,7 +467,7 @@ export default function CareersPage() {
 
                         <a
                           href={`tel:${companyInfo.phoneRaw}`}
-                          className="text-sm text-[#1b4332] font-sans-luxury font-bold hover:text-[#C9A24B] hover:underline flex items-center gap-2"
+                          className="text-sm text-[#071426] font-sans-luxury font-bold hover:text-[#C9A24B] hover:underline flex items-center gap-2"
                         >
                           <Phone className="w-4 h-4 text-[#C9A24B]" />
                           <span>{locale === "bn" ? "এইচআর হেল্পলাইন:" : "HR Helpline:"} {companyInfo.phone}</span>
@@ -501,7 +501,7 @@ export default function CareersPage() {
 
               {applicationSubmitted ? (
                 <div className="p-6 rounded-2xl bg-white/10 border border-[#C9A24B] text-center animate-fade-in">
-                  <CheckCircle2 className="w-10 h-10 text-[#52B788] mx-auto mb-3" />
+                  <CheckCircle2 className="w-10 h-10 text-[#C9A24B] mx-auto mb-3" />
                   <h4 className="font-serif-luxury text-xl font-bold text-[#F3DE9A]">
                     {locale === "bn" ? "আবেদন গ্রহণ করা হয়েছে!" : "Application Initiated!"}
                   </h4>
