@@ -87,25 +87,25 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <Link
               href="/"
               onClick={handleNavHome}
-              className="inline-flex items-center gap-2.5 p-1.5 sm:p-2 rounded-xl bg-[#071426] border border-[#C9A24B]/30 cursor-pointer"
+              className="inline-flex flex-col items-start gap-1 cursor-pointer"
             >
-              <div className="w-8 h-8 rounded-full border border-[#C9A24B] overflow-hidden flex items-center justify-center bg-[#071426] shrink-0">
-                <img
-                  src="/client-media/zeyo-logo-emblem.jpg"
-                  alt="Zeyo Logo"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="flex flex-col justify-center pr-2">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full border border-[#C9A24B] overflow-hidden flex items-center justify-center shrink-0">
+                  <img
+                    src="/client-media/zeyo-logo-emblem.jpg"
+                    alt="Zeyo Logo"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <img
                   src="/client-media/zeyo-wordmark-clean.png"
                   alt="zeyo"
-                  className="h-5 w-auto object-contain"
+                  className="h-5.5 w-auto object-contain"
                 />
-                <p className="text-[8px] text-[#C9A24B] tracking-widest uppercase font-sans-luxury font-bold mt-0.5">
-                  {companyInfo.tagline}
-                </p>
               </div>
+              <p className="text-[8.5px] text-[#C9A24B] tracking-widest uppercase font-sans-luxury font-bold">
+                {companyInfo.tagline}
+              </p>
             </Link>
 
             <button

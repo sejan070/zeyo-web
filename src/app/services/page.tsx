@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useEffect, Suspense } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
@@ -30,34 +30,14 @@ function ServicesContent() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get("category");
 
-  const [activeCategory, setActiveCategory] = useState<string>("all");
-
-  const handleScrollToService = (categoryId: string) => {
-    setActiveCategory(categoryId);
-
-    const targetId = categoryId === "all" ? "services-grid" : `service-${categoryId}`;
-    const el = document.getElementById(targetId);
-    if (el) {
-      const headerOffset = 145;
-      const elementPosition = el.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: Math.max(0, offsetPosition),
-        behavior: "smooth"
-      });
-    }
-  };
-
   useEffect(() => {
     if (categoryParam && ["all", "wedding", "birthday", "stage", "corporate", "murals"].includes(categoryParam)) {
       const mappedId = categoryParam === "murals" ? "corporate" : categoryParam;
-      setActiveCategory(mappedId);
       setTimeout(() => {
         const targetId = mappedId === "all" ? "services-grid" : `service-${mappedId}`;
         const el = document.getElementById(targetId);
         if (el) {
-          const headerOffset = 145;
+          const headerOffset = 100;
           const elementPosition = el.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
           window.scrollTo({
@@ -68,33 +48,6 @@ function ServicesContent() {
       }, 150);
     }
   }, [categoryParam]);
-
-  // Scroll-spy to automatically highlight the current service tab in view
-  useEffect(() => {
-    const serviceIds = ["wedding", "birthday", "stage", "corporate"];
-    const handleScroll = () => {
-      const scrollPosition = window.pageYOffset + 220;
-      let matched = false;
-      for (const id of serviceIds) {
-        const el = document.getElementById(`service-${id}`);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveCategory(id);
-            matched = true;
-            break;
-          }
-        }
-      }
-      if (!matched && window.pageYOffset < 300) {
-        setActiveCategory("all");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const services = [
     {
@@ -207,11 +160,6 @@ function ServicesContent() {
     }
   ];
 
-  const filteredServices =
-    activeCategory === "all"
-      ? services
-      : services.filter((s) => s.category === activeCategory);
-
   return (
     <div className="relative min-h-screen bg-[#e9e7e2] text-[#2b2927] selection:bg-[#C9A24B] selection:text-[#071426]">
       {/* Sticky Luxury Header */}
@@ -248,43 +196,14 @@ function ServicesContent() {
           </div>
         </section>
 
-        {/* Category Filter Navigator Bar (Outside dark hero on light canvas, sticky & auto-scrolling) */}
-        <div className="sticky top-20 sm:top-24 z-30 bg-[#e9e7e2]/95 backdrop-blur-md py-4 sm:py-5 border-b border-[#2b2927]/10 shadow-xs">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-            {[
-              { id: "all", label: isBn ? "সকল সেবা" : "All Services" },
-              { id: "wedding", label: isBn ? "ওয়েডিং ও হলুদ" : "Weddings & Holud" },
-              { id: "birthday", label: isBn ? "বার্থডে ও থিম" : "Birthdays & Themes" },
-              { id: "stage", label: isBn ? "স্টেজ ও লাইটিং" : "Stage & Lighting" },
-              { id: "corporate", label: isBn ? "কর্পোরেট ও মিউরাল" : "Corporate & Murals" }
-            ].map((tab) => {
-              const isActive = activeCategory === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  type="button"
-                  onClick={() => handleScrollToService(tab.id)}
-                  className={`px-5 sm:px-6 py-2.5 rounded-full text-xs uppercase tracking-wider font-sans-luxury font-bold transition-all duration-300 cursor-pointer shadow-xs ${
-                    isActive
-                      ? "bg-[#071426] text-[#F3DE9A] border border-[#C9A24B] shadow-[0_6px_20px_rgba(7,20,38,0.25)] scale-105"
-                      : "bg-white hover:bg-[#071426] text-[#2b2927] hover:text-[#F3DE9A] border border-[#2b2927]/15 hover:border-[#C9A24B] hover:scale-105"
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
         {/* Detailed Services Breakdown Cards */}
-        <section id="services-grid" className="py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-36">
+        <section id="services-grid" className="py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
           <div className="space-y-16 sm:space-y-24">
             {services.map((srv, idx) => (
               <div
                 key={srv.id}
                 id={`service-${srv.id}`}
-                className="scroll-mt-36 sm:scroll-mt-40 bg-white/90 rounded-[24px] border border-[#2b2927]/10 shadow-[0_12px_40px_rgba(43,41,39,0.06)] overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(43,41,39,0.12)]"
+                className="scroll-mt-28 sm:scroll-mt-32 bg-white/90 rounded-[24px] border border-[#2b2927]/10 overflow-hidden transition-all duration-500"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
                   {/* Visual Image Side */}

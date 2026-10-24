@@ -28,25 +28,25 @@ export default function Footer() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="inline-flex items-center gap-3.5 p-2 sm:p-2.5 rounded-2xl bg-[#071426] border border-[#C9A24B]/40 hover:border-[#C9A24B] cursor-pointer group transition-all duration-300"
+              className="inline-flex flex-col items-start gap-1.5 cursor-pointer group"
             >
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#C9A24B] overflow-hidden flex items-center justify-center bg-[#071426] shrink-0 group-hover:scale-105 transition-transform">
-                <img
-                  src="/client-media/zeyo-logo-emblem.jpg"
-                  alt="Zeyo Logo Emblem"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="flex flex-col justify-center pr-3">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full border border-[#C9A24B] overflow-hidden flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <img
+                    src="/client-media/zeyo-logo-emblem.jpg"
+                    alt="Zeyo Logo Emblem"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <img
                   src="/client-media/zeyo-wordmark-clean.png"
                   alt="zeyo"
                   className="h-6 sm:h-7 w-auto object-contain"
                 />
-                <p className="text-[9.5px] sm:text-[10px] text-[#C9A24B] tracking-[0.24em] uppercase font-sans-luxury font-bold mt-1">
-                  {locale === "bn" ? companyInfo.taglineBn : companyInfo.tagline}
-                </p>
               </div>
+              <p className="text-[10px] sm:text-[11px] text-[#C9A24B] tracking-[0.25em] uppercase font-sans-luxury font-bold">
+                {locale === "bn" ? companyInfo.taglineBn : companyInfo.tagline}
+              </p>
             </Link>
 
             <p className="text-xs sm:text-sm text-[#595550] font-sans-luxury font-bold leading-relaxed max-w-sm">
