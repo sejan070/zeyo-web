@@ -1,0 +1,30 @@
+======================================================
+  ZEYO LUXURY EVENT MANAGEMENT - CPANEL DEPLOYMENT GUIDE
+======================================================
+
+Option 1: Deploy with cPanel "Setup Node.js App" (Recommended)
+--------------------------------------------------------------
+1. Log in to your cPanel.
+2. Open "File Manager" and go to your application folder (e.g. /home/username/zeyo or /home/username/public_html).
+3. Upload "zeyo-cpanel-ready.zip" and click "Extract".
+4. Go back to cPanel Home and click "Setup Node.js App" (under Software section).
+5. Click "Create Application":
+   - Node.js version: Choose 18.x or 20.x
+   - Application mode: Production
+   - Application root: The folder where you extracted the zip (e.g. zeyo or public_html)
+   - Application URL: Your domain name (e.g. zeyo.com.bd or your subdomain)
+   - Application startup file: server.js
+6. Click "Create".
+7. Click "Run NPM Install" (or open Terminal and run: npm install).
+8. Click "Run JS script" -> build (or open Terminal and run: npm run build).
+9. Click "Restart" / "Start App".
+10. Your site is now live on your domain!
+
+Option 2: Terminal / SSH Deployment
+-----------------------------------
+1. cd to your project directory.
+2. unzip zeyo-cpanel-ready.zip
+3. npm install
+4. npm run build
+5. npm start (or pm2 start server.js --name "zeyo-web")
+======================================================
