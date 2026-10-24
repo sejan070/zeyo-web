@@ -98,9 +98,9 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   />
                 </div>
                 <img
-                  src="/client-media/zeyo-wordmark-clean.png"
+                  src="/client-media/zeyo-wordmark-contrasted.png"
                   alt="zeyo"
-                  className="h-5.5 w-auto object-contain"
+                  className="h-5.5 w-auto object-contain drop-shadow-[0_2px_4px_rgba(7,20,38,0.35)]"
                 />
               </div>
               <p className="text-[8.5px] text-[#C9A24B] tracking-widest uppercase font-sans-luxury font-bold">

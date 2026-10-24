@@ -39,9 +39,9 @@ export default function Footer() {
                   />
                 </div>
                 <img
-                  src="/client-media/zeyo-wordmark-clean.png"
+                  src="/client-media/zeyo-wordmark-contrasted.png"
                   alt="zeyo"
-                  className="h-6 sm:h-7 w-auto object-contain"
+                  className="h-6 sm:h-7 w-auto object-contain drop-shadow-[0_2px_4px_rgba(7,20,38,0.35)]"
                 />
               </div>
               <p className="text-[10px] sm:text-[11px] text-[#C9A24B] tracking-[0.25em] uppercase font-sans-luxury font-bold">
