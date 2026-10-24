@@ -99,7 +99,7 @@ export default function BrandIntro() {
       {/* Centerpiece Emblem & Brand Wordmark */}
       <div className="relative z-10 flex flex-col items-center text-center px-6">
         {/* Clean Logo Emblem without glowing halos or spinning rings */}
-        <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full border border-[#C9A24B]/35 flex items-center justify-center bg-[#081329] mb-5 overflow-hidden shadow-lg">
+        <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full border border-[#C9A24B]/35 flex items-center justify-center bg-[#081329] mb-5 overflow-hidden">
           <img
             src="/client-media/zeyo-logo-emblem.jpg"
             alt="Zeyo Logo Emblem"
@@ -112,12 +112,12 @@ export default function BrandIntro() {
           <img
             src="/client-media/zeyo-wordmark-clean.png"
             alt="zeyo"
-            className="w-40 sm:w-48 md:w-56 h-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+            className="w-40 sm:w-48 md:w-56 h-auto object-contain"
           />
         </div>
 
         {/* Tagline */}
-        <p className="text-[10.5px] sm:text-xs tracking-[0.34em] uppercase text-[#E0C172] font-sans-luxury font-bold drop-shadow-sm mt-3">
+        <p className="text-[10.5px] sm:text-xs tracking-[0.34em] uppercase text-[#E0C172] font-sans-luxury font-bold mt-3">
           {locale === "bn" ? companyInfo.taglineBn : companyInfo.tagline}
         </p>
 

@@ -33,7 +33,7 @@ export default function CareersBanner() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Main Hiring Card with Organic Poster Aesthetic */}
-        <div className="rounded-[28px] sm:rounded-[36px] bg-white/95 backdrop-blur-2xl border border-white p-6 sm:p-10 md:p-12 relative overflow-hidden shadow-[0_25px_60px_-15px_rgba(43,41,39,0.12)] hover:shadow-[0_30px_70px_-10px_rgba(43,41,39,0.18)] transition-all duration-500">
+        <div className="rounded-[28px] sm:rounded-[36px] bg-white/95 backdrop-blur-2xl border border-white p-6 sm:p-10 md:p-12 relative overflow-hidden transition-all duration-500">
           
           {/* Organic Aesthetic Wave Shapes (Exact Inspiration from Reference Poster) */}
           <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-gradient-to-br from-[#0E284D]/15 via-[#C9A24B]/10 to-transparent pointer-events-none" />
@@ -48,7 +48,7 @@ export default function CareersBanner() {
               
               {/* Top Badges */}
               <div className="flex flex-wrap items-center gap-3 mb-5">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#071426] text-white text-[11px] font-sans-luxury font-bold uppercase tracking-[0.2em] shadow-sm">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#071426] text-white text-[11px] font-sans-luxury font-bold uppercase tracking-[0.2em]">
                   <Megaphone className="w-3.5 h-3.5 text-[#C9A24B] animate-bounce" />
                   <span>{locale === "bn" ? "আমরা নিয়োগ দিচ্ছি" : "WE ARE HIRING"}</span>
                 </div>
@@ -144,7 +144,7 @@ export default function CareersBanner() {
                   href={applyWhatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-sans-luxury font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_8px_20px_rgba(37,211,102,0.3)] hover:-translate-y-0.5 active:translate-y-0"
+                  className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-sans-luxury font-bold text-xs uppercase tracking-widest transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <MessageCircle className="w-4 h-4 fill-white" />
                   <span>Share Resume on WhatsApp</span>
@@ -152,7 +152,7 @@ export default function CareersBanner() {
 
                 <a
                   href={`mailto:${companyInfo.email}?subject=Application for Event Coordinator - Zeyo Rajshahi`}
-                  className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full border border-[#071426]/30 text-[#071426] bg-white hover:bg-[#071426] hover:text-white font-sans-luxury font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-sm hover:-translate-y-0.5 active:translate-y-0"
+                  className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full border border-[#071426]/30 text-[#071426] bg-white hover:bg-[#071426] hover:text-white font-sans-luxury font-bold text-xs uppercase tracking-widest transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <Mail className="w-4 h-4" />
                   <span>Submit via Email</span>
@@ -164,14 +164,14 @@ export default function CareersBanner() {
             <div className="lg:col-span-5 relative flex items-center justify-center">
               
               {/* Outer Decorative Frame with Organic Fluid Backdrop */}
-              <div className="relative w-full aspect-square max-w-[420px] rounded-[24px] sm:rounded-[32px] overflow-hidden bg-gradient-to-b from-[#f2f7f3] via-[#e5efe7] to-[#d8e7dc] border border-[#0E284D]/20 shadow-[0_20px_45px_rgba(7,20,38,0.15)] p-4 flex flex-col items-center justify-center group">
+              <div className="relative w-full aspect-square max-w-[420px] rounded-[24px] sm:rounded-[32px] overflow-hidden bg-gradient-to-b from-[#f2f7f3] via-[#e5efe7] to-[#d8e7dc] border border-[#0E284D]/20 p-4 flex flex-col items-center justify-center group">
                 
                 {/* Organic fluid wave elements behind the chair */}
                 <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-[#C9A24B]/20 blur-xl pointer-events-none" />
                 <div className="absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-[#0E284D]/25 blur-xl pointer-events-none" />
 
                 {/* Floating Top Pill Badge */}
-                <div className="absolute top-4 left-4 z-20 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md border border-[#0E284D]/20 text-[10px] uppercase tracking-widest font-sans-luxury font-bold text-[#071426] shadow-sm">
+                <div className="absolute top-4 left-4 z-20 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md border border-[#0E284D]/20 text-[10px] uppercase tracking-widest font-sans-luxury font-bold text-[#071426]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#0E284D]" />
                   <span>Join Our Creative Team</span>
                 </div>
@@ -181,18 +181,17 @@ export default function CareersBanner() {
                   <img
                     src="/client-media/hiring-chair-3d.jpg"
                     alt="Zeyo Careers - Join the Atelier"
-                    className="w-full h-full object-contain drop-shadow-[0_15px_25px_rgba(0,0,0,0.18)] transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                 </div>
 
                 {/* Bottom Architectural Caption */}
-                <div className="absolute bottom-3 inset-x-4 z-20 text-center bg-white/80 backdrop-blur-md py-2 px-3 rounded-xl border border-white/80 shadow-sm">
+                <div className="absolute bottom-3 inset-x-4 z-20 text-center bg-white/80 backdrop-blur-md py-2 px-3 rounded-xl border border-white/80">
                   <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#071426] font-sans-luxury font-bold">
                     Zeyo Atelier · Rajshahi, Bangladesh
                   </p>
                 </div>
               </div>
-
             </div>
 
           </div>
@@ -201,3 +200,4 @@ export default function CareersBanner() {
     </section>
   );
 }
+

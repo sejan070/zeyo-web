@@ -176,10 +176,10 @@ export default function ClientShowcase3D() {
                 }}
                 className={`absolute transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer rounded-[22px] overflow-hidden will-change-transform transform-gpu ${
                   isCenter
-                    ? "z-30 w-[84%] sm:w-[64%] md:w-[54%] lg:w-[48%] h-[92%] shadow-[0_25px_60px_rgba(0,0,0,0.35)] border-2 border-[#C9A24B] opacity-100"
+                    ? "z-30 w-[84%] sm:w-[64%] md:w-[54%] lg:w-[48%] h-[92%] border-2 border-[#C9A24B] opacity-100"
                     : isLeft
-                    ? "z-10 w-[74%] sm:w-[58%] md:w-[48%] lg:w-[44%] h-[82%] opacity-80 shadow-xl border border-[#2b2927]/20 hover:opacity-100"
-                    : "z-10 w-[74%] sm:w-[58%] md:w-[48%] lg:w-[44%] h-[82%] opacity-80 shadow-xl border border-[#2b2927]/20 hover:opacity-100"
+                    ? "z-10 w-[74%] sm:w-[58%] md:w-[48%] lg:w-[44%] h-[82%] opacity-80 border border-[#2b2927]/20 hover:opacity-100"
+                    : "z-10 w-[74%] sm:w-[58%] md:w-[48%] lg:w-[44%] h-[82%] opacity-80 border border-[#2b2927]/20 hover:opacity-100"
                 }`}
                 style={{
                   transform: isCenter
@@ -206,7 +206,7 @@ export default function ClientShowcase3D() {
                     isRight ? "right-4" : "left-4"
                   } z-10 flex items-center gap-2`}
                 >
-                  <span className="px-3 py-1 rounded-full text-[10px] sm:text-xs uppercase tracking-widest font-sans-luxury font-bold bg-[#C9A24B] text-[#071426] shadow-md">
+                  <span className="px-3 py-1 rounded-full text-[10px] sm:text-xs uppercase tracking-widest font-sans-luxury font-bold bg-[#C9A24B] text-[#071426]">
                     {locale === "bn" ? slide.tagBn : slide.tagEn}
                   </span>
                 </div>
@@ -219,7 +219,7 @@ export default function ClientShowcase3D() {
                       e.stopPropagation();
                       setZoomModalImage(slide.image);
                     }}
-                    className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/60 border border-white/30 text-white flex items-center justify-center hover:bg-[#C9A24B] hover:text-[#071426] transition-colors shadow-lg"
+                    className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/60 border border-white/30 text-white flex items-center justify-center hover:bg-[#C9A24B] hover:text-[#071426] transition-colors"
                     title="Zoom Photo"
                   >
                     <ZoomIn className="w-4 h-4" />
@@ -232,10 +232,10 @@ export default function ClientShowcase3D() {
                     isRight ? "text-right" : "text-left"
                   }`}
                 >
-                  <h3 className="font-serif-luxury text-xl sm:text-2xl md:text-3xl text-white font-bold mb-1 leading-snug drop-shadow-md">
+                  <h3 className="font-serif-luxury text-xl sm:text-2xl md:text-3xl text-white font-bold mb-1 leading-snug">
                     {locale === "bn" ? slide.titleBn : slide.titleEn}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#F3DE9A] font-sans-luxury font-bold drop-shadow">
+                  <p className="text-xs sm:text-sm text-[#F3DE9A] font-sans-luxury font-bold">
                     {locale === "bn" ? slide.descBn : slide.descEn}
                   </p>
                 </div>
@@ -247,7 +247,7 @@ export default function ClientShowcase3D() {
           <button
             type="button"
             onClick={handlePrev}
-            className="absolute left-1 sm:left-3 lg:-left-2 xl:-left-5 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/90 backdrop-blur-md border border-[#2b2927]/20 text-[#2b2927] hover:bg-[#2b2927] hover:text-[#fbfaf8] flex items-center justify-center transition-all duration-300 shadow-xl hover:scale-110 cursor-pointer"
+            className="absolute left-1 sm:left-3 lg:-left-2 xl:-left-5 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/90 backdrop-blur-md border border-[#2b2927]/20 text-[#2b2927] hover:bg-[#2b2927] hover:text-[#fbfaf8] flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
             aria-label="Previous Slide"
           >
             <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -256,7 +256,7 @@ export default function ClientShowcase3D() {
           <button
             type="button"
             onClick={handleNext}
-            className="absolute right-1 sm:right-3 lg:-right-2 xl:-right-5 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/90 backdrop-blur-md border border-[#2b2927]/20 text-[#2b2927] hover:bg-[#2b2927] hover:text-[#fbfaf8] flex items-center justify-center transition-all duration-300 shadow-xl hover:scale-110 cursor-pointer"
+            className="absolute right-1 sm:right-3 lg:-right-2 xl:-right-5 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/90 backdrop-blur-md border border-[#2b2927]/20 text-[#2b2927] hover:bg-[#2b2927] hover:text-[#fbfaf8] flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
             aria-label="Next Slide"
           >
             <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -271,7 +271,7 @@ export default function ClientShowcase3D() {
               onClick={() => setActiveIndex(idx)}
               className={`h-2 transition-all duration-300 rounded-full cursor-pointer ${
                 idx === activeIndex
-                  ? "w-8 bg-[#2b2927] shadow-md"
+                  ? "w-8 bg-[#2b2927]"
                   : "w-2 bg-[#2b2927]/30 hover:bg-[#2b2927]/60"
               }`}
               aria-label={`Slide ${idx + 1}`}
@@ -286,7 +286,7 @@ export default function ClientShowcase3D() {
           className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in"
           onClick={() => setZoomModalImage(null)}
         >
-          <div className="relative max-w-4xl max-h-[90vh] rounded-[20px] overflow-hidden border-2 border-[#C9A24B] shadow-2xl">
+          <div className="relative max-w-4xl max-h-[90vh] rounded-[20px] overflow-hidden border-2 border-[#C9A24B]">
             <img
               src={zoomModalImage}
               alt="Enlarged client decor"

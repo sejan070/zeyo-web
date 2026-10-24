@@ -80,29 +80,29 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       />
 
       {/* Slide-out Drawer */}
-      <div className="relative w-full max-w-sm bg-[#fbfaf8] border-l border-[#2b2927]/15 h-full overflow-y-auto flex flex-col justify-between p-6 z-10 shadow-2xl">
+      <div className="relative w-full max-w-sm bg-[#fbfaf8] border-l border-[#2b2927]/15 h-full overflow-y-auto flex flex-col justify-between p-6 z-10">
         <div>
           {/* Header */}
           <div className="flex items-center justify-between pb-5 border-b border-[#2b2927]/15">
             <Link
               href="/"
               onClick={handleNavHome}
-              className="flex items-center gap-3 cursor-pointer"
+              className="inline-flex items-center gap-2.5 p-1.5 sm:p-2 rounded-xl bg-[#071426] border border-[#C9A24B]/30 cursor-pointer"
             >
-              <div className="w-10 h-10 rounded-full border-2 border-[#C9A24B] overflow-hidden flex items-center justify-center bg-white shadow-sm">
+              <div className="w-8 h-8 rounded-full border border-[#C9A24B] overflow-hidden flex items-center justify-center bg-[#071426] shrink-0">
                 <img
                   src="/client-media/zeyo-logo-emblem.jpg"
                   alt="Zeyo Logo"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center pr-2">
                 <img
-                  src="/client-media/zeyo-wordmark-dark.png"
+                  src="/client-media/zeyo-wordmark-clean.png"
                   alt="zeyo"
-                  className="h-6 w-auto object-contain"
+                  className="h-5 w-auto object-contain"
                 />
-                <p className="text-[9px] text-[#C9A24B] tracking-widest uppercase font-sans-luxury font-bold mt-0.5">
+                <p className="text-[8px] text-[#C9A24B] tracking-widest uppercase font-sans-luxury font-bold mt-0.5">
                   {companyInfo.tagline}
                 </p>
               </div>
@@ -121,7 +121,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <div className="my-4 grid grid-cols-2 gap-2.5">
             <a
               href={`tel:${companyInfo.phoneRaw}`}
-              className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-full bg-[#071426] text-[#F3DE9A] text-xs font-bold uppercase tracking-wider shadow-sm"
+              className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-full bg-[#071426] text-[#F3DE9A] text-xs font-bold uppercase tracking-wider"
             >
               <PhoneCall className="w-3.5 h-3.5" />
               <span>Call Us</span>
@@ -132,7 +132,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-full bg-[#25D366] text-white text-xs font-bold uppercase tracking-wider shadow-sm"
+              className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-full bg-[#25D366] text-white text-xs font-bold uppercase tracking-wider"
             >
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.121-.524-1.631-.682-2.703-2.348-2.784-2.457-.081-.109-.661-.879-.661-1.675 0-.796.417-1.189.565-1.353.148-.163.324-.204.432-.204.108 0 .216.002.311.007.1.005.234-.038.366.279.136.327.469 1.144.509 1.227.04.082.067.177.013.285-.054.108-.081.176-.162.271-.081.095-.17.212-.243.285-.081.082-.166.172-.072.335.094.163.42 1.002.903 1.431.621.552 1.144.723 1.307.804.163.081.258.072.355-.041.097-.113.414-.482.525-.647.111-.165.221-.137.371-.082.15.055.952.449 1.116.531.163.082.272.123.313.191.041.069.041.398-.103.803z" />
@@ -298,7 +298,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   onClose();
                 }
               }}
-              className="w-full py-3.5 px-6 rounded-full flex items-center justify-center gap-2 text-center bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] text-[#071426] font-sans-luxury font-bold text-xs uppercase tracking-[0.18em] shadow-[0_4px_16px_rgba(201,162,75,0.4)] transition-all whitespace-nowrap leading-none"
+              className="w-full py-3.5 px-6 rounded-full flex items-center justify-center gap-2 text-center bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] text-[#071426] font-sans-luxury font-bold text-xs uppercase tracking-[0.18em] transition-all whitespace-nowrap leading-none"
             >
               <span>PLAN YOUR EVENT</span>
               <ArrowRight className="w-4 h-4 text-[#071426]" />

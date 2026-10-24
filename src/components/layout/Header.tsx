@@ -51,14 +51,14 @@ export default function Header() {
 
     if (isOpen || isHovered || isActive) {
       visual +=
-        " bg-white/[0.24] border border-[#C9A24B] text-[#F3DE9A] shadow-[0_0_18px_rgba(201,162,75,0.65),inset_0_1px_1px_rgba(255,255,255,0.4)] scale-105 z-20 font-bold";
+        " bg-white/[0.24] border border-[#C9A24B] text-[#F3DE9A] scale-105 z-20 font-bold";
     } else if (isHoveringOther) {
       visual +=
         " bg-white/[0.08] border border-white/15 text-white/80 scale-95 opacity-85 z-0 hover:text-white hover:bg-white/[0.15]";
     } else {
       // Inactive / resting state: crisp, bright white text with high readability on dark navy
       visual +=
-        " bg-white/[0.12] border border-white/20 text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_2px_8px_rgba(0,0,0,0.2)] scale-100 opacity-100 z-10 hover:text-white hover:bg-white/[0.18] hover:border-[#C9A24B]/40";
+        " bg-white/[0.12] border border-white/20 text-white scale-100 opacity-100 z-10 hover:text-white hover:bg-white/[0.18] hover:border-[#C9A24B]/40";
     }
 
     return `h-9 min-w-[88px] xl:min-w-[96px] 2xl:min-w-[102px] px-3.5 xl:px-4 rounded-full font-sans-luxury text-[11px] xl:text-[11.5px] 2xl:text-[12px] font-bold tracking-[0.12em] uppercase backdrop-blur-md flex items-center justify-center text-center whitespace-nowrap gap-1.5 ${visual}`;
@@ -250,18 +250,18 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled || !isHome
-            ? "glass-navy py-3 shadow-2xl border-b border-[#C9A24B]/30"
-            : "bg-[#071426]/90 backdrop-blur-md py-3.5 sm:py-4 border-b border-[#C9A24B]/20 shadow-xl"
+            ? "glass-navy py-2.5 sm:py-3 border-b border-[#C9A24B]/30"
+            : "bg-[#071426]/90 backdrop-blur-md py-3 sm:py-4 border-b border-[#C9A24B]/20"
         }`}
       >
-        <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
-          <div className="flex items-center justify-between gap-4">
+        <div className="w-full max-w-7xl px-3 sm:px-6 lg:px-8 mx-auto">
+          <div className="flex items-center justify-between gap-1.5 sm:gap-4">
             {/* Logo & Brand Monogram with Social Icons right beside ZEYO above tagline */}
-            <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
               <Link
                 href="/"
                 onClick={handleNavHome}
-                className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-[#C9A24B] overflow-hidden flex items-center justify-center bg-white shadow-[0_0_12px_rgba(201,162,75,0.35)] hover:scale-105 transition-all duration-300 shrink-0 cursor-pointer"
+                className="relative w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full border-2 border-[#C9A24B] overflow-hidden flex items-center justify-center bg-white hover:scale-105 transition-all duration-300 shrink-0 cursor-pointer"
                 aria-label="Zeyo Home"
               >
                 <img
@@ -283,12 +283,12 @@ export default function Header() {
                     <img
                       src="/client-media/zeyo-wordmark-clean.png"
                       alt="zeyo"
-                      className="h-5 sm:h-6 md:h-6.5 w-auto object-contain drop-shadow-[0_1px_5px_rgba(0,0,0,0.6)]"
+                      className="h-4.5 sm:h-5.5 md:h-6.5 w-auto object-contain"
                     />
                   </Link>
 
                   {/* Social Icons right beside Zeyo, hovering directly over the space above 'CELEBRATE.' */}
-                  <div className="flex items-center gap-1.5 ml-2.5">
+                  <div className="flex items-center gap-1 sm:gap-1.5 ml-1.5 sm:ml-2.5">
                     <a
                       href={companyInfo.facebookUrl}
                       target="_blank"
@@ -297,7 +297,7 @@ export default function Header() {
                       aria-label="Zeyo Facebook"
                       title="Visit Zeyo on Facebook"
                     >
-                      <svg className="w-4.5 h-4.5 drop-shadow-sm" viewBox="0 0 24 24">
+                      <svg className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="12" fill="#1877F2" />
                         <path
                           fill="#FFFFFF"
@@ -313,7 +313,7 @@ export default function Header() {
                       aria-label="Zeyo Instagram"
                       title="Visit Zeyo on Instagram"
                     >
-                      <svg className="w-4.5 h-4.5 drop-shadow-sm" viewBox="0 0 24 24">
+                      <svg className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5" viewBox="0 0 24 24">
                         <defs>
                           <linearGradient id="zeyoInstaGrad" x1="0%" y1="100%" x2="100%" y2="0%">
                             <stop offset="0%" stopColor="#fdf497" />
@@ -336,7 +336,7 @@ export default function Header() {
                 <Link
                   href="/"
                   onClick={handleNavHome}
-                  className="text-[9px] tracking-[0.24em] uppercase text-[#C9A24B] font-bold font-sans-luxury mt-1 hover:text-[#F3DE9A] transition-colors leading-none cursor-pointer"
+                  className="text-[7.5px] sm:text-[8.5px] md:text-[9px] tracking-[0.16em] sm:tracking-[0.24em] uppercase text-[#C9A24B] font-bold font-sans-luxury mt-0.5 sm:mt-1 hover:text-[#F3DE9A] transition-colors leading-none cursor-pointer"
                 >
                   {companyInfo.tagline}
                 </Link>
@@ -389,10 +389,10 @@ export default function Header() {
 
                   {/* Services Dropdown Panel (Light Theme Transparent Glassified) */}
                   {servicesOpen && (
-                    <div className="absolute top-full left-0 mt-2.5 w-[335px] bg-[#FAF6F0]/92 backdrop-blur-3xl border border-white/90 rounded-2xl shadow-[0_24px_50px_rgba(7,20,38,0.22),0_4px_16px_rgba(201,162,75,0.15),inset_0_1px_1px_rgba(255,255,255,0.9)] p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="absolute top-full left-0 mt-2.5 w-[335px] bg-[#FAF6F0]/95 backdrop-blur-3xl border border-white/90 rounded-2xl p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                       <div className="flex items-center justify-between px-2 pb-2.5 mb-2 border-b border-[#2b2927]/12">
                         <div className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24B] shadow-[0_0_8px_#C9A24B]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24B]" />
                           <span className="font-sans-luxury text-[11px] font-black tracking-[0.2em] uppercase text-[#071426]">
                             Services
                           </span>
@@ -414,10 +414,10 @@ export default function Header() {
                               key={sub.filter}
                               type="button"
                               onClick={() => handleSelectService(sub.filter)}
-                              className="w-full group/item flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white/80 hover:bg-white border border-[#2b2927]/10 hover:border-[#C9A24B] shadow-[0_2px_8px_rgba(43,41,39,0.04)] hover:shadow-[0_6px_20px_rgba(201,162,75,0.2)] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer text-left"
+                              className="w-full group/item flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white/80 hover:bg-white border border-[#2b2927]/10 hover:border-[#C9A24B] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer text-left"
                             >
                               <div className="flex items-center gap-3 min-w-0">
-                                <div className="w-8.5 h-8.5 rounded-xl bg-gradient-to-br from-[#071426] to-[#162E52] border border-[#C9A24B]/30 flex items-center justify-center text-[#F3DE9A] group-hover/item:from-[#C9A24B] group-hover/item:to-[#DFBD6A] group-hover/item:text-[#071426] group-hover/item:shadow-[0_0_12px_rgba(201,162,75,0.5)] transition-all duration-200 shrink-0">
+                                <div className="w-8.5 h-8.5 rounded-xl bg-gradient-to-br from-[#071426] to-[#162E52] border border-[#C9A24B]/30 flex items-center justify-center text-[#F3DE9A] group-hover/item:from-[#C9A24B] group-hover/item:to-[#DFBD6A] group-hover/item:text-[#071426] transition-all duration-200 shrink-0">
                                   <IconComponent className="w-4 h-4" />
                                 </div>
                                 <span className="font-serif-luxury text-[16px] font-bold text-[#071426] group-hover/item:text-[#967425] transition-colors truncate">
@@ -459,10 +459,10 @@ export default function Header() {
 
                   {/* Packages Dropdown Panel (Light Theme Transparent Glassified with Bright Gold Badges) */}
                   {packagesOpen && (
-                    <div className="absolute top-full left-0 mt-2.5 w-[355px] bg-[#FAF6F0]/92 backdrop-blur-3xl border border-white/90 rounded-2xl shadow-[0_24px_50px_rgba(7,20,38,0.22),0_4px_16px_rgba(201,162,75,0.15),inset_0_1px_1px_rgba(255,255,255,0.9)] p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="absolute top-full left-0 mt-2.5 w-[355px] bg-[#FAF6F0]/95 backdrop-blur-3xl border border-white/90 rounded-2xl p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                       <div className="flex items-center justify-between px-2 pb-2.5 mb-2 border-b border-[#2b2927]/12">
                         <div className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24B] shadow-[0_0_8px_#C9A24B]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24B]" />
                           <span className="font-sans-luxury text-[11px] font-black tracking-[0.2em] uppercase text-[#071426]">
                             Event Tiers
                           </span>
@@ -484,10 +484,10 @@ export default function Header() {
                               key={pkg.id}
                               type="button"
                               onClick={() => handleSelectPackage(pkg.tier)}
-                              className="w-full group/pkg flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white/80 hover:bg-white border border-[#2b2927]/10 hover:border-[#C9A24B] shadow-[0_2px_8px_rgba(43,41,39,0.04)] hover:shadow-[0_6px_20px_rgba(201,162,75,0.2)] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer text-left"
+                              className="w-full group/pkg flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white/80 hover:bg-white border border-[#2b2927]/10 hover:border-[#C9A24B] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer text-left"
                             >
                               <div className="flex items-center gap-3 min-w-0">
-                                <div className="w-8.5 h-8.5 rounded-xl bg-gradient-to-br from-[#071426] to-[#162E52] border border-[#C9A24B]/30 flex items-center justify-center text-[#F3DE9A] group-hover/pkg:from-[#C9A24B] group-hover/pkg:to-[#DFBD6A] group-hover/pkg:text-[#071426] group-hover/pkg:shadow-[0_0_12px_rgba(201,162,75,0.5)] transition-all duration-200 shrink-0">
+                                <div className="w-8.5 h-8.5 rounded-xl bg-gradient-to-br from-[#071426] to-[#162E52] border border-[#C9A24B]/30 flex items-center justify-center text-[#F3DE9A] group-hover/pkg:from-[#C9A24B] group-hover/pkg:to-[#DFBD6A] group-hover/pkg:text-[#071426] transition-all duration-200 shrink-0">
                                   <IconComponent className="w-4 h-4" />
                                 </div>
                                 <span className="font-serif-luxury text-[16px] font-bold text-[#071426] group-hover/pkg:text-[#967425] transition-colors truncate">
@@ -495,7 +495,7 @@ export default function Header() {
                                 </span>
                               </div>
                               <div className="flex items-center gap-2 shrink-0 ml-2">
-                                <span className="px-2.5 py-0.5 rounded-full text-[10.5px] font-sans-luxury font-black uppercase tracking-wider bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] text-[#071426] shadow-[0_2px_8px_rgba(201,162,75,0.35)] border border-[#C9A24B]/40 shrink-0">
+                                <span className="px-2.5 py-0.5 rounded-full text-[10.5px] font-sans-luxury font-black uppercase tracking-wider bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] text-[#071426] border border-[#C9A24B]/40 shrink-0">
                                   {pkg.badge}
                                 </span>
                                 <ArrowRight className="w-4 h-4 text-[#967425] group-hover/pkg:text-[#071426] group-hover/pkg:translate-x-1 transition-all" />
@@ -557,16 +557,16 @@ export default function Header() {
                   href={`tel:${companyInfo.phoneRaw}`}
                   onMouseEnter={() => setShowPhoneTooltip(true)}
                   onMouseLeave={() => setShowPhoneTooltip(false)}
-                  className="h-9 w-9 rounded-full bg-white/[0.12] hover:bg-white/[0.24] border border-white/20 hover:border-[#C9A24B] text-[#F3DE9A] hover:text-[#C9A24B] flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_2px_8px_rgba(0,0,0,0.2)] hover:shadow-[0_0_15px_rgba(201,162,75,0.5)] cursor-pointer shrink-0"
+                  className="h-9 w-9 rounded-full bg-white/[0.12] hover:bg-white/[0.24] border border-white/20 hover:border-[#C9A24B] text-[#F3DE9A] hover:text-[#C9A24B] flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer shrink-0"
                   aria-label="Call Zeyo Direct"
                   title={`Call: ${companyInfo.phone}`}
                 >
-                  <PhoneCall className="w-4 h-4 transition-transform duration-300 hover:rotate-12 drop-shadow-[0_2px_8px_rgba(201,162,75,0.4)]" />
+                  <PhoneCall className="w-4 h-4 transition-transform duration-300 hover:rotate-12" />
                 </a>
 
                 {/* Floating Tooltip displaying number */}
                 {showPhoneTooltip && (
-                  <div className="absolute top-11 right-0 z-50 bg-[#071426]/95 backdrop-blur-xl border border-[#C9A24B]/40 text-white text-xs px-3.5 py-1.5 shadow-2xl whitespace-nowrap rounded-full font-sans-luxury font-bold flex items-center gap-2 animate-in fade-in duration-200">
+                  <div className="absolute top-11 right-0 z-50 bg-[#071426]/95 backdrop-blur-xl border border-[#C9A24B]/40 text-white text-xs px-3.5 py-1.5 whitespace-nowrap rounded-full font-sans-luxury font-bold flex items-center gap-2 animate-in fade-in duration-200">
                     <span className="text-[#F3DE9A] tracking-wider">{companyInfo.phone}</span>
                   </div>
                 )}
@@ -576,37 +576,45 @@ export default function Header() {
               <Link
                 href="/contact"
                 onClick={handleNavContact}
-                className="inline-flex items-center justify-center whitespace-nowrap px-4 xl:px-5 h-9 rounded-full border border-[#E0C172] text-[#071426] bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] hover:brightness-110 font-bold font-sans-luxury text-[11px] xl:text-[11.5px] 2xl:text-[12px] tracking-[0.12em] uppercase shadow-[0_4px_16px_rgba(201,162,75,0.4)] hover:shadow-[0_6px_22px_rgba(201,162,75,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 leading-none text-center shrink-0 cursor-pointer"
+                className="inline-flex items-center justify-center whitespace-nowrap px-4 xl:px-5 h-9 rounded-full border border-[#E0C172] text-[#071426] bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] hover:brightness-110 font-bold font-sans-luxury text-[11px] xl:text-[11.5px] 2xl:text-[12px] tracking-[0.12em] uppercase hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 leading-none text-center shrink-0 cursor-pointer"
               >
                 <span>{t.nav.planEvent}</span>
               </Link>
             </div>
 
             {/* Mobile Controls (Visible on mobile & tablet < 1024px) */}
-            <div className="flex lg:hidden items-center gap-2 sm:gap-2.5 shrink-0">
+            <div className="flex lg:hidden items-center gap-1.5 sm:gap-2 shrink-0">
+              {/* Mobile Phone Call Button */}
               <a
                 href={`tel:${companyInfo.phoneRaw}`}
-                className="h-9 w-9 rounded-full bg-white/[0.12] border border-white/20 text-[#F3DE9A] flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
+                className="h-8 w-8 sm:h-8.5 sm:w-8.5 rounded-full bg-white/[0.12] hover:bg-white/[0.22] border border-white/20 text-[#F3DE9A] flex items-center justify-center hover:scale-105 active:scale-95 transition-transform shrink-0"
                 aria-label="Call Zeyo Direct"
               >
-                <PhoneCall className="w-4 h-4" />
+                <PhoneCall className="w-3.5 h-3.5" />
               </a>
 
+              {/* Mobile Plan Button */}
               <Link
                 href="/contact"
                 onClick={handleNavContact}
-                className="inline-flex items-center justify-center px-3.5 h-9 rounded-full border border-[#E0C172] text-[#071426] bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] font-bold font-sans-luxury text-[10.5px] tracking-wider uppercase shadow-md"
+                className="inline-flex items-center justify-center px-2.5 sm:px-3 h-8 sm:h-8.5 rounded-full border border-[#E0C172] text-[#071426] bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] font-bold font-sans-luxury text-[9.5px] sm:text-[10px] tracking-wider uppercase leading-none shrink-0"
               >
                 <span>Plan</span>
               </Link>
 
+              {/* Mobile 3-Dot Menu Button (Dedicated Three Dots Icon for Drawer Menu) */}
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-1.5 text-white/90 hover:text-[#C9A24B] transition-colors cursor-pointer shrink-0"
+                className="h-8 w-8 sm:h-8.5 sm:w-8.5 rounded-full bg-white/[0.14] hover:bg-white/[0.25] border border-white/25 hover:border-[#C9A24B] text-[#F3DE9A] flex items-center justify-center shrink-0 cursor-pointer transition-all active:scale-95"
                 aria-label="Open Navigation Menu"
+                title="Menu"
               >
-                <Menu className="w-6 h-6" />
+                <div className="flex flex-col items-center justify-center gap-[3px]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F3DE9A]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F3DE9A]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F3DE9A]" />
+                </div>
               </button>
             </div>
           </div>

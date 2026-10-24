@@ -1,325 +1,124 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import React from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ProcessSection() {
+  const { locale } = useLanguage();
+
   const steps = [
     {
       num: "01",
-      badge: "STAGE 01 · INITIAL ENGAGEMENT",
-      title: "01. Consultation",
-      descEn:
-        "Connect with our visionary event architects at our Rajshahi studio over fresh coffee or via WhatsApp. We meticulously align with your venue choice, guest scale, and budget to design an extraordinary celebration.",
+      tag: "01 / CONSULTATION",
+      kicker: locale === "bn" ? "ধাপ ০১ · ব্যক্তিগত পরামর্শ ও স্বপ্ন নির্ধারণ" : "STAGE 01 · INITIAL ENGAGEMENT",
+      title: locale === "bn" ? "০১. ব্যক্তিগত পরামর্শ ও স্বপ্ন নির্ধারণ" : "01. Consultation",
+      desc:
+        locale === "bn"
+          ? "আমাদের রাজশাহীর অলকার মোড় স্টুডিওতে এক কাপ কফির আড্ডায় অথবা সরাসরি হোয়াটসঅ্যাপে আপনার ভাবনার সাথে আমাদের অভিজ্ঞ ইভেন্ট আর্কিটেক্টদের মেলবন্ধন। আপনার পছন্দ, ভেন্যু নির্বাচন, অতিথি সংখ্যা এবং নির্ধারিত বাজেটের মধ্যে সর্বোচ্চ আভিজাত্যের নিখুঁত পরিকল্পনা।"
+          : "Connect with our visionary event architects at our Rajshahi studio over fresh coffee or via WhatsApp. We meticulously align with your venue choice, guest scale, and budget to design an extraordinary celebration.",
       image: "/client-media/process-consultation.jpg",
-      overlay: "from-black/95 via-black/75 to-black/40"
     },
     {
       num: "02",
-      badge: "STAGE 02 · BLUEPRINT & 3D DESIGN",
-      title: "02. Concept & Design",
-      descEn:
-        "Every venue possesses a distinct soul. We forge custom moodboards, 3D stage mockups, exotic floral palettes, and intelligent lighting blueprints so you preview every frame before production begins.",
+      tag: "02 / CONCEPT & 3D DESIGN",
+      kicker: locale === "bn" ? "ধাপ ০২ · আর্কিটেকচারাল কনসেপ্ট ও ৩ডি ডিজাইন" : "STAGE 02 · BLUEPRINT & 3D DESIGN",
+      title: locale === "bn" ? "০২. আর্কিটেকচারাল কনসেপ্ট ও ৩ডি ডিজাইন" : "02. Concept & Design",
+      desc:
+        locale === "bn"
+          ? "প্রতিটি স্থানের নিজস্ব রূপ থাকে। আমরা আপনার ইভেন্টের জন্য কাস্টম মুডবোর্ড, ৩ডি স্টেজ ভিজ্যুয়ালাইজেশন, এক্সক্লুসিভ ফ্লোরাল প্যালেট এবং বুদ্ধিমান আলোকসজ্জার আর্কিটেকচারাল ব্লুপ্রিন্ট প্রস্তুত করি। বাস্তবায়ন শুরুর আগেই আপনি প্রতিটি ফ্রেমের নিখুঁত প্রিভিউ দেখতে পাবেন।"
+          : "Every venue possesses a distinct soul. We forge custom moodboards, 3D stage mockups, exotic floral palettes, and intelligent lighting blueprints so you preview every frame before production begins.",
       image: "/client-media/process-concept-design.jpg",
-      overlay: "from-black/95 via-black/80 to-black/50"
     },
     {
       num: "03",
-      badge: "STAGE 03 · ON-GROUND CRAFTSMANSHIP",
-      title: "03. On-Site Production",
-      descEn:
-        "Our master craftsmen and technical crew arrive on-site with imported fresh florals, bespoke wooden arches, crystal chandeliers, and concert-grade truss lighting — engineered with uncompromising precision.",
+      tag: "03 / ON-GROUND CRAFTSMANSHIP",
+      kicker: locale === "bn" ? "ধাপ ০৩ · নিখুঁত অন-সাইট প্রোডাকশন ও স্টেজ নির্মাণ" : "STAGE 03 · ON-GROUND CRAFTSMANSHIP",
+      title: locale === "bn" ? "০৩. নিখুঁত অন-সাইট প্রোডাকশন ও স্টেজ নির্মাণ" : "03. On-Site Production",
+      desc:
+        locale === "bn"
+          ? "ইভেন্টের পূর্বমুহূর্তে আমাদের সুদক্ষ ইঞ্জিনিয়ার ও কারিগর দল ভেন্যুতে নেমে আমদানি করা তাজা ফুল, কাস্টম উডেন আর্চ, হ্যাঙ্গিং শ্যান্ডেলিয়ার এবং উন্নত কনসার্ট ট্রাস লাইটিং নিখুঁতভাবে স্থাপন করে। প্রতিটি ইঞ্চি তৈরি হয় কঠোর কোয়ালিটি কন্ট্রোলের মাধ্যমে।"
+          : "Our master craftsmen and technical crew arrive on-site with imported fresh florals, bespoke wooden arches, crystal chandeliers, and concert-grade truss lighting — engineered with uncompromising precision.",
       image: "/client-media/process-onsite-production.jpg",
-      overlay: "from-black/95 via-black/75 to-black/40"
     },
     {
       num: "04",
-      badge: "STAGE 04 · GRAND FINALE",
-      title: "04. Flawless Celebration",
-      descEn:
-        "When the auspicious hour arrives, you and your family simply revel in pure joy. From grand entrance tunnels to live stage coordination, Zeyo orchestrates every detail for a fairy-tale reality.",
+      tag: "04 / FLAWLESS CELEBRATION",
+      kicker: locale === "bn" ? "ধাপ ০৪ · নিশ্চিন্ত ও রাজকীয় উদযাপন" : "STAGE 04 · GRAND FINALE",
+      title: locale === "bn" ? "০৪. নিশ্চিন্ত ও রাজকীয় উদযাপন" : "04. Flawless Celebration",
+      desc:
+        locale === "bn"
+          ? "শুভক্ষণ শুরু হওয়ার পর আপনি এবং আপনার পরিবার শুধু আনন্দের মুহূর্তগুলো উপভোগ করবেন। এন্ট্রি ওয়াকওয়ে থেকে শুরু করে মঞ্চের লাইভ কোঅর্ডিনেশন—অন-গ্রাউন্ড সমস্ত দায়িত্বে থাকে জেয়ো টিম। আপনার জীবনের সবচেয়ে বিশেষ দিনটি তৈরি হয় রূপকথার মতো চিরস্মরণীয়।"
+          : "When the auspicious hour arrives, you and your family simply revel in pure joy. From grand entrance tunnels to live stage coordination, Zeyo orchestrates every detail for a fairy-tale reality.",
       image: "/client-media/process-flawless-celebration.jpg",
-      overlay: "from-black/95 via-black/75 to-black/40"
-    }
+    },
   ];
 
-  const targetRef = useRef<HTMLDivElement>(null);
-  const [activeStep, setActiveStep] = useState(0);
-
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start start", "end end"]
-  });
-
-  // Track active step for tabs & progress indicator
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest < 0.28) {
-      setActiveStep(0);
-    } else if (latest < 0.62) {
-      setActiveStep(1);
-    } else if (latest < 0.88) {
-      setActiveStep(2);
-    } else {
-      setActiveStep(3);
-    }
-  });
-
-  // Alternating Left-Right Sliding Transforms:
-  // Card 0: Starts at center (0%). Slides OUT to the LEFT (0% -> -100%)
-  const x0 = useTransform(scrollYProgress, [0.18, 0.38], ["0%", "-100%"]);
-
-  // Card 1: Starts at RIGHT (100%). Slides IN from RIGHT (100% -> 0%). Then slides OUT to the RIGHT (0% -> 100%)
-  const x1 = useTransform(
-    scrollYProgress,
-    [0.18, 0.38, 0.52, 0.72],
-    ["100%", "0%", "0%", "100%"]
-  );
-
-  // Card 2: Starts at LEFT (-100%). Slides IN from LEFT (-100% -> 0%). Then slides OUT to the LEFT (0% -> -100%)
-  const x2 = useTransform(
-    scrollYProgress,
-    [0.52, 0.72, 0.82, 0.98],
-    ["-100%", "0%", "0%", "-100%"]
-  );
-
-  // Card 3: Starts at RIGHT (100%). Slides IN from RIGHT (100% -> 0%) and rests in center as Grand Finale
-  const x3 = useTransform(scrollYProgress, [0.82, 0.98], ["100%", "0%"]);
-
-  const scrollToStep = (index: number) => {
-    if (!targetRef.current) return;
-    const element = targetRef.current;
-    const rect = element.getBoundingClientRect();
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const startY = rect.top + scrollTop;
-    const totalHeight = element.scrollHeight - window.innerHeight;
-
-    // Sweet-spot fractions for each resting card
-    const fractions = [0.08, 0.45, 0.77, 0.99];
-    const targetScroll = startY + totalHeight * fractions[index];
-
-    window.scrollTo({
-      top: targetScroll,
-      behavior: "smooth"
-    });
-  };
-
-  const handlePrev = () => {
-    if (activeStep > 0) {
-      scrollToStep(activeStep - 1);
-    }
-  };
-
-  const handleNext = () => {
-    if (activeStep < steps.length - 1) {
-      scrollToStep(activeStep + 1);
-    }
-  };
-
   return (
-    <section id="process" className="bg-[#e9e7e2] relative border-t border-[#2b2927]/10">
-      {/* Scroll Track Container */}
-      <div ref={targetRef} className="relative h-[260vh] sm:h-[300vh]">
-        {/* Sticky Pinned Viewport Container */}
-        <div className="sticky top-20 sm:top-24 h-[calc(100vh-5rem)] sm:h-[calc(100vh-6rem)] flex flex-col justify-between py-4 sm:py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
-          
-          {/* Header & Step Selector */}
-          <div className="text-center max-w-4xl mx-auto shrink-0 mb-2 sm:mb-3">
-            <h2 className="font-serif-luxury text-2xl sm:text-4xl md:text-5xl text-[#2b2927] font-bold tracking-tight mb-2 leading-tight">
-              From Dream to Celebration
-            </h2>
-            <p className="text-xs sm:text-sm text-[#595550] font-sans-luxury font-bold max-w-xl mx-auto mb-2.5 sm:mb-3">
-              Scroll down or use the slider arrows — each card slides in alternately from left & right in place.
-            </p>
-
-            {/* Interactive Step Navigator Tabs */}
-            <div className="flex items-center justify-center gap-1.5 sm:gap-2.5 flex-wrap">
-              {steps.map((st, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => scrollToStep(i)}
-                  className={`px-3 sm:px-4 py-1.5 rounded-full text-[10.5px] sm:text-xs font-sans-luxury font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                    activeStep === i
-                      ? "bg-[#071426] text-[#F3DE9A] shadow-md border border-[#C9A24B]/50 scale-105"
-                      : "bg-white/80 hover:bg-white text-[#595550] border border-[#2b2927]/10"
-                  }`}
-                >
-                  <span className="text-[#C9A24B] mr-1">0{i + 1}.</span>
-                  <span>{st.title.split(". ")[1]}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Centered Pinned Card Slider Deck (Navy frame prevents any white background peek-through) */}
-          <div className="relative w-full max-w-5xl mx-auto h-[420px] sm:h-[450px] md:h-[480px] lg:h-[500px] my-auto rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#071426] shadow-[0_25px_60px_rgba(7,20,38,0.35)] border border-[#C9A24B]/40">
-            
-            {/* Slider Navigation Arrows (Previous / Next) */}
-            <button
-              type="button"
-              onClick={handlePrev}
-              disabled={activeStep === 0}
-              aria-label="Previous Step"
-              className={`absolute left-1.5 sm:left-4 lg:left-5 top-1/2 -translate-y-1/2 z-50 w-8 h-8 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all duration-300 shadow-2xl cursor-pointer ${
-                activeStep === 0
-                  ? "bg-[#071426]/60 text-[#C9A24B]/30 border border-[#C9A24B]/20 cursor-not-allowed opacity-40"
-                  : "bg-[#071426]/90 text-[#F3DE9A] hover:bg-[#162E52] border border-[#C9A24B]/70 hover:scale-110 hover:shadow-[0_0_20px_rgba(201,162,75,0.5)] backdrop-blur-md"
-              }`}
-            >
-              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
-
-            <button
-              type="button"
-              onClick={handleNext}
-              disabled={activeStep === steps.length - 1}
-              aria-label="Next Step"
-              className={`absolute right-1.5 sm:right-4 lg:right-5 top-1/2 -translate-y-1/2 z-50 w-8 h-8 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all duration-300 shadow-2xl cursor-pointer ${
-                activeStep === steps.length - 1
-                  ? "bg-[#071426]/60 text-[#C9A24B]/30 border border-[#C9A24B]/20 cursor-not-allowed opacity-40"
-                  : "bg-[#071426]/90 text-[#F3DE9A] hover:bg-[#162E52] border border-[#C9A24B]/70 hover:scale-110 hover:shadow-[0_0_20px_rgba(201,162,75,0.5)] backdrop-blur-md"
-              }`}
-            >
-              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
-
-            {/* Card 0 (Step 1 - Base layer z-10, slides OUT to the LEFT) */}
-            <motion.div
-              style={{ x: x0 }}
-              className="absolute inset-0 z-10 will-change-transform"
-            >
-              <div className="relative w-full h-full flex flex-col justify-center">
-                <img
-                  src={steps[0].image}
-                  alt={steps[0].title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t ${steps[0].overlay}`} />
-
-                {/* Content written DIRECTLY on the image without inner background boxes */}
-                <div className="relative flex flex-col items-center justify-center text-center px-8 sm:px-14 md:px-18 lg:px-20 py-6 sm:py-10 z-10">
-                  <span className="inline-block px-3.5 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-[11px] font-sans-luxury font-bold uppercase tracking-[0.22em] bg-[#C9A24B]/25 text-[#F3DE9A] border border-[#C9A24B]/50 mb-2.5 sm:mb-3.5 shadow-md">
-                    {steps[0].badge}
-                  </span>
-                  <h3 className="font-serif-luxury text-2xl sm:text-4xl md:text-5xl text-[#F3DE9A] font-bold tracking-wide mb-3 sm:mb-4 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
-                    {steps[0].title}
-                  </h3>
-                  <p className="font-serif-luxury italic font-bold text-sm sm:text-base md:text-lg lg:text-[21px] text-white/95 max-w-3xl mx-auto leading-relaxed sm:leading-[1.75] drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)]">
-                    {steps[0].descEn}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Card 1 (Step 2 - z-20, slides IN from RIGHT, then slides OUT to RIGHT) */}
-            <motion.div
-              style={{ x: x1 }}
-              className="absolute inset-0 z-20 will-change-transform"
-            >
-              <div className="relative w-full h-full flex flex-col justify-center">
-                <img
-                  src={steps[1].image}
-                  alt={steps[1].title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t ${steps[1].overlay}`} />
-
-                {/* Content written DIRECTLY on the image without inner background boxes */}
-                <div className="relative flex flex-col items-center justify-center text-center px-8 sm:px-14 md:px-18 lg:px-20 py-6 sm:py-10 z-10">
-                  <span className="inline-block px-3.5 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-[11px] font-sans-luxury font-bold uppercase tracking-[0.22em] bg-[#C9A24B]/25 text-[#F3DE9A] border border-[#C9A24B]/50 mb-2.5 sm:mb-3.5 shadow-md">
-                    {steps[1].badge}
-                  </span>
-                  <h3 className="font-serif-luxury text-2xl sm:text-4xl md:text-5xl text-[#F3DE9A] font-bold tracking-wide mb-3 sm:mb-4 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
-                    {steps[1].title}
-                  </h3>
-                  <p className="font-serif-luxury italic font-bold text-sm sm:text-base md:text-lg lg:text-[21px] text-white/95 max-w-3xl mx-auto leading-relaxed sm:leading-[1.75] drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)]">
-                    {steps[1].descEn}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Card 2 (Step 3 - z-30, slides IN from LEFT, then slides OUT to LEFT) */}
-            <motion.div
-              style={{ x: x2 }}
-              className="absolute inset-0 z-30 will-change-transform"
-            >
-              <div className="relative w-full h-full flex flex-col justify-center">
-                <img
-                  src={steps[2].image}
-                  alt={steps[2].title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t ${steps[2].overlay}`} />
-
-                {/* Content written DIRECTLY on the image without inner background boxes */}
-                <div className="relative flex flex-col items-center justify-center text-center px-8 sm:px-14 md:px-18 lg:px-20 py-6 sm:py-10 z-10">
-                  <span className="inline-block px-3.5 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-[11px] font-sans-luxury font-bold uppercase tracking-[0.22em] bg-[#C9A24B]/25 text-[#F3DE9A] border border-[#C9A24B]/50 mb-2.5 sm:mb-3.5 shadow-md">
-                    {steps[2].badge}
-                  </span>
-                  <h3 className="font-serif-luxury text-2xl sm:text-4xl md:text-5xl text-[#F3DE9A] font-bold tracking-wide mb-3 sm:mb-4 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
-                    {steps[2].title}
-                  </h3>
-                  <p className="font-serif-luxury italic font-bold text-sm sm:text-base md:text-lg lg:text-[21px] text-white/95 max-w-3xl mx-auto leading-relaxed sm:leading-[1.75] drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)]">
-                    {steps[2].descEn}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Card 3 (Step 4 - z-40, slides IN from RIGHT, stays in place as Grand Finale) */}
-            <motion.div
-              style={{ x: x3 }}
-              className="absolute inset-0 z-40 will-change-transform"
-            >
-              <div className="relative w-full h-full flex flex-col justify-center">
-                <img
-                  src={steps[3].image}
-                  alt={steps[3].title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t ${steps[3].overlay}`} />
-
-                {/* Content written DIRECTLY on the image without inner background boxes */}
-                <div className="relative flex flex-col items-center justify-center text-center px-8 sm:px-14 md:px-18 lg:px-20 py-6 sm:py-10 z-10">
-                  <span className="inline-block px-3.5 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-[11px] font-sans-luxury font-bold uppercase tracking-[0.22em] bg-[#C9A24B]/25 text-[#F3DE9A] border border-[#C9A24B]/50 mb-2.5 sm:mb-3.5 shadow-md">
-                    {steps[3].badge}
-                  </span>
-                  <h3 className="font-serif-luxury text-2xl sm:text-4xl md:text-5xl text-[#F3DE9A] font-bold tracking-wide mb-3 sm:mb-4 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
-                    {steps[3].title}
-                  </h3>
-                  <p className="font-serif-luxury italic font-bold text-sm sm:text-base md:text-lg lg:text-[21px] text-white/95 max-w-3xl mx-auto leading-relaxed sm:leading-[1.75] drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)]">
-                    {steps[3].descEn}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Slider Step Controls & Bottom CTA */}
-          <div className="shrink-0 flex items-center justify-between gap-4 max-w-5xl mx-auto w-full pt-3 sm:pt-4">
-            {/* Step Counter Indicator */}
-            <div className="flex items-center gap-2">
-              <span className="text-xs uppercase font-sans-luxury font-bold text-[#595550]">
-                Progress:
-              </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#071426] text-[#F3DE9A] text-xs font-bold font-sans-luxury border border-[#C9A24B]/40">
-                0{activeStep + 1} / 04
-              </span>
-            </div>
-
-            {/* Explore Production Guide CTA Button */}
-            <Link
-              href="/process"
-              className="inline-flex items-center gap-2 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-[#071426] hover:bg-[#162E52] text-[#F3DE9A] border border-[#C9A24B]/40 hover:border-[#C9A24B] shadow-md text-xs font-sans-luxury font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 cursor-pointer"
-            >
-              <span>Explore 4-Step Production Guide</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#C9A24B]" />
-            </Link>
-          </div>
+    <section id="process" className="py-20 sm:py-32 bg-[#e9e7e2] relative border-t border-[#2b2927]/10">
+      {/* Section Header */}
+      <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-14 sm:mb-20">
+        <div className="flex items-center justify-center gap-3 text-xs uppercase tracking-[0.25em] text-[#2b2927] font-sans-luxury font-bold mb-3">
+          <span className="w-6 h-[1.5px] bg-[#2b2927]" />
+          <span>{locale === "bn" ? "জেয়ো প্রোডাকশন মেথডলজি" : "THE PRODUCTION METHODOLOGY"}</span>
+          <span className="w-6 h-[1.5px] bg-[#2b2927]" />
         </div>
+        <h2 className="font-serif-luxury text-3xl sm:text-5xl md:text-6xl text-[#2b2927] font-bold tracking-tight mb-4 leading-tight">
+          {locale === "bn" ? "স্বপ্ন থেকে উদযাপনে আমাদের পথচলা" : "From Dream to Celebration"}
+        </h2>
+        <p className="text-sm sm:text-base text-[#595550] font-sans-luxury font-bold max-w-2xl mx-auto leading-relaxed">
+          {locale === "bn"
+            ? "চারটি নিখুঁত ধাপের আর্কিটেকচারাল মেথডলজি—যেখানে প্রতিটি স্বপ্ন রূপ নেয় রাজকীয় বাস্তবতায়।"
+            : "Four disciplined stages of architectural execution — orchestrating visionary celebrations from concept to finale."}
+        </p>
+      </div>
+
+      {/* Sticky 3D Stacking Cards Deck (Exact same mechanism as QuoteBanners / Architecture, Scenography, Atelier) */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {steps.map((step, idx) => (
+          <div
+            key={idx}
+            className="sticky will-change-transform mb-16 sm:mb-24 last:mb-0 transition-transform duration-300"
+            style={{
+              top: `calc(6.5rem + ${idx * 20}px)`,
+              zIndex: idx + 10,
+            }}
+          >
+            <div className="relative h-80 sm:h-96 md:h-[440px] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-[#C9A24B]/35 bg-[#071426] transition-transform duration-700 ease-out hover:scale-[1.008] group cursor-pointer">
+              {/* Background Image with slow cinematic zoom */}
+              <img
+                src={step.image}
+                alt={step.title}
+                className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                loading="lazy"
+              />
+
+              {/* Cinematic dark overlay (no box-shadows, pure high-contrast editorial clarity) */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/35 group-hover:from-black/95 transition-colors" />
+
+              {/* Top Accent Tag */}
+              <div className="absolute top-5 left-6 sm:top-7 sm:left-8 z-20 flex items-center">
+                <span className="text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-[#F3DE9A] font-sans-luxury font-bold">
+                  {step.tag}
+                </span>
+              </div>
+
+              {/* Centered Editorial Content */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 sm:p-12 z-10">
+                <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#F3DE9A] font-sans-luxury font-bold mb-3">
+                  {step.kicker}
+                </span>
+
+                <h3 className="font-serif-luxury text-2xl sm:text-4xl md:text-5xl text-[#F3DE9A] font-bold tracking-tight max-w-4xl leading-tight sm:leading-snug mb-4">
+                  {step.title}
+                </h3>
+
+                <p className="font-serif-luxury italic font-bold text-sm sm:text-base md:text-lg lg:text-[20px] text-white/95 max-w-3xl mx-auto leading-relaxed sm:leading-[1.75]">
+                  {step.desc}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

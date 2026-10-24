@@ -28,22 +28,22 @@ export default function Footer() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="flex items-center gap-3 cursor-pointer group"
+              className="inline-flex items-center gap-3.5 p-2 sm:p-2.5 rounded-2xl bg-[#071426] border border-[#C9A24B]/40 hover:border-[#C9A24B] cursor-pointer group transition-all duration-300"
             >
-              <div className="w-11 h-11 rounded-full border-2 border-[#C9A24B] overflow-hidden flex items-center justify-center bg-white shadow-md group-hover:scale-105 transition-transform">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#C9A24B] overflow-hidden flex items-center justify-center bg-[#071426] shrink-0 group-hover:scale-105 transition-transform">
                 <img
                   src="/client-media/zeyo-logo-emblem.jpg"
                   alt="Zeyo Logo Emblem"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center pr-3">
                 <img
-                  src="/client-media/zeyo-wordmark-dark.png"
+                  src="/client-media/zeyo-wordmark-clean.png"
                   alt="zeyo"
-                  className="h-7 sm:h-8 w-auto object-contain"
+                  className="h-6 sm:h-7 w-auto object-contain"
                 />
-                <p className="text-[10px] text-[#C9A24B] tracking-[0.25em] uppercase font-sans-luxury font-bold mt-1">
+                <p className="text-[9.5px] sm:text-[10px] text-[#C9A24B] tracking-[0.24em] uppercase font-sans-luxury font-bold mt-1">
                   {locale === "bn" ? companyInfo.taglineBn : companyInfo.tagline}
                 </p>
               </div>

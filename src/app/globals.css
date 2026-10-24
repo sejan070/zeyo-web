@@ -70,10 +70,6 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-.gold-border-glow {
-  box-shadow: 0 0 25px rgba(201, 162, 75, 0.18);
-}
-
 /* Subtle luxury grain effect */
 .luxury-border {
   border: 1px solid rgba(201, 162, 75, 0.25);

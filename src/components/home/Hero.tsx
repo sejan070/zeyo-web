@@ -58,9 +58,8 @@ export default function Hero() {
           <source src="/videos/hero-cinematic-master.mp4" type="video/mp4" />
         </video>
 
-        {/* Cinematic Vignette Overlays */}
-        <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#071426] via-transparent to-[#071426]/75 pointer-events-none" />
-        <div className="absolute inset-0 z-20 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(7,20,38,0.7)_100%)] pointer-events-none" />
+        {/* Clean Subtle Video Scrim (No dark corner vignette/shadows) */}
+        <div className="absolute inset-0 z-20 bg-black/20 pointer-events-none" />
       </div>
 
       {/* Center of the Screen: Completely Open & Clear (Sarah Haywood quiet luxury style) */}
@@ -70,7 +69,7 @@ export default function Hero() {
       <div className="relative z-30 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-20 sm:pb-14 text-center">
 
         {/* Bold & Italic Luxury Tagline at Bottom */}
-        <h1 className="font-serif-luxury text-2xl sm:text-4xl md:text-5xl font-bold tracking-[0.16em] sm:tracking-[0.25em] uppercase mb-2 drop-shadow-lg text-white">
+        <h1 className="font-serif-luxury text-2xl sm:text-4xl md:text-5xl font-bold tracking-[0.16em] sm:tracking-[0.25em] uppercase mb-2 text-white">
           {locale === "bn" ? (
             <span className="font-bengali font-bold italic">
               স্বপ্ন। সৃষ্টি। <span className="gold-gradient-text">উদযাপন।</span>
@@ -84,24 +83,24 @@ export default function Hero() {
         </h1>
 
         {/* Bold Subtitle */}
-        <p className="text-[11px] sm:text-sm text-[#F6EFE6] font-bold tracking-[0.18em] sm:tracking-[0.25em] uppercase mb-5 sm:mb-6 font-sans drop-shadow-md max-w-xl mx-auto">
+        <p className="text-[11px] sm:text-sm text-[#F6EFE6] font-bold tracking-[0.18em] sm:tracking-[0.25em] uppercase mb-5 sm:mb-6 font-sans max-w-xl mx-auto">
           {locale === "bn"
             ? "রাজশাহী ও পুরো উত্তরবঙ্গে লাক্সারি ইভেন্ট ও ওয়েডিং ডেকোরেশন"
             : "Luxury Weddings, Celebrations & Stage Productions in Rajshahi"}
         </p>
 
-        {/* 3D Pill Shaped Buttons (Optimized for Mobile, Tablet & Desktop) */}
+        {/* Clean Pill Shaped Buttons (No box shadows) */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6 w-full max-w-xs sm:max-w-none mx-auto">
           <a
             href="#inquiry"
-            className="w-full sm:w-auto inline-flex items-center justify-center px-7 sm:px-8 py-3.5 rounded-full border border-[#E0C172] text-[#071426] bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] font-bold text-xs tracking-[0.18em] uppercase shadow-[0_6px_20px_rgba(201,162,75,0.45)] hover:shadow-[0_8px_30px_rgba(201,162,75,0.7)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-7 sm:px-8 py-3.5 rounded-full border border-[#E0C172] text-[#071426] bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] font-bold text-xs tracking-[0.18em] uppercase hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
           >
             <span>{t.hero.ctaPrimary}</span>
           </a>
 
           <Link
             href="/packages"
-            className="w-full sm:w-auto inline-flex items-center justify-center px-7 sm:px-8 py-3.5 rounded-full border border-[#C9A24B]/70 text-white bg-black/50 backdrop-blur-md font-bold text-xs tracking-[0.18em] uppercase shadow-[0_4px_15px_rgba(0,0,0,0.4)] hover:bg-[#C9A24B]/15 hover:border-[#C9A24B] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-7 sm:px-8 py-3.5 rounded-full border border-[#C9A24B]/70 text-white bg-black/60 backdrop-blur-md font-bold text-xs tracking-[0.18em] uppercase hover:bg-[#C9A24B]/20 hover:border-[#C9A24B] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
           >
             <span>{t.hero.ctaSecondary}</span>
           </Link>

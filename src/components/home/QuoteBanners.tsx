@@ -51,7 +51,7 @@ export default function QuoteBanners() {
               zIndex: idx + 10,
             }}
           >
-            <div className="relative h-72 sm:h-88 md:h-[420px] rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-[0_-15px_35px_rgba(0,0,0,0.35),0_25px_60px_rgba(0,0,0,0.25)] border border-[#C9A24B]/30 bg-[#121212] transition-transform duration-700 ease-out hover:scale-[1.008] group cursor-pointer">
+            <div className="relative h-72 sm:h-88 md:h-[420px] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-[#C9A24B]/30 bg-[#121212] transition-transform duration-700 ease-out hover:scale-[1.008] group cursor-pointer">
               {/* Background Image with slow cinematic zoom */}
               <img
                 src={card.image}
@@ -65,18 +65,18 @@ export default function QuoteBanners() {
 
               {/* Top Accent Index Tag */}
               <div className="absolute top-5 left-6 sm:top-7 sm:left-8 z-20 flex items-center">
-                <span className="text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-[#F3DE9A] font-sans-luxury font-bold drop-shadow">
+                <span className="text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-[#F3DE9A] font-sans-luxury font-bold">
                   {card.tag}
                 </span>
               </div>
 
               {/* Centered Editorial Quote Content (Exact Sarah Haywood style) */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 sm:p-12 z-10">
-                <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#F3DE9A] font-sans-luxury font-bold mb-3 drop-shadow">
+                <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#F3DE9A] font-sans-luxury font-bold mb-3">
                   {card.kicker}
                 </span>
 
-                <h3 className="font-serif-luxury text-2xl sm:text-4xl md:text-5xl text-white font-bold tracking-tight max-w-4xl leading-tight sm:leading-snug drop-shadow-md mb-4">
+                <h3 className="font-serif-luxury text-2xl sm:text-4xl md:text-5xl text-white font-bold tracking-tight max-w-4xl leading-tight sm:leading-snug mb-4">
                   {card.quote}
                 </h3>
 
