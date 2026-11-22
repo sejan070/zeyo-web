@@ -52,14 +52,14 @@ export default function Hero() {
           loop
           playsInline
           preload="auto"
-          poster="/videos/hero-cinematic-thumb.jpg"
-          className="w-full h-full object-cover scale-105 will-change-transform transform-gpu"
+          poster="/videos/zeyo-hero-asian-v4-thumb.jpg"
+          className="w-full h-full object-cover"
         >
-          <source src="/videos/hero-cinematic-master.mp4" type="video/mp4" />
+          <source src="/videos/zeyo-hero-asian-v4.mp4" type="video/mp4" />
         </video>
 
-        {/* Clean Subtle Video Scrim (No dark corner vignette/shadows) */}
-        <div className="absolute inset-0 z-20 bg-black/20 pointer-events-none" />
+        {/* Clean Subtle Video Scrim */}
+        <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none" />
       </div>
 
       {/* Center of the Screen: Completely Open & Clear (Sarah Haywood quiet luxury style) */}

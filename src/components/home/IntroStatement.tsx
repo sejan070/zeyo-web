@@ -7,7 +7,7 @@ export default function IntroStatement() {
   const { locale, t } = useLanguage();
 
   return (
-    <section className="py-24 sm:py-36 bg-[#e9e7e2] relative overflow-hidden">
+    <section className="py-24 sm:py-36 bg-[#FFFFFF] relative overflow-hidden">
       {/* Decorative luxury monogram watermark */}
       <div className="absolute right-12 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.03]">
         <span className="font-serif-luxury text-[380px] font-bold text-[#2b2927]">
@@ -50,7 +50,7 @@ export default function IntroStatement() {
         {/* Refined emblem ornament */}
         <div className="mt-12 flex items-center justify-center gap-3">
           <div className="w-16 h-[1px] bg-[#2b2927]/20" />
-          <div className="w-2 h-2 rotate-45 border border-[#C9A24B] bg-[#e9e7e2]" />
+          <div className="w-2 h-2 rotate-45 border border-[#C9A24B] bg-[#FFFFFF]" />
           <div className="w-16 h-[1px] bg-[#2b2927]/20" />
         </div>
       </div>

@@ -804,7 +804,7 @@ function PackagesContent() {
 
         {/* Custom Atelier Banner */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-[28px] p-8 sm:p-10 bg-[#e3ded6] border border-[#2b2927]/15 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="rounded-[28px] p-8 sm:p-10 bg-[#FAF9F6] border border-[#2b2927]/15 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <span className="text-[10px] font-sans-luxury font-black uppercase tracking-[0.25em] text-[#8E6E26] block mb-1">
                 NEED A BESPOKE BLUEPRINT?

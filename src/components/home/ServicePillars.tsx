@@ -98,7 +98,7 @@ export default function ServicePillars() {
     <section
       id="services"
       ref={containerRef}
-      className="relative h-[300vh] bg-[#e9e7e2] text-[#2b2927]"
+      className="relative h-[300vh] bg-[#FAF9F6] text-[#2b2927]"
     >
       {/* Pinned Sticky Viewport (Screen fixes when user arrives here) */}
       <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">

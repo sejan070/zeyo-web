@@ -161,7 +161,7 @@ function ServicesContent() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#e9e7e2] text-[#2b2927] selection:bg-[#C9A24B] selection:text-[#071426]">
+    <div className="relative min-h-screen bg-[#FFFFFF] text-[#2b2927] selection:bg-[#C9A24B] selection:text-[#071426]">
       {/* Sticky Luxury Header */}
       <Header />
 
@@ -261,7 +261,7 @@ function ServicesContent() {
                       </div>
 
                       {/* Ideal For Box */}
-                      <div className="p-4 sm:p-5 rounded-2xl bg-[#e9e7e2]/75 border border-[#2b2927]/12">
+                      <div className="p-4 sm:p-5 rounded-2xl bg-[#FFFFFF]/75 border border-[#2b2927]/12">
                         <span className="text-xs font-sans-luxury font-bold text-[#2b2927] uppercase tracking-wider block mb-1">
                           {isBn ? "উপযুক্ত ভেন্যু ও আয়োজন:" : "SUITABLE FOR:"}
                         </span>

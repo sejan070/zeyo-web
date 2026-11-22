@@ -364,7 +364,7 @@ export default function CareersPage() {
                             {locale === "bn" ? "অগ্রাধিকার নিয়োগ" : "FEATURED ROLE"}
                           </span>
                         )}
-                        <span className="px-3.5 py-1 rounded-full text-xs font-sans-luxury font-bold bg-[#efebe4] text-[#2b2927]">
+                        <span className="px-3.5 py-1 rounded-full text-xs font-sans-luxury font-bold bg-[#FAF9F6] text-[#2b2927]">
                           {locale === "bn" ? job.departmentBn : job.departmentEn}
                         </span>
                         <span className="px-3.5 py-1 rounded-full text-xs font-sans-luxury font-bold bg-[#0E284D]/15 text-[#071426]">

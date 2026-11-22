@@ -6,6 +6,8 @@ base_dir = r"d:\All Projects\Zeyo- event management"
 
 # Active videos referenced in code
 ACTIVE_VIDEOS = {
+    "zeyo-hero-asian-v4.mp4",
+    "zeyo-hero-asian-v4-thumb.jpg",
     "hero-cinematic-master.mp4",
     "hero-cinematic-thumb.jpg",
     "luxury-wedding-decor.mp4",

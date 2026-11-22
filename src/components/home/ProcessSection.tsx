@@ -54,7 +54,7 @@ export default function ProcessSection() {
   ];
 
   return (
-    <section id="process" className="py-20 sm:py-32 bg-[#e9e7e2] relative border-t border-[#2b2927]/10">
+    <section id="process" className="py-20 sm:py-32 bg-[#FFFFFF] relative border-t border-[#2b2927]/10">
       {/* Section Header */}
       <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-14 sm:mb-20">
         <div className="flex items-center justify-center gap-3 text-xs uppercase tracking-[0.25em] text-[#2b2927] font-sans-luxury font-bold mb-3">

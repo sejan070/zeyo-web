@@ -165,7 +165,7 @@ export default function ProcessPage() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#e9e7e2] text-[#2b2927] selection:bg-[#C9A24B] selection:text-[#071426]">
+    <div className="relative min-h-screen bg-[#FFFFFF] text-[#2b2927] selection:bg-[#C9A24B] selection:text-[#071426]">
       {/* Sticky Luxury Header */}
       <Header />
 

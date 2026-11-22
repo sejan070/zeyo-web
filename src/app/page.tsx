@@ -76,7 +76,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#e9e7e2] selection:bg-[#C9A24B] selection:text-[#071426]">
+    <div className="relative min-h-screen bg-[#FFFFFF] selection:bg-[#C9A24B] selection:text-[#071426]">
       {/* Sticky Luxury Header */}
       <Header />
 

@@ -15,7 +15,7 @@ export default function Footer() {
   const { locale, t } = useLanguage();
 
   return (
-    <footer className="bg-[#dedbd4] text-[#2b2927] border-t border-[#2b2927]/15 pt-16 pb-28 sm:pb-16 relative">
+    <footer className="bg-white text-[#2b2927] border-t border-[#2b2927]/15 pt-16 pb-28 sm:pb-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-[#2b2927]/15">
           {/* Brand Column */}
@@ -39,9 +39,9 @@ export default function Footer() {
                   />
                 </div>
                 <img
-                  src="/client-media/zeyo-wordmark-contrasted.png"
+                  src="/client-media/zeyo-wordmark-clean.png"
                   alt="zeyo"
-                  className="h-6 sm:h-7 w-auto object-contain drop-shadow-[0_2px_4px_rgba(7,20,38,0.35)]"
+                  className="h-6 sm:h-7 w-auto object-contain brightness-[0.12] contrast-200"
                 />
               </div>
               <p className="text-[10px] sm:text-[11px] text-[#C9A24B] tracking-[0.25em] uppercase font-sans-luxury font-bold">

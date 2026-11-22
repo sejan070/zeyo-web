@@ -101,7 +101,7 @@ export default function InquirySection() {
   }, []);
 
   return (
-    <section id="inquiry" className="pt-16 pb-28 sm:py-32 bg-[#e9e7e2] relative border-t border-[#2b2927]/10">
+    <section id="inquiry" className="pt-16 pb-28 sm:py-32 bg-[#FAF9F6] relative border-t border-[#2b2927]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

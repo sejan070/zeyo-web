@@ -114,7 +114,7 @@ export default function ClientShowcase3D() {
 
   return (
     <section
-      className="py-24 sm:py-32 bg-[#e9e7e2] relative overflow-hidden border-t border-[#2b2927]/10"
+      className="py-24 sm:py-32 bg-[#FFFFFF] relative overflow-hidden border-t border-[#2b2927]/10"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}

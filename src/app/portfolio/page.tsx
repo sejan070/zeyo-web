@@ -109,7 +109,7 @@ export default function PortfolioPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#e9e7e2] text-[#2b2927] selection:bg-[#C9A24B] selection:text-[#071426]">
+    <div className="relative min-h-screen bg-[#FFFFFF] text-[#2b2927] selection:bg-[#C9A24B] selection:text-[#071426]">
       {/* Sticky Luxury Header */}
       <Header />
 
@@ -205,7 +205,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* 2. Unified Master Gallery: Our Events Galleries */}
-        <section id="gallery" className="py-16 sm:py-24 bg-white/70 border-t border-[#2b2927]/10">
+        <section id="gallery" className="py-16 sm:py-24 bg-[#FAF9F6] border-t border-[#2b2927]/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-10">
               <span className="text-[10.5px] font-sans-luxury font-bold uppercase tracking-[0.25em] text-[#C9A24B] block mb-2">

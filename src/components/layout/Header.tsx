@@ -297,7 +297,7 @@ export default function Header() {
                       aria-label="Zeyo Facebook"
                       title="Visit Zeyo on Facebook"
                     >
-                      <svg className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5" viewBox="0 0 24 24">
+                      <svg className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 shrink-0" width="16" height="16" style={{ width: '16px', height: '16px' }} viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="12" fill="#1877F2" />
                         <path
                           fill="#FFFFFF"
@@ -313,7 +313,7 @@ export default function Header() {
                       aria-label="Zeyo Instagram"
                       title="Visit Zeyo on Instagram"
                     >
-                      <svg className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5" viewBox="0 0 24 24">
+                      <svg className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 shrink-0" width="16" height="16" style={{ width: '16px', height: '16px' }} viewBox="0 0 24 24">
                         <defs>
                           <linearGradient id="zeyoInstaGrad" x1="0%" y1="100%" x2="100%" y2="0%">
                             <stop offset="0%" stopColor="#fdf497" />

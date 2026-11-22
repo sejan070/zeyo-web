@@ -73,6 +73,7 @@ export default function FeaturedPortfolio() {
   const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<PortfolioVideo | null>(null);
   const [hoveredReelId, setHoveredReelId] = useState<string | null>(null);
+  const [showAllPhotos, setShowAllPhotos] = useState<boolean>(false);
 
   // Sync with global portfolio filter triggered from Header Services dropdown
   useEffect(() => {
@@ -91,6 +92,9 @@ export default function FeaturedPortfolio() {
     return item.category === activeFilter;
   });
 
+  const visibleItems = showAllPhotos ? filteredItems : filteredItems.slice(0, 8);
+  const hasMore = filteredItems.length > 8;
+
   const handlePrev = () => {
     if (selectedItemIndex === null) return;
     setSelectedItemIndex(
@@ -106,7 +110,7 @@ export default function FeaturedPortfolio() {
   };
 
   return (
-    <section id="portfolio" className="py-24 sm:py-32 bg-[#e9e7e2] relative border-t border-[#2b2927]/10">
+    <section id="portfolio" className="pt-24 sm:pt-32 pb-0 bg-[#FFFFFF] relative border-t border-[#2b2927]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
@@ -183,31 +187,43 @@ export default function FeaturedPortfolio() {
 
         {/* 2. Photo Gallery Section Header & Filter Chips */}
         <div id="photo-archives" className="pt-8 border-t border-[#2b2927]/15 scroll-mt-28">
-          <div className="text-center max-w-2xl mx-auto mb-8">
-            <h3 className="font-serif-luxury text-2xl sm:text-3xl text-[#2b2927] font-bold">
-              {locale === "bn" ? "ইভেন্ট ফটো কালেকশন" : "Signature Event Moments"}
-            </h3>
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <span className="text-[10.5px] font-sans-luxury font-bold uppercase tracking-[0.25em] text-[#C9A24B] block mb-2">
+              {locale === "bn" ? "সিগনেচার ফটো আর্কাইভ" : "SIGNATURE PHOTOGRAPHY"}
+            </span>
+            <h2 className="font-serif-luxury text-3xl sm:text-5xl md:text-6xl text-[#2b2927] font-bold tracking-tight mb-3">
+              Our Events Galleries
+            </h2>
+            <p className="text-xs sm:text-sm text-[#595550] font-sans-luxury font-bold max-w-xl mx-auto">
+              {locale === "bn"
+                ? "রাজশাহীতে আমাদের বাস্তবায়িত ইভেন্ট, ওয়েডিং, মেহেন্দি, বার্থডে ও স্টেজ প্রোডাকশনের সম্পূর্ণ ফটো কালেকশন।"
+                : "Signature Event Moments across Rajshahi & North Bengal — verified real venue photographs."}
+            </p>
           </div>
 
-          {/* Filter Chips - Luxury Gold with Black Active & Hover State */}
+          {/* Filter Chips */}
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
             {[
-              { id: "all", label: t.portfolioSection.filterAll },
-              { id: "wedding", label: t.portfolioSection.filterWedding },
-              { id: "birthday", label: t.portfolioSection.filterBirthday },
-              { id: "stage", label: t.portfolioSection.filterStage },
-              { id: "murals", label: t.portfolioSection.filterMurals }
+              { id: "all", label: locale === "bn" ? "সকল ফটো" : "All Photos" },
+              { id: "wedding", label: locale === "bn" ? "ওয়েডিং ও হলুদ" : "Weddings & Holud" },
+              { id: "birthday", label: locale === "bn" ? "বার্থডে ডেকোর" : "Birthdays" },
+              { id: "corporate", label: locale === "bn" ? "কর্পোরেট গালা" : "Corporate & Gala" },
+              { id: "stage", label: locale === "bn" ? "স্টেজ আর্কিটেকচার" : "Stage Craft" },
+              { id: "murals", label: locale === "bn" ? "ওয়াল মিউরাল" : "Murals & Themes" }
             ].map((tab) => {
               const isActive = activeFilter === tab.id;
               return (
                 <button
                   key={tab.id}
                   type="button"
-                  onClick={() => handleFilterChange(tab.id)}
+                  onClick={() => {
+                    handleFilterChange(tab.id);
+                    setShowAllPhotos(false);
+                  }}
                   className={`px-5 sm:px-6 py-2.5 rounded-full text-xs uppercase tracking-[0.16em] transition-all duration-300 font-sans-luxury cursor-pointer select-none font-bold ${
                     isActive
-                      ? "bg-[#2b2927] text-white border border-[#2b2927] scale-105"
-                      : "bg-gradient-to-r from-[#DFBD6A] via-[#C9A24B] to-[#B38B35] hover:bg-none hover:bg-[#2b2927] text-[#071426] hover:text-white border border-[#E0C172] hover:border-[#2b2927] hover:scale-105"
+                      ? "bg-[#071426] text-[#F3DE9A] border border-[#C9A24B]/50 shadow-[0_8px_22px_rgba(7,20,38,0.35)] scale-105"
+                      : "bg-white hover:bg-[#071426] text-[#2b2927] hover:text-[#F3DE9A] border border-[#2b2927]/15 hover:border-[#C9A24B]/40 shadow-sm hover:scale-105"
                   }`}
                 >
                   {tab.label}
@@ -216,60 +232,71 @@ export default function FeaturedPortfolio() {
             })}
           </div>
 
-          {/* Photo Gallery Grid - Display only 4 signature event images */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {filteredItems.slice(0, 4).map((item, index) => (
-              <div
-                key={item.id}
-                onClick={() => setSelectedItemIndex(index)}
-                className="group relative cursor-pointer overflow-hidden rounded-[20px] bg-white/80 backdrop-blur-xl border border-white/90 hover:border-[#C9A24B]/50 hover:-translate-y-2 hover:scale-[1.02] transition-all duration-500 aspect-[4/5]"
+          {/* Photo Gallery Grid - 3D Perspective Card Showcase */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 [perspective:1200px]">
+            {visibleItems.map((item) => {
+              const originalIndex = filteredItems.findIndex((it) => it.id === item.id);
+              return (
+                <div
+                  key={item.id}
+                  onClick={() => setSelectedItemIndex(originalIndex !== -1 ? originalIndex : 0)}
+                  className="group relative cursor-pointer overflow-hidden rounded-[22px] bg-[#071426] border border-[#C9A24B]/30 shadow-[0_10px_30px_rgba(43,41,39,0.12)] hover:shadow-[0_25px_50px_rgba(7,20,38,0.35)] hover:border-[#C9A24B] hover:-translate-y-2.5 transition-all duration-500 ease-out aspect-[4/5] will-change-transform transform-gpu hover:[transform:rotateX(4deg)_rotateY(-3deg)_translateY(-10px)]"
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    loading="lazy"
+                  />
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10 opacity-70 group-hover:opacity-90 transition-opacity duration-300 pointer-events-none" />
+
+                  {/* Category Pill */}
+                  <div className="absolute top-3.5 left-3.5 z-10">
+                    <span className="text-[10px] uppercase tracking-widest font-sans-luxury font-bold bg-[#071426]/90 text-[#F3DE9A] px-3 py-1 rounded-full border border-[#C9A24B]/40 shadow-md">
+                      {locale === "bn" ? item.categoryLabelBn : item.categoryLabel}
+                    </span>
+                  </div>
+
+                  {/* Hover Details */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5 z-10 transition-transform duration-300 transform group-hover:-translate-y-1">
+                    <h3 className="font-serif-luxury text-xl sm:text-2xl text-white font-bold leading-snug drop-shadow-md mb-1.5">
+                      {locale === "bn" ? item.titleBn : item.title}
+                    </h3>
+                    <div className="flex items-center gap-1.5 text-xs text-[#F3DE9A] font-sans-luxury font-bold drop-shadow">
+                      <MapPin className="w-3.5 h-3.5 text-[#C9A24B] shrink-0" />
+                      <span className="truncate">{locale === "bn" ? item.venueBn : item.venue}</span>
+                    </div>
+
+                    <div className="mt-3.5 inline-flex items-center gap-2 text-[11px] text-[#071426] font-bold uppercase tracking-wider bg-gradient-to-r from-[#F3DE9A] to-[#C9A24B] px-3.5 py-1.5 rounded-full shadow-md group-hover:scale-105 transition-transform duration-300">
+                      <Eye className="w-3.5 h-3.5" />
+                      <span>{locale === "bn" ? "ফুলস্ক্রিন দেখুন" : "View Fullscreen"}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Toggle Button: Explore Full Gallery (+More Photos) / Show Less */}
+          {hasMore && (
+            <div className="mt-14 text-center">
+              <button
+                type="button"
+                onClick={() => setShowAllPhotos(!showAllPhotos)}
+                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#071426] hover:bg-[#162E52] text-[#F3DE9A] border border-[#C9A24B]/50 hover:border-[#C9A24B] shadow-xl text-xs font-sans-luxury font-bold uppercase tracking-widest transition-all duration-300 hover:scale-105 cursor-pointer"
               >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                  loading="lazy"
-                />
-
-                {/* Hover Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5" />
-
-                {/* Category Pill - Translucent Glass */}
-                <div className="absolute top-3.5 left-3.5 z-10">
-                  <span className="text-[10px] uppercase tracking-widest font-sans-luxury font-bold bg-white/90 text-[#2b2927] px-3 py-1 rounded-full border border-white/60 backdrop-blur-md">
-                    {locale === "bn" ? item.categoryLabelBn : item.categoryLabel}
-                  </span>
-                </div>
-
-                {/* Hover Info */}
-                <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
-                  <h3 className="font-serif-luxury text-xl text-white font-bold leading-snug">
-                    {locale === "bn" ? item.titleBn : item.title}
-                  </h3>
-                  <div className="flex items-center gap-1.5 text-xs text-[#F3DE9A] mt-1.5 font-sans-luxury font-bold">
-                    <MapPin className="w-3.5 h-3.5 text-[#C9A24B]" />
-                    <span>{locale === "bn" ? item.venueBn : item.venue}</span>
-                  </div>
-
-                  <div className="mt-3.5 inline-flex items-center gap-1.5 text-[11px] text-[#C9A24B] font-bold uppercase tracking-wider bg-black/40 px-3 py-1 rounded-full border border-[#C9A24B]/40 backdrop-blur-sm">
-                    <Eye className="w-3.5 h-3.5" />
-                    <span>View Fullscreen</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Dedicated Portfolio Archive CTA Button */}
-          <div className="text-center pt-10">
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#071426] hover:bg-[#162E52] text-[#F3DE9A] border border-[#C9A24B]/40 hover:border-[#C9A24B] text-xs font-sans-luxury font-bold uppercase tracking-widest transition-all duration-300 hover:scale-105 cursor-pointer"
-            >
-              <span>{locale === "bn" ? "সম্পূর্ণ পোর্টফোলিও আর্কাইভ দেখুন" : "Explore Full Portfolio Archive"}</span>
-              <ArrowRight className="w-4 h-4 text-[#C9A24B]" />
-            </Link>
-          </div>
+                <span>
+                  {showAllPhotos
+                    ? (locale === "bn" ? "কম ছবি দেখুন (Show Less)" : "Show Less")
+                    : (locale === "bn" ? `সম্পূর্ণ গ্যালারি দেখুন (+${filteredItems.length - 8}টি ছবি)` : `Explore Full Gallery (+${filteredItems.length - 8} More Photos)`)}
+                </span>
+                <ArrowRight className={`w-4 h-4 text-[#C9A24B] transition-transform duration-300 ${showAllPhotos ? "-rotate-90" : "rotate-90"}`} />
+              </button>
+            </div>
+          )}
         </div>
       </div>
 

@@ -16,7 +16,7 @@ export default function ContactPage() {
   const isBn = locale === "bn";
 
   return (
-    <div className="relative min-h-screen bg-[#e9e7e2] text-[#2b2927] selection:bg-[#C9A24B] selection:text-[#071426]">
+    <div className="relative min-h-screen bg-[#FFFFFF] text-[#2b2927] selection:bg-[#C9A24B] selection:text-[#071426]">
       {/* Sticky Luxury Header */}
       <Header />
 
@@ -123,7 +123,7 @@ export default function ContactPage() {
         <InquirySection />
 
         {/* Location & Map Section */}
-        <section className="py-14 sm:py-20 bg-[#dedbd4] border-t border-[#2b2927]/15">
+        <section className="py-14 sm:py-20 bg-[#FAF9F6] border-t border-[#2b2927]/15">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white/80 backdrop-blur-xl rounded-3xl border border-white/90 p-8 sm:p-12 shadow-[0_12px_32px_rgba(43,41,39,0.08)]">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
